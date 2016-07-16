@@ -49,18 +49,7 @@
 
 \newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Definition}[section]
-\newtheorem*{theorem*}{Theorem}
-\newtheorem*{lemma*}{Lemma}
-\newtheorem*{corollary*}{Corollary}
-
-
-
-
-\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Ran}{\mathbb{R}^n}
 \newcommand{\p}{\mathcal{P}}
 \newtheorem{defin}{Definizione}
 \newtheorem{lem}{Lemma}
@@ -68,48 +57,16 @@
 \newtheorem{prop}{Proposizione}
 
 
-
-
-\newcommand{\frameit}[2]{
-        \begin{center}
-{\color{red} \framebox[0.9\textwidth][l]{
-                \begin{minipage}{0.85\textwidth}
-{\color{red}\bf #1}: {\color{black}#2}
-                \end{minipage}
-}\\
-}
-        \end{center}
-}
-
-
-% abilitare hyperref solo alla fi.e., quando si vuole il documento pronto.
-%
-%\usepackage[pdftex,hyperindex]{hyperref}
-%\addtocontents{toc}{\protect\setstretch{1.5}}
-%\def\addvspace#1{}
-%\hypersetup{
-	%   bookmarks=false,
-	%	colorlinks=true,
-	%	urlcolor=blue,
-%	pdfborder = {0 0 0},
-%	pdfauthor = {Alessandro Luongo},
-%	pdftitle = {},
-%	pdflang={it},
-%	pdfcreator = {LaTeX, TeXmaker, pdfLaTeX, Hyperref}
-%}
-
-\setlength{\captionmargin}{20pt}
-\setcounter{tocdepth}{3}
-
 \bibliography{tesi}
 
 \begin{document}
+
 %\input{FrontPage}
 
 \tableofcontents %indice
 
 
-\chapter{Introduction}
+\chapter{Introduzione}
 \setlength{\epigraphwidth}{.95\textwidth}
 \begin{epigraphs}
 \qitem{Da quella notte\\
@@ -128,101 +85,12 @@ con una testa in bocca.}
 \end{epigraphs}
 \newpage
 \label{ch:introduction}
-%\input{Introduction}
+\input{introduzione}
 %\input{FormalismNotation}
 
 
 
 
-\chapter{Politopi astratti}
-In questo capitolo parleremo dei politopi astratti, un'astrazione assiomatica della struttura combinatoria dei politopi (concreti) di $\Rn$. Essi incapsulano la
-semplice struttura combinatoria delle facce di un politopo, essendo questa gi\`a molto ricca di informazioni circa il politopo stesso. Cominciamo con alcune 
-definizioni.
-\subsection{Definizioni}
-Un insieme parzialmente ordinato $(\p,\leq)$ si dice \emph{politopo astratto di rango} $n$ (dove $rank\p:=n\in\mathbb{N})$ se soddisfa le propriet\`a $(P1)-(P4)$ scritte 
-di seguito. Per una migliore comprensione delle propriet\`a in questione introduciamo la terminologia di base. Gli elementi di $\p$ verranno chiamati \emph{facce},
-due facce $F,G\in\p$ verranno dette \emph{incidenti} se $F\leq G$ o $G\leq F$. Ricordiamo inoltre che una \emph{catena} di un insieme ordinato \`e un suo 
-sottoinsieme totalmente ordinato. Nel caso dei politopi chiameremo \emph{lunghezza} di una catena $\Omega$ il numero $\left|\Omega\right|-1$ e, vista
-l'importanza delle catene massimali, chiameremo quest'ultime \emph{bandiere}.
-Denoteremo con $\mathcal{F}(\p)$ l'insieme di tali bandiere. Ovviamente ogni catena di $\p$ sar\`a contenuta in un elemento di $\mathcal{F}(\p)$.
-Enunciamo i primi due assiomi di politopo astratto. Sia $\p$ un insieme ordinato.
-\begin{itemize}
-\item (P1) $\p$ contiene un minimo e un massimo, che chiamiamo $F_{-1}$ e $F_d$ rispettivamente.
-\item (P2) Ogni bandiera di $\p$ ha lunghezza $n+1$ (contiene quindi $n+2$ elementi)
-\end{itemize}
-Per enunciare i restanti assiomi di politopo astratto abbiamo bisogno di definire le sue \emph{sezioni}.
-\begin{defin}
-Date $F,G\in\p$ chiameremo sezione di $\p$ relativa a $F$ e $G$ il suo sottoinsieme
-\begin{equation*}
-G/F=\left\{H\in\p\mid F\leq H\leq G\right\}
-\end{equation*}
-Notiamo che una sezione di un poset che soddisfa $(P1)-(P2)$ soddisfa essa stessa $(P1)-(P2)$. Mostreremo infatti che una sezione di un politopo astratto
-continuer\`a ad essere un politopo astratto. Diremo inoltre che una sezione \`e propria se questa \`e distinta da $\p$.
-\end{defin}
-\par
-Gi\`a con queste due propriet\`a osserviamo che \`e possibile estendere la nozione di \emph{rango} da $\p$ alle sue facce.
-Se $F\in\p$ chiameremo $rankF:=rank(F/F_{-1})$ \emph{rango} della faccia $F$. Diremo inoltre che $F$ \`e una $i$-faccia.
-Notiamo che $rank(F_{-1})=-1$ e $rank(F_n)=n$ queste facce sono ovviamente le uniche di $\p$ con tali ranghi e verranno dette
-facce improprie di $\p$.
-Definiamo inoltre
-\begin{equation*}
-\p_i=\left\{F\in\p\mid rankF=i\right\}
-\end{equation*}
-Chiameremo le facce di $\p$ di rango $0$ \emph{vertici} di $\p$, quelle di rango $1$ \emph{vertici} e quelle di rango $n-1$ \emph{faccette}. Data 
-una qualunque faccia $F\in\p$ diremo che la sezione $P/F$ \`e la sua \emph{co-faccia}.\\
-Notiamo che se $F,G\in\p$ con $F\leq G$ allora
-\begin{equation*}
-rank(G/F)=rankG-rankF-1
-\end{equation*}
-In particolare $rank(F/F_{-1})=rankF$ e $rank(P/F)=n-rankF-1$. Chiameremo quest'ultimo \emph{co-rango} di $F$.
-Parlando di una catena $\Omega$ di $\p$ chiameremo \emph{tipo} di $\Omega$ l'insieme ordinato dei ranghi dei suoi elementi e scrivendo 
-$\Omega=\left\{F_{i_1},\dots,F_{i_l}\right\}$ assumeremo implicitamente che $rankF_{i_t}=i_t$, che $i_1<\cdots<i_l$ e, quindi,
-che $\Omega$ sia di tipo $(i_1,\dots,i_l)$.
-Talvolta ometteremo nell'enumerazione di una catena le sue facce improprie.\\
-A questo punto possiamo introdurre il concetto di \emph{connessione}.
-\begin{defin}
-Un insieme parzialmente ordinato $\p$ che gode delle propriet\`a (P1)-(P2) si dir\`a \emph{connesso} se
-\begin{equation*}
-\forall F,G\in\p\quad\exists F=:H_0,\cdots,H_l:=G\in\p\qquad \text{tali che }H_i\text{ e }H_{i+1}\text{ sono incidenti}
-\end{equation*}
-Considereremo per definizione $\p$ connesso nel caso $rank\p=1$.
-\end{defin}
-Arriviamo finalmente all'enunciazione del terzo assioma definendo la connessione forte di un insieme parzialmente ordinato.
-\begin{defin}
-Sia $\p$ un insieme parzialmente ordinato che gode delle propriet\`a (P1)-(P2). Diremo che $\p$ \`e \emph{fortemente connesso} se
-\`e connessa ogni sua sezione.
-\end{defin}
-Come preannunciato il prossimo e terzo assioma di politopo astratto \`e
-\begin{itemize}
-\item (P3) $\p$ \`e fortemente connesso
-\end{itemize}
-Nel seguito utilizzeremo una variante di (P3) che fa uso delle bandiere del politopo. A tal fine diamo le seguenti
-\begin{defin}
-Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Due bandiere $\Phi,\Psi\in\mathcal{F}(\p)$ si dicono \emph{adiacenti}
-se differiscono per un solo elemento. Se $\left\{F\right\}=\Phi\cap\Psi$ e $i=rankF$ diremo anche che $\Phi$ e $\Psi$ sono $i$-adiacenti.\\
-\end{defin}
-\begin{defin}
-Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Allora diremo che $\p$ \`e connesso per bandiere se $\forall\Phi,\Psi\in\mathcal{F}(\p)$
-esistono $\Phi_i\in\mathcal{F}(\p)$ per $i=0,\dots,k$ tali che
-\begin{gather*}
-\Phi_0=\Phi\\
-\Phi_k=\Psi\\
-\Phi_i\text{ e }\Phi_{i+1}\text{ sono adiacenti}
-\end{gather*}
-\end{defin}
-In modo analogo a quanto visto per la connessione definiamo la connessione forte per bandiere.
-\begin{defin}
-Se $\p$ \`e un insieme parzialmente ordinato che soddisfa (P1)-(P2) allora diremo che $\p$ \`e \emph{fortemente connesso per bandiere} se
-ogni sua sezione \`e connessa per bandiere
-\end{defin}
-
-\begin{prop}
-Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Allora $\p$ \`e fortemente connesso se e solo se \`e fortemente
-connesso per bandiere.
-\end{prop}
-\begin{proof}
-
-\end{proof}
 
 
 \chapter{Conclusioni}
