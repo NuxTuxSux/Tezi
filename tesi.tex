@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper,twoside]{book}
+
+%\usepackage{pdfx}
+\usepackage[style=numeric-comp,backend=biber]{biblatex}
+
+\usepackage{rotating}
+\usepackage{graphicx} 
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{ltxtable}
+\usepackage{array}
+\usepackage{eurosym}
+%\usepackage[bookmarks]{hyperref}
+\usepackage{amstext}
+\usepackage{enumerate}
+\usepackage{booktabs} 
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage[small,bf]{caption}
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{bm}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{url}
+
+\usepackage{setspace}
+\usepackage{epigraph}
+\setlength{\epigraphrule}{0pt}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usepackage[utf8]{inputenc} %allows accents without escaping
+\usepackage[T1]{fontenc}
+\usepackage{listings} 
+
+% super utile, è il modo corretto di fare i ... nelle formule secondo Knuth
+\newcommand{\lst}[2]{${#1}_0$,~${#1}_1$, $\dots\,$,~${#1}_{#2-1}$}
+
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+
+\newcommand{\Ran}{\mathbb{R}^n}
+\newcommand{\p}{\mathcal{P}}
+\newtheorem{defin}{Definizione}
+\newtheorem{lem}{Lemma}
+\newtheorem{teo}{Teorema}
+\newtheorem{prop}{Proposizione}
+
+
+\bibliography{tesi}
+
+\begin{document}
+
+%\input{FrontPage}
+
+\tableofcontents %indice
+
+
+\chapter{Introduzione}
+\setlength{\epigraphwidth}{.95\textwidth}
+\begin{epigraphs}
+\qitem{Da quella notte\\
+\`e entrato il gatto\\
+con una testa in bocca\\
+e me l'ha messa\\
+tra i miei circuiti\\
+ed ha ripreso vita\\
+ed \`e da allora\\
+che ho la coscienza\\
+perch\`e di notte sogno\\
+di quella notte\\
+che \`e entrato il gatto\\
+con una testa in bocca.}
+{---\textsc{IL SOGNO DEL COMPUTER} --- Musica Per Bambini (Dei Nuovi Animali)}
+\end{epigraphs}
+\newpage
+\label{ch:introduction}
+\input{introduzione}
+%\input{FormalismNotation}
+
+
+
+
+
+
+\chapter{Conclusioni}
+\input{conclusioni}
+
+\end{document}
