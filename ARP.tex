@@ -1,6 +1,12 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{report}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{varioref}
+%RISOLVERE
+\usepackage{mathabx}
+
 %\usepackage[italian]{babel}
 %\usepackage[utf8]{inputenc}
 \author{Nunzio Turtulici}
@@ -8,11 +14,20 @@
 
 \newcommand{\Rn}{\mathbb{R}^n}
 \newcommand{\p}{\mathcal{P}}
-\newtheorem{defin}{Definizione}
-\newtheorem{lem}{Lemma}
-\newtheorem{teo}{Teorema}
-\newtheorem{prop}{Proposizione}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}[chapter]
 
+\theoremstyle{definition}
+\newtheorem{defin}[teo]{Definizione}
+\newtheorem{lem}[teo]{Lemma}
+\newtheorem{prop}[teo]{Proposizione}
+\newtheorem{oss}[teo]{Osservazione}
+\newtheorem{corol}[teo]{Corollario}
+
+\setcounter{chapter}{1}
+
+\newcommand\locallabel[1]{\label{\currentprefix_#1}}
+\newcommand\localref[1]{\ref{\currentprefix_#1}}
 
 \begin{document}
 
@@ -24,7 +39,7 @@ In questo capitolo parleremo dei politopi astratti, un'astrazione assiomatica de
 semplice struttura combinatoria delle facce di un politopo, essendo questa gi\`a molto ricca di informazioni circa il politopo stesso. Cominciamo con alcune 
 definizioni.
 \subsection{Definizioni}
-Un insieme parzialmente ordinato $(\p,\leq)$ si dice \emph{politopo astratto di rango} $n$ (dove $rank\p:=n\in\mathbb{N})$ se soddisfa le propriet\`a $(P1)-(P4)$ scritte 
+Un insieme parzialmente ordinato $(\p,\leq)$ si dice \emph{politopo astratto di rango} $n$ (dove $rk\p:=n\in\mathbb{N})$ se soddisfa le propriet\`a $(P1)-(P4)$ scritte 
 di seguito. Per una migliore comprensione delle propriet\`a in questione introduciamo la terminologia di base. Gli elementi di $\p$ verranno chiamati \emph{facce},
 due facce $F,G\in\p$ verranno dette \emph{incidenti} se $F\leq G$ o $G\leq F$. Ricordiamo inoltre che una \emph{catena} di un insieme ordinato \`e un suo 
 sottoinsieme totalmente ordinato. Nel caso dei politopi chiameremo \emph{lunghezza} di una catena $\Omega$ il numero $\left|\Omega\right|-1$ e, vista
@@ -32,45 +47,133 @@ l'importanza delle catene massimali, chiameremo quest'ultime \emph{bandiere}.
 Denoteremo con $\mathcal{F}(\p)$ l'insieme di tali bandiere. Ovviamente ogni catena di $\p$ sar\`a contenuta in un elemento di $\mathcal{F}(\p)$.
 Enunciamo i primi due assiomi di politopo astratto. Sia $\p$ un insieme ordinato.
 \begin{itemize}
-\item (P1) $\p$ contiene un minimo e un massimo, che chiamiamo $F_{-1}$ e $F_d$ rispettivamente.
-\item (P2) Ogni bandiera di $\p$ ha lunghezza $n+1$ (contiene quindi $n+2$ elementi)
+\item (P1) $\p$ contiene un minimo e un massimo, che chiamiamo $F_{-1}$ e $F_n$ rispettivamente.
+\item (P2) Le bandiere di $\p$ hanno tutte la medesima lunghezza
 \end{itemize}
+Se un insieme ordinato $\p$ soddisfa le propriet\`a $(P1)-(P2)$ diremo \emph{rango} di $\p$ il numero intero  $\left|\Phi\right|-2$, dove
+$\Phi$ \`e una sua bandiera. Per $(P2)$ la definizione \`e ben posta.\\
 Per enunciare i restanti assiomi di politopo astratto abbiamo bisogno di definire le sue \emph{sezioni}.
 \begin{defin}
 Date $F,G\in\p$ chiameremo sezione di $\p$ relativa a $F$ e $G$ il suo sottoinsieme
 \begin{equation*}
 G/F=\left\{H\in\p\mid F\leq H\leq G\right\}
 \end{equation*}
-Notiamo che una sezione di un poset che soddisfa $(P1)-(P2)$ soddisfa essa stessa $(P1)-(P2)$. Mostreremo infatti che una sezione di un politopo astratto
-continuer\`a ad essere un politopo astratto. Diremo inoltre che una sezione \`e propria se questa \`e distinta da $\p$.
+Diremo inoltre che una sezione \`e propria se questa \`e distinta da $\p$ e da $\left\{F_{-1}\right\}$.
+\`E bene mostrare che una sezione di un poset che soddisfa $(P1)-(P2)$ soddisfa essa stessa $(P1)-(P2)$. Mostreremo in effetti (nel seguito) che una sezione
+ di un politopo astratto continuer\`a ad essere un politopo astratto. Dimostriamo per ora il seguente lemma che ci permetter\`a, fra le altre cose,
+ di definire un rango tra le facce di un poset che soddisfi $(P1)-(P2)$ e quindi nel seguito di un politopo astratto.
 \end{defin}
+\begin{lem}
+\label{P1P2Sections}
+Sia $\p$ un insieme parzialmente ordinato che soddisfi le propriet\`a $(P1)-(P2)$ e siano $G,F\in\p$ tali che $G\leq F$. Allora la sezione non vuota
+$F/G$ soddisfa anch'essa le propriet\`a $(P1)-(P2)$
+\end{lem}
+\begin{proof}
+La propriet\`a $(P1)$ \`e banale, essendo per definizione di $F/G$, gli elementi $F$ e $G$ massimo e minimo rispettivamente.\\
+Mostriamo la pi\`u interessante $(P2)$, ossia che le bandiere di $F/G$ abbiano la stessa lunghezza. Siano $\Phi,\Psi\in\mathcal{F}(F/G)$
+completiamo $\Phi$ a $\bar{\Phi}\in\mathcal{F}(\p)$. Allora, posti
+\begin{equation*}
+\Phi_0=\bar{\Phi}\cap G/F_{-1}\text{\quad e\quad }\Phi_1=\bar{\Phi}\cap\p/F
+\end{equation*}
+possiamo estendere $\Phi$ a bandiera di $\p$ in modo \emph{compatibile} con $\bar{\Phi}$. Ossia, posto
+\begin{equation*}
+\bar{\Psi}=\Phi_0\cup\Psi\cup\Phi_1
+\end{equation*}
+avremo che $\bar{\Psi}\in\mathcal{F}(\p)$. \`E chiaro che $\bar{\Psi}$ sia una catena, essendo $G$ contemporaneamente maggiorante per $\Phi_0$ e
+minorante per $\Psi$ e $F$ maggiorante per $\Phi$ e minorante per $\Phi_1$.\\
+Se inoltre, avessimo $H\in\p$ tale che $\bar{\Psi}\cup\left\{H\right\}>\bar{\Psi}$ continui ad essere una catena, allora si presenterebbero tre casi.\\
+\textbf{Caso $\bm{H<G}$:}
+In tal caso avremmo $H\in G/F_{-1}$ pertanto, essendo $H\notin\Psi\supseteq\Phi_0$, avremmo che $H\notin\bar{\Phi}$, tuttavia
+\begin{equation*}
+\left(\Phi_0\cup\left\{H\right\}\right)\cup\Phi\cup\Phi_1
+\end{equation*}
+sarebbe una catena, contro la massimalit\`a di $\bar{\Phi}$.\\
+\textbf{Caso $\bm{F<H}$:}
+La dimostrazione di questo caso \`e simmetrica a quella del caso precedente.\\
+\textbf{Caso $\bm{G\leq H\leq F}$:}
+Se $H\in F/G$ allora, essendo $\bar{\Psi}\cup\left\{H\right\}$ una catena, lo sar\`a anche $\Psi\cup\left\{H\right\}$, ma
+$H\notin\bar{\Psi}$ quindi $H\notin\Psi$ e $\Psi\cup\left\{H\right\}\supsetneq\Psi$, contro la massimalit\`a di $\Psi\in\mathcal{F}(F/G)$.
+Abbiamo quindi mostrato che il completamento di $\Psi$ sopra definito risulta effettivamente una bandiera (di $\p$)
+\begin{equation*}
+\bar{\Psi}\in\mathcal{F}(\p)
+\end{equation*}
+A questo punto, contando gli elementi delle bandiere in questione (per l'ipotesi $(P2)$ su $\p$), abbiamo
+\begin{gather*}
+\left|\bar{\Psi}\right|=|\Phi_0|+|\Psi|+|\Phi_1|-2\\
+|\bar{\Phi}|=|\Phi_0|+|\Phi|+|\Phi_1|-2
+\end{gather*}
+da cui $|\Phi|=|\Psi|$.
+\end{proof}
 \par
-Gi\`a con queste due propriet\`a osserviamo che \`e possibile estendere la nozione di \emph{rango} da $\p$ alle sue facce.
-Se $F\in\p$ chiameremo $rankF:=rank(F/F_{-1})$ \emph{rango} della faccia $F$. Diremo inoltre che $F$ \`e una $i$-faccia.
-Notiamo che $rank(F_{-1})=-1$ e $rank(F_n)=n$ queste facce sono ovviamente le uniche di $\p$ con tali ranghi e verranno dette
+Se un poset $\p$ soddisfa le propriet\`a $(P1)-(P2)$, alla luce di \ref{P1P2Sections}, osserviamo che \`e possibile estendere la nozione di \emph{rango}
+alle facce (elementi) di $\p$.\\
+Infatti, per vedere le facce di un politopo come politopi a loro volta, ne considereremo le sezioni con la faccia minima, $F_{-1}$,
+cos\`i da identificare una faccia $F\in\p$ con l'insieme delle facce \emph{sotto} $F$ (sottoinsieme di $\p$ che risulta avere $F$ come massimo).
+Se $F\in\p$ chiameremo quindi $rk_\p F:=rk(F/F_{-1})$ \emph{rango} della faccia $F$, ove non ci sia possibilit\`a di confusione scriveremo
+pi\`u semplicemente $rk F:=rk_\p F$. Diremo inoltre che $F$ \`e una $i$-faccia.
+Notiamo che $rk(F_{-1})=-1$ e $rk(F_n)=n$ queste facce sono ovviamente le uniche di $\p$ con tali ranghi e verranno dette
 facce improprie di $\p$.
 Definiamo inoltre
 \begin{equation*}
-\p_i=\left\{F\in\p\mid rankF=i\right\}
+\p_i=\left\{F\in\p\mid rkF=i\right\}
 \end{equation*}
 Chiameremo le facce di $\p$ di rango $0$ \emph{vertici} di $\p$, quelle di rango $1$ \emph{vertici} e quelle di rango $n-1$ \emph{faccette}. Data 
 una qualunque faccia $F\in\p$ diremo che la sezione $P/F$ \`e la sua \emph{co-faccia}.\\
-Notiamo che se $F,G\in\p$ con $F\leq G$ allora
+Mostreremo nell'immediato seguito che se $F,G\in\p$ con $F\leq G$ allora
 \begin{equation*}
-rank(G/F)=rankG-rankF-1
+rk(G/F)=rkG-rkF-1
 \end{equation*}
-In particolare $rank(F/F_{-1})=rankF$ e $rank(P/F)=n-rankF-1$. Chiameremo quest'ultimo \emph{co-rango} di $F$.
+In particolare $rk(F/F_{-1})=rkF$ e $rk(P/F)=n-rkF-1$. Chiameremo quest'ultimo \emph{co-rango} di $F$.
 Parlando di una catena $\Omega$ di $\p$ chiameremo \emph{tipo} di $\Omega$ l'insieme ordinato dei ranghi dei suoi elementi e scrivendo 
-$\Omega=\left\{F_{i_1},\dots,F_{i_l}\right\}$ assumeremo implicitamente che $rankF_{i_t}=i_t$, che $i_1<\cdots<i_l$ e, quindi,
+$\Omega=\left\{F_{i_1},\dots,F_{i_l}\right\}$ assumeremo implicitamente che $rkF_{i_t}=i_t$, che $i_1<\cdots<i_l$ e, quindi,
 che $\Omega$ sia di tipo $(i_1,\dots,i_l)$.
 Talvolta ometteremo nell'enumerazione di una catena le sue facce improprie.\\
-A questo punto possiamo introdurre il concetto di \emph{connessione}.
+
+Avendo definito il rango delle facce, sar\`a utile vedere come questo concetto di \emph{livello} nel poset permetta
+di misurare in qualche modo l'ampiezza delle sezioni.
+Proseguiamo quindi col seguente lemma che ci permetter\`a di collegare numericamente i ranghi delle sezioni, i ranghi delle facce \emph{nelle sezioni}
+ai ranghi intrinseci delle facce.
+\begin{lem}
+\label{lem:SectionRanks}
+Sia $\p$ un poset che soddisfi $(P1)-(P2)$, $G<F\in\p$ e inoltre $H\in F/G$, allora
+\begin{itemize}
+\item $rk(F/G)=rkF-rkG-1$
+\item $rk_{F/G}H=rk_\p(H/G)(=rk_\p H-rk_\p G-1)$
+\end{itemize}
+\end{lem}
+\begin{proof}
+Per quanto riguarda il primo punto, osserviamo che sia $F=F/F_{-1}$ che $G=G/G_{-1}$ e $F/G$ soddisfano le propriet\`a $(P1)-(P2)$ per
+\ref{P1P2Sections}, pertanto, scelti
+\begin{gather*}
+\underline{\Phi}\in\mathcal{F}(G)=\mathcal{F}(G/F_{-1}),\\
+\overline{\Phi}\in\mathcal{F}(F/G)
+\end{gather*}
+avremo che
+\begin{equation*}
+\Phi=\underline{\Phi}\cup\overline{\Phi}\in\mathcal{F}(F)=\mathcal{F}(F/F_{-1})
+\end{equation*}
+quindi, avremo
+\begin{gather*}
+rkG=|\underline{\Phi}|-2\\
+rkF=|\overline{\Phi}|-2\\
+rk(F/G)=|\Phi|-2
+\end{gather*}
+Ed essendo $\underline{\Phi}\cap\overline{\Phi}=\left\{G\right\}$, otterremo
+\begin{gather*}
+rkG+rk(F/G)=|\underline{\Phi}|-2+|\overline{\Phi}|-2=\\
+|\Phi|+1-4=|\Phi|-2-1=rF-1
+\end{gather*}
+Da cui il primo punto. Per quanto riguarda il secondo punto ricordiamo che $rk_{F/G}(H)$ \`e per definizione la lunghezza di una bandiera
+della sezione $H/G$ del poset $F/G$, minorata di due. Ma questa \`e precisamente la sezione $H/G$ vista come poset a s\'e stante, per cui
+i due ranghi coincidono.
+\end{proof}
+A questo punto, per enunciare il terzo assioma di politopo, dobbiamo cominciare a parlare di \emph{connessione}.
 \begin{defin}
 Un insieme parzialmente ordinato $\p$ che gode delle propriet\`a (P1)-(P2) si dir\`a \emph{connesso} se
 \begin{equation*}
 \forall F,G\in\p\quad\exists F=:H_0,\cdots,H_l:=G\in\p\qquad \text{tali che }H_i\text{ e }H_{i+1}\text{ sono incidenti}
 \end{equation*}
-Considereremo per definizione $\p$ connesso nel caso $rank\p=1$.
+Considereremo per definizione $\p$ connesso nel caso $rk\p=1$.
 \end{defin}
 Arriviamo finalmente all'enunciazione del terzo assioma definendo la connessione forte di un insieme parzialmente ordinato.
 \begin{defin}
@@ -84,7 +187,7 @@ Come preannunciato il prossimo e terzo assioma di politopo astratto \`e
 Nel seguito utilizzeremo una variante di (P3) che fa uso delle bandiere del politopo. A tal fine diamo le seguenti
 \begin{defin}
 Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Due bandiere $\Phi,\Psi\in\mathcal{F}(\p)$ si dicono \emph{adiacenti}
-se differiscono per un solo elemento. Se $\left\{F\right\}=\Phi\cap\Psi$ e $i=rankF$ diremo anche che $\Phi$ e $\Psi$ sono $i$-adiacenti.\\
+se differiscono per un solo elemento. Se $\left\{F\right\}=\Phi\cap\Psi$ e $i=rkF$ diremo anche che $\Phi$ e $\Psi$ sono $i$-adiacenti.\\
 \end{defin}
 \begin{defin}
 Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Allora diremo che $\p$ \`e connesso per bandiere se $\forall\Phi,\Psi\in\mathcal{F}(\p)$
@@ -101,15 +204,572 @@ Se $\p$ \`e un insieme parzialmente ordinato che soddisfa (P1)-(P2) allora direm
 ogni sua sezione \`e connessa per bandiere
 \end{defin}
 
+Enunciamo senza dimostrare la seguente ovvia osservazione che sar\`a comoda nel teorema seguente.
+\begin{oss}
+Sia $\p$ un politopo, $\Phi\in\mathcal{F}(\p)$ una sua bandiera e $F,G\in\Phi$. Allora le facce $F$ e $G$ sono connesse. Inoltre se
+$\Psi$ \`e una bandiera di $\p$ incidente a $\Phi$ e $H\in\Psi$ una sua faccia, abbiamo che $H$ \`e connessa a $F$ (e a $G$).
+\end{oss}
+
 \begin{prop}
+\label{P3Flags}
 Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Allora $\p$ \`e fortemente connesso se e solo se \`e fortemente
 connesso per bandiere.
 \end{prop}
 \begin{proof}
+Procediamo per induzione su $n=rk\p$, non essendoci nulla da dimostrare per $n\leq 1$ supponiamo $n\geq 2$. Mostriamo che se $\p$ \`e
+fortemente connesso allora esso \`e fortemente connesso per bandiere.\\
+Siano $\Phi,\Psi\in\mathcal{F}(\p)$, due bandiere che per ora considereremo non disgiunte. Sia allora $\Omega=\Phi\cap\Psi=\left\{F_{j_1},\dots,F_{j_k}\right\}$ 
+la loro parte comune. Posto $F_{j_0}=F_{-1}$ (la faccia minima di $\p$) avremo che le sezioni $F_{j_i}/F_{j_{i-1}}$ sono fortemente connesse e, quindi,
+per ipotesi induttiva (essendo queste di rango strettamente minore di $n$), fortemente connesse per bandiere. \`E quindi possibile \emph{muovere} la parte di
+$\Phi$ contenuta in ognuna di queste sezioni nella relativa parte in $\Psi$. Per fissare le idee consideriamo, ad esempio, la sezione
+$\mathcal{G}_0:=F_{j_1}/F_{j_0}$.\\
+Essendo $\Phi\cap\mathcal{G}_0,\Psi\cap\mathcal{G}_0\in\mathcal{F}(\mathcal{G}_0)$ due bandiere della sezione $\mathcal{G}_0$ queste saranno connesse da una 
+successione $\Upsilon_0,\dots,\Upsilon_t\in\mathcal{F}(\mathcal{G}_0)$. Pertanto le $\widetilde{\Upsilon}_l:=(\Phi\setminus\mathcal{G}_0)\cup\Upsilon_l$ per
+$l=0,\dots,t$ costituiranno una successione che connette la bandiera $\Phi$ alla bandiera $\Phi\setminus\mathcal{G}_0\cup(\Psi\cap\mathcal{G}_0)$
+costituita da elementi che coincidono su $\Omega$.
+Connettendo - relativamente alla sezione $\mathcal{G}_0$ - le bandiere $\Phi$ e $\Psi$. Iterando il procedimento per ognuna delle restanti sezioni
+$\mathcal{G}_1,\dots,\mathcal{G}_i$ otteniamo la tesi (nel caso $\Omega\ne\emptyset$).\\
+Consideriamo adesso il caso $\Omega=\emptyset$, nel quale dovremo quindi semplicemente mostrare che le bandiere $\Phi$ e $\Psi$ sono connesse.
+Siano a tal fine $G_0\in\Phi$ e $G_l\in\Psi$ due facce qualunque.\\
+Queste saranno estremi di una successione $(G_i)_{i=0}^l$ di facce di $\p$
+ognuna adiacente alla successiva (per la connessione di $\p$).\\
+Essendo $G_i$ e $G_{i+1}$ adiacenti per ogni $i=0,\dots,l-1$, queste saranno contenute in una bandiera $\Phi_i$ (in quanto catena massimale). Notiamo che
+$G_{i+1}\in\Phi_i\cap\Phi_{i+1}$, pertanto per il punto precedente ($\Omega\neq\emptyset$) le bandiere $\Phi_i$ e $\Phi_{i+1}$ sono connesse da una successione
+in $\mathcal{F}(\p)$. Pertanto, unendo tali successioni per $i=0,\dots,l-1$ si ottiene una successione che connette $\Phi$ e $\Psi$.\\
+Per quanto riguarda l'implicazione inversa supponiamo $\p$ fortemente connesso per bandiere, siano $F,G\in\p$ con $G<F$ mostriamo quindi che la sezione $F/G$
+\`e connessa.\\
+Siano quindi $H,H'\in F/G$, mostriamo che queste sono connesse. Siano $\Phi,\Phi'\in\mathcal{F}(F/G)$ tali che $H\in\Phi$ e $H'\in\Phi'$, allora 
+se $\Phi=\Psi_0,\dots,\Psi_k=\Phi'$ \`e una successione di bandiere adiacenti in $F/G$, per l'osservazione [PRECEDENTE!] (e per la transitivit\`a
+della relazione di connessione tra le facce) avremo che $H$ e $H'$ saranno connesse da una successione di facce adiacenti in $F/G$.
+\end{proof}
+Alla luce dell'ultima propriet\`a abbiamo che (sotto le ipotesi $(P1)-(P2)$) $(P3)$ \`e equivalente alla:
+\begin{itemize}
+\item (P3') $\p$ \`e \emph{fortemente connesso per bandiere}
+\end{itemize}
+L'ultima propriet\`a che definisce un politopo astratto fa in modo che questi finora non troppo particolari reticoli modellino quelli costituiti
+dalle facce dei politopi concreti nello spazio euclideo (insiemi che risultano effettivamente reticoli se considerati con l'inclusione).
+La cosiddetta \emph{diamond property} esprime la struttura delle sezioni unidimensionali del politopo garantendo, per esempio, che un vertice in un
+poligono sia contenuto in esattamente due lati, che uno spigolo di un poliedro sia contenuto in esattamente due faccette o, sempre nel caso tridimensionale,
+che un vertice contenuto in una faccetta si possa \emph{estendere} in esattamente due modi a spigolo rimanendo nella faccia in questione.\\
+Enunciamo quindi il quarto ed ultimo assioma di politopo astratto.
+\begin{itemize}
+\item (P4) Per ogni $0\leq i\leq n-1$ se $F,G\in\p$ sono tali che $rkF=i-1$ e $rkG=i+1$, allora esistono esattamente due facce $H\in\p$ tali che
+\begin{equation*}
+F<H<G
+\end{equation*}
+\end{itemize}
+
+Notiamo che $(P4)$ asserisce che ogni sezione unidimensionale \`e a forma di \emph{diamante} [INSERIRE DIAGRAMMA!], da cui il nome dell'assioma. Notiamo
+inoltre che, essendo contemplato il caso $i=0$ abbiamo da questa propriet\`a che ogni $1$-faccia (lato, spigolo, \dots) ha esattamente due vertici 
+(ricordando che la faccia
+minima $F_{-1}$ \`e contenuta in ogni altra faccia del politopo).\\
+In modo pi\`u compatto possiamo esprimere $(P4)$ come segue
+\begin{oss}
+Sia $\p$ politopo astratto e $F,G\in\p$ con $rkG = rkF + 2$ allora
+\begin{equation*}
+\left|G/F\right|=4
+\end{equation*}
+\end{oss}
+Osserviamo come $(P4)$ sia un assioma di \emph{regolarit\`a} del reticolo e come abbia una ricaduta al livello delle bandiere del politopo,
+permettendoci cio\`e di definire, data una bandiera, le sue
+
+\begin{defin}[Bandiere $i$-adiacenti]
+Sia $\Phi\in\mathcal{F}(\p)$ e $0<i<n$ allora esiste esattamente un'altra bandiera $\Psi\in\mathcal{F}(\p)$ che differisca da $\Phi$ per la sua faccia $i$-esima.
+Tale $\Psi$ sar\`a quindi adiacente a $\Phi$ e, alla luce della sua unicit\`a, porremo per comodit\`a $\Phi^i=\Psi$
+Reiterando il procedimento porremo ricorsivamente (per $k\geq 1$)
+\begin{equation*}
+\Phi^{i_1\cdots i_k i_{k+1}}=(\Phi^{(i_1\cdots i_k)})^{i_{k+1}}
+\end{equation*}
+\end{defin}
+Per il successivo studio dei gruppi di simmetria di $\p$ cominciamo a mostrare delle fondamentali quanto elementari propriet\`a delle bandiere $i$-incidenti
+ad una bandiera.
+
+\begin{lem}
+Siano $\Phi\in\mathcal{F}(P)$ e $0\leq i\leq k\leq n-1$, allora valgono le seguenti:
+\begin{itemize}
+\item $\Phi^{ii} = \Phi$
+\item $\Phi^{ij} = \Phi^{ji}$\quad per $j\geq i+2$
+\end{itemize}
+\end{lem}
+
+\begin{defin}
+Un politopo astratto di rango $n$ \`e un poset che soddisfa le propriet\`a $(P1)-(P4)$. Indicheremo con $rk\p$ il rango di $\p$.
+\end{defin}
+
+In genere ometteremo l'aggettivo \emph{astratto} e, ove serva discriminare, indicheremo i politopi immersi in $\Rn$ come \emph{concreti} o
+\emph{convessi}.\\
+Come preannunciato, seguendo la nomenclatura dei politopi concreti chiameremo un politopo di rango $2$ \emph{poligono} e uno di rango $3$
+\emph{poliedro}.
+\begin{oss}
+\`E bene osservare che dagli assiomi di politopo nulla ci garantisce che questo sia finito. Infatti esistono politopi infiniti, chiameremo un tale
+politopo (di rango $n$) \emph{$n$-apeirotopo}
+Inoltre, seguendo il caso generale, un $2$-apeirotopo sar\`a detto \emph{apeirogono} e un $3$-apeirotopo \emph{apeiroedro}
+\end{oss}
+[AGGIUNGERE DIAGRAMMI!]
+Procediamo con degli esempi e studiamo i casi pi\`u banali, ossia i politopi astratti di rango al pi\`u $2$.\\
+L'unico politopo di rango $-1$ \`e il politopo con un'unica faccia $F_{-1}(=F_n)$, questo sar\`a il politopo \emph{vuoto}.
+Passando al rango $0$, ossia i politopi \emph{punti}, un politopo $\p$ avr\`a un diagramma costituito
+da due nodi e un arco che li connette, ossia $\p=\left\{F_{-1},F_0\right\}$ con ovviamente $F_{-1}<F_0$. $F_0$ sar\`a il punto stesso.\\
+Nel caso in cui $rk\p=1$, invece, avremo un diagramma a diamante, essendo $rkF_1-rkF_{-1}=2$, cio\`e $\p$ coincide con la sua 
+$1$-sezione $F_1/F_{-1}$. Quindi $\p$ sar\`a un segmento e le sue due facce proprie saranno i suoi due vertici.\\
+Il caso $rk\p=2$ \`e quello dei poligoni [DIAGRAMMI!].	\\
+Notiamo che un politopo potrebbe analogamente essere definito ricorsivamente. Ossia
+\begin{oss}
+Un politopo di rango $n\leq 1$ \`e un poset di cui al diagramma sopra [DIAGRAMMA!], invece per $n\geq 2$ un politopo di rango $n$ \`e un poset $\p$ che
+soddisfi $(P1)$ e tale che (ricorsivamente) ogni sua ($n-1$)-sezione sia un ($n-1$)-politopo.
+\end{oss}
+Possiamo interpretare questa definizione alternativa immaginando di \emph{incollare} dei $(n-1)$-politopi lungo le loro faccette, ad ottenere un
+$n$-politopo che contenga questi come faccette, ossia che li abbia come particolari $(n-1)$-sezioni.\\
+Vediamo adesso - come promesso - che le sezioni di un politopo astratto risultano essere, come poset, anch'essi politopi.
+\begin{teo}
+\label{teo:SectionIsPoly}
+Sia $\p$ un politopo di rango $n$ e $G<F\in\p$ due sue facce. Allora $F/G$ risulta essere un politopo di rango $rk(F/G)=rkF-rkG-1$
+\end{teo}
+\begin{proof}
+Alla luce di \ref{P1P2Sections}, per mostrare che $F/G$ \`e un politopo dobbiamo mostrare che esso soddisfa $(P3)-(P4)$.\\
+$\bm{(P3)}$\textbf{:} Basta notare che una qualunque sezione di $F/G$ \`e anche sezione di $\p$, risulta pertanto connessa.\\
+$\bm{(P4)}$\textbf{:} Per vedere che vale la \emph{diamond property} anche nella sezione $F/G$, supponiamo che $rk(F/G)\geq1$.
+Siano $H<K\in F/G$ con $rk_{F/G}H=j-1$ e $rk_{F/G}K=j+1$ con $0\leq j\leq rk(F/G)-1$, allora per \ref{lem:SectionRanks}, posto
+$i=j+rk_\p G+1$ si ha
+\begin{gather*}
+rk_\p K=rk_{F/G}K+rk_\p G+1=j+2+rk_\p G=i+1\text{ e}\\
+rk_\p H=rk_{F/G}H+rk_\p G+1=j+rk_\p G=i-1
+\end{gather*}
+pertanto, applicando $(P4)$ relativamente a $\p$ avremo che la sezione $K/H$ ha precisamente due facce proprie, concludiamo notando che tale
+sezione risulta essere la stessa in $\p$ e in $F/G$
+\end{proof}
+Alla luce di quanto visto, essendo le sezioni di $\p$ esse stesse politopi, viene naturale considerare le facce di $\p$ (gli elementi del poset)
+come sottostrutture, identificando ogni $F\in\p$ con la sezione $F/F_{-1}$.
+\begin{corol}
+Sia $\p$ un $n$-politopo e $F\in\p_k$ una sua $k$-faccia, allora $F$ \`e un $k$-politopo.
+\end{corol}
+\begin{proof}
+Per \ref{teo:SectionIsPoly} basta notare che $rk(F/F_{-1})=rkF-rkF_{-1}-1=rkF$
+\end{proof}
+
+Proseguiamo lo studio di queste strutture definendo i loro morfismi e le loro simmetrie.
+
+\subsection{Morfismi e Gruppi di simmetria}
+Definiamo adesso i morfismi tra politopi.
+\begin{defin}[Morfismo di Politopi]
+Siano $\p,\mathcal{Q}$ due politopi (di rango qualunque). Una funzione
+\begin{equation*}
+\phi:\p\longrightarrow\mathcal{Q}
+\end{equation*}
+\`e detta \emph{morfismo di politopi} se essa \`e crescente, ossia se $\forall F,G\in\p\quad F\leq G$ implica $\phi F\leq\phi G$.
+\end{defin}
+Notiamo che la definizione ammette morfismi tra politopi di rango diverso. Inoltre diremo che un morfismo $\phi$ \`e un isomorfismo se questo \`e
+biettivo e inoltre $\phi^{-1}$ continua ad essere un morfismo (condizione necessaria, come nell'analogo caso topologico).
+Se tra due politopi $\p$ e $\mathcal{Q}$ esiste un isomorfismo, diremo che questi sono isomorfi e scriveremo $\p\cong\mathcal{Q}$.\\
+Un ruolo importante nella struttura di un politopo viene giocato dalle sue simmetrie che, come normalmente accade in altre strutture, costituiscono un
+gruppo.\\
+\begin{defin}
+Sia $\p$ un politopo. Chiameremo un isomorfismo $\phi:\p\longrightarrow\p$ \emph{automorfismo} di $\p$. Denoteremo con $\Gamma(\p)$ l'insieme
+di tali automorfismi. Quest'ultimo risulter\`a chiaramente essere un gruppo, detto \emph{gruppo di simmetria} di $\p$.
+\end{defin}
+[QUI CI STAREBBE BENE LA CLASSIFICAZIONE DEI POLIGONI PI\`U APEIROGON!]
+
+Definiamo un altro importantissimo concetto nei politopi. Come si pu\`o notare, dalla definizione (necessariamente) simmetrica di politopo
+tra ``grande'' e ``piccolo'', emerge il concetto di \emph{dualit\`a}, che definiamo come segue.
+\begin{defin}
+Sia $\phi:\longrightarrow\mathcal{Q}$ \`e una biiezione tra due politopi che inverte l'ordine diremo che $\phi$ \`e una \emph{dualit\`a} tra
+$\p$ e $\mathcal{Q}$ e diremo che $\p$ e $\mathcal{Q}$ sono \emph{duali}
+\end{defin}
+
+\begin{oss}
+\label{oss:DualUnicity}
+Osserviamo che se $\p$, $\mathcal{Q}$ e $\mathcal{Q}'$ sono politopi e $\phi:\p\longrightarrow\mathcal{Q}$ e $\phi':\p\longrightarrow\mathcal{Q'}$
+sono antiisomorfismi di poset, allora $\mathcal{Q}\cong\mathcal{Q}'$, da cui l'essenziale unicit\`a del politopo duale.
+\end{oss}
+\begin{proof}
+Per ottenere l'asserto \`e sufficiente notare che $\phi'\phi^{-1}:\mathcal{Q}\longrightarrow\mathcal{Q}'$ \`e una biiezione che preserva l'ordine
+\end{proof}
+
+\begin{defin}
+\label{def:DualPolytope}
+Sia $\p=(\p,\leq)$ un politopo, indichiamo con $\widecheck{\p}=(\p,\geq)$ il suo poset opposto e se $F\in\p$, quando considereremo quest'ultima
+come elemento di $\widecheck{\p}$, la denoteremo con $F^*$
+\end{defin}
+
+\def\currentprefix{prop:DualPolytope}
+\begin{prop}[Politopo duale]
+\label{prop:DualPolytope}
+Sia $\p$ un $n$-politopo, allora il poset definito in \ref{def:DualPolytope}, $\widecheck{\p}$, \`e un $n$-politopo. Inoltre $\widecheck{\p}$ \`e duale a
+$\p$. Alla luce di \ref{oss:DualUnicity} chiameremo $\widecheck{\p}$ \emph{il} duale di $\p$. Chiaramente si ha $\check{\widecheck{\p}}=\p$.
+Inoltre abbiamo che
+\begin{enumerate}
+\item\locallabel{1} Se $G<F\in\p$, allora $\widecheck{F/G}=G^*/F^*$
+\item\locallabel{2} Se $F\in\p$ allora $rkF^*=n-rkF-1$
+\end{enumerate}
+\end{prop}
+\newcommand\localprefix{tuasorella}
+\begin{proof}
+Per ottenere la tesi, una volta mostrato esplicitamente che $\widecheck{\p}$ \`e un politopo \`e sufficiente notare che
+$id_\p:\p\longrightarrow\widecheck{\p}$ \`e una biiezione che inverte l'ordine, risultando quindi una dualit\`a.\\
+Pertanto mostriamo che $\widecheck{\p}$ soddisfa $(P1)-(P4)$.\\
+$\bm{(P1)}$\textbf{:} Chiaramente il massimo di $\p$ risulter\`a essere minimo di $\widecheck{\p}$ e viceversa.\\
+$\bm{(P2)}$\textbf{:} Basta notare che $\mathcal{F}(\widecheck{\p})=\mathcal{F}(\p)$, essendo ogni bandiera semplicemente ordinata
+nel verso opposto.\\
+$\bm{(P3)}$\textbf{:} Notiamo che se $F>G$ sono facce di $\p$, allora in $\widecheck{\p}$ avremo che, insiemisticamente, $F/G=G^*/{F^*}$ (in effetti
+come poset si ha
+$\widecheck{F/G}=G^*/{F^*}$, inoltre se due facce $H,K\in F/G$ sono incidenti, lo saranno anche $H^*$ e $K^*$ in $G^*/{F^*}$ e, pertanto, 
+si preserver\`a la pi\`u generale relazione di connessione anche in $G^*/{F^*}$. Concludiamo che essendo la sezione $F/G$ di $\p$ connessa,
+sar\`a connessa anche la sezione $G^*/{F^*}$ di $\widecheck{\p}$.\\
+$\bm{(P4)}$\textbf{:} Notiamo che, se $G<F\in\p$, essendo $rk_\p(F/G)=rk_{\widecheck{\p}}(G^*/{F^*})$ le sezioni di rango $1$ in $\p$ saranno,
+invertito l'ordine, sezioni di rango 1 anche in $\widecheck{\p}$, inoltre essendo queste uguali insiemisticamente, avremo che $(P4)$ sar\`a soddisfatto 
+anche da $\widecheck{\p}$.
+Per mostrare che $rk\p=rk\widecheck{\p}$ \`e sufficiente notare che $\mathcal{F}(\widehat{\p})=\mathcal{F}(\p)$.\\
+Una volta visto che $\widecheck{\p}$ \`e un $n$-politopo passiamo a mostrare \localref{1}.\\
+Per dimostrare che questa risulta un'uguaglianza \emph{come poset} prendiamo $H_1,H_2\in\widecheck{F/G}$ e supponiamo che sia
+$H_1\leq_{\widecheck{F/G}} H_2$, allora
+\begin{equation*}
+G\leq H_2\leq H_1\leq F
+\end{equation*}
+quindi
+\begin{equation*}
+G^*\geq H_2^*\geq H_1^*\geq F^*
+\end{equation*}
+Pertanto, notando che come elementi $H_1=H_1^*$ e $H_2=H_2^*$ avremo che $H_1,H_2\in G^*/F*$ e inoltre $H_1\leq_{G^*/F^*}H_2$.\\
+Dimostriamo quindi che vale \localref{2}. Sia $F\in\p$ allora, per la definizione di rango di una faccia, per \localref{1}, \ref{lem:SectionRanks} e
+per la prima parte della tesi, si ha
+\begin{gather*}
+rkF^*=r(F^*/\p^*)=rk(\widecheck{\p/F})=r(\p/F)=rk\p-rkF-1=n-rkF-1
+\end{gather*}
 
 \end{proof}
 
+Proseguiamo mostrando un altro importante politopo duale a $\p$, che d\`a quindi un'alternativa definizione naturale di politopo duale.
+
+\begin{oss}
+Sia $\p$ un $n$-politopo, allora il poset $\mathcal{Q}=\left\{\p/F|F\in\p\right\}$ col naturale ordine dato dall'inclusione risulta essere un
+$n$-politopo duale a $\p$
+\end{oss}
+\begin{proof}
+Mostriamo che il poset $\mathcal{Q}$ risulta essere antiisomorfo a $\p$ pertanto, per \ref{oss:DualUnicity}, isomorfo come poset a $\widecheck{\p}$.
+Essendo, per \ref{prop:DualPolytope}, $\widecheck{\p}$ un politopo avremo la tesi.
+Definiamo quindi
+\begin{gather*}
+\phi:\p\longrightarrow\mathcal{Q}\\
+\qquad F\longmapsto\p/F
+\end{gather*}
+Chiaramente $\phi$ risulta suriettiva per la definizione di $\mathcal{Q}$. Notiamo che \`e anche iniettiva avendo che per ogni $F\in\p$ risulta
+$F=\min\p/F$ ($\min$ \`e inversa sinistra di $\phi$). Mostriamo che $\phi$ inverte l'ordine. Siano $F,G\in\p$, con $F\leq G$, allora se
+$H\in\p/G=\phi(G)$ abbiamo $H\geq G$, da cui $H\geq F$, pertanto $H\in\p/F=\phi(F)$, pertanto $F\leq G$ implica che $\phi(F)\supseteq\phi(G)$.
+\end{proof}
+
+\begin{oss}[Rango morfismi-dualit\`a]
+\label{morphRank}
+\`E bene notare che se $\phi:\p\longrightarrow\mathcal{Q}$ \`e un isomorfismo tra due politopi $\p$ e $\mathcal{Q}$ di rango $n$, allora esso
+preserva il rango delle facce (quindi per ogni $i=-1,\dots,n$ si ha che $\phi\p_i=\mathcal{Q}_i$) e se invece tale $\phi$ \`e una dualit\`a tra
+$\p$ e $\mathcal{Q}$ allora questa manda $i$-facce in co-$i$-facce. Ossia $\phi\p_i=\mathcal{Q}_{n-1-i}$.
+\end{oss}
+Proseguiamo con un lemma, che sar\`a utile nel seguito, che esprime la compatibilit\`a degli isomorfismi e antiisomorfismi con la relazione di
+adiacenza delle bandiere.
+\begin{lem}
+\label{morphAdj}
+Siano $\p$ e $\mathcal{Q}$ due $n$-politopi e $\phi:\p\longrightarrow\mathcal{Q}$ allora per ogni $i=0,\dots,n-1$
+\begin{itemize}
+\item Se $\phi$ \`e un isomorfismo allora $\phi(\Phi^i)=\phi(\Phi)^i$
+\item se $\phi$ \`e una dualit\`a allora $\phi(\Phi^i)=\phi(\Phi)^{n-1-i}$
+\end{itemize}
+in entrambi i casi tale biiezione preserva l'adiacenza
+\end{lem}
+[EVENTUALE DIMOSTRAZIONE!]
 
 
 
+
+\subsection{Azione di $\Gamma(\p)$}
+Cominciamo adesso lo studio delle simmetrie di un politopo. Molto utile per tale studio \`e l'azione del gruppo di simmetria di un politopo su
+suoi sottoinsiemi o su insiemi di suoi sottoinsiemi.\\
+Per esempio per quanto osservato in \ref{morphRank}, avremo che se $\Gamma(\p)$ \`e il gruppo di simmetria di un politopo $\p$, allora questo
+agisce su $\p_i$ per ogni $i=-1,\dots,n$. Il problema di questa rappresentazione di $\Gamma(\p)$ \`e che pu`o non essere fedele. Tuttavia
+consideriamo la rappresentazione di $\Gamma(\p)$ come gruppo di permutazioni di $\mathcal{F}(\p)$.
+\begin{oss}
+Se $\p$ \`e un politopo e $\phi\in\Gamma(\p)$ un suo automorfismo, allora se $\Phi\in\mathcal{F}(\p)$ avremo che $\phi(\Phi)\in\mathcal{F}(\p)$.
+Pertanto $\Gamma(\p)$ agisce su $\mathcal{F}(\p)$. Tale rappresentazione sar\`a molto utile per lo studio del gruppo di simmetria di $\p$.
+\end{oss}
+
+Quanto visto ci permette di mostrare una importante propriet\`a dell'azione del gruppo di simmetrie di un politopo sulle sue bandiere, il fatto
+che questa sia \emph{libera}.[DEFINIRE AZIONE LIBERA?!]
+\begin{lem}
+\label{freeAction}
+L'azione di $\Gamma(\p)$ su $\mathcal{F}(\p)$ \`e \emph{libera}.
+\end{lem}
+\begin{proof}
+Sia $\sigma\in\Gamma(\p)$ e supponiamo che tale $\sigma$ fissi una bandiera $\Phi\in\mathcal{F}(\p)$, vogliamo mostrare che allora necessariamente
+si avr\`a $\sigma=1$.\\
+Per il lemma \ref{morphAdj}, essendo $\sigma(\Phi)=\Phi$, avremo che (per $i=0,\dots,n-1$)
+\begin{equation*}
+\sigma(\Phi^i)=\sigma(\Phi)^i=\Phi^i
+\end{equation*}
+Pertanto $\sigma$ fissa ogni bandiera adiacente a $\Phi$. Per la genericit\`a di $\Phi$ abbiamo mostrato che se un elemento di $\Gamma(\p)$ fissa una
+bandiera, fissa tutte quelle a lei adiacenti. Possiamo concludere grazie all'equivalenza tra forte connessione e forte connessione per bandiere
+(proposizione \ref{P3Flags}) avendo mostrato che $\sigma(\Psi)=\Psi$ per ogni $\Psi\in\mathcal{F}(\p)$.
+\end{proof}
+Continuiamo con un utile criterio numerico che collega le cardinalit\`a del gruppo degli automorfismi di un politopo con quella dell'insieme delle sue
+bandiere.
+\begin{prop}
+\label{regularAction}
+Sia $\p$ un politopo \emph{finito}. Allora $\left|\Gamma(\p)\right|$ divide $\left|\mathcal{F}(\p)\right|$. Inoltre, nel caso in cui valga l'uguaglianza
+$\left|\Gamma(\p)\right|=\left|\mathcal{F}(\p)\right|$ l'azione di cui al lemma \ref{freeAction} \`e transitiva oltrech\'e libera, quindi 
+\`e un'azione \emph{regolare}.
+\end{prop}
+\begin{proof}
+Posto $G=\Gamma(\p)$, consideriamo l'azione di $G$ su $\mathcal{F}(\p)$. Questa \`e libera per \ref{freeAction}, cio\`e per ogni bandiera
+$\Phi\in\mathcal{F}(\p)$ si ha che $G_\Phi=\left\{1\right\}$. Pertanto, per l'equazione degli stabilizzatori e delle orbite abbiamo che
+\begin{equation*}
+\left|G\right|=[G:G_\Phi]=\left|\Phi^G\right|
+\end{equation*}
+per ogni bandiera $\Phi$.\\
+A questo punto, per la decomposizione in orbite:
+\begin{equation*}
+\mathcal{F}(\p)=\bigsqcup_{i=1}^k \Phi_i^G
+\end{equation*}
+si ha quindi che $\left|\mathcal{F}(\p)\right|=k\left|G\right|$. Inoltre se vale l'uguaglianza tra $\left|\mathcal{F}(\p)\right|$ e $\left|G\right|$
+avremo ovviamente $k=1$ cio\`e l'insieme delle bandiere di $\p$ risulter\`a un'unica orbita per l'azione di $G$.
+\end{proof}
+Essendo molto importanti per lo studio delle simmetrie dei politopi, nel seguito indicheremo, se $F\in\mathcal{F}(\p)$ e
+$\Omega\subseteq\p$, con lieve abuso di notazione gli stabilizzatori di $F$ e $\Omega$ rispettivamente con $\Gamma(\p,F)=\Gamma(\p)_F$ e
+$\Gamma(\p,\Omega)=\Gamma(\p)_\Omega$ facendo riferimento alle due diverse azioni del gruppo su (le facce di) $\p$ o su loro sottoinsiemi
+(in particolare sul sotto $\Gamma(\p)$-insieme $\mathcal{F}(\p)\subset\mathcal{P}$ delle parti di $\p$.
+
+Vediamo adesso un pi\`u ``concreto'' significato degli stabilizzatori di $\Gamma(\p)$. Infatti le simmetrie di $\p$ che fissano un suo particolare tipo di
+catene risultano costituire un sottogruppo delle simmetrie di una sezione di $\p$ stesso.
+
+\begin{prop}
+\label{sectionGroups}
+Sia $\p$ un $n$-politopo. Allora
+\begin{enumerate}
+\item Se $\Omega=\left\{F_{-1},F_0,\dots,F_i,F_j,\dots F_n\right\}$ \`e una \emph{catena} di $\p$, dove $i\leq j$ allora
+\begin{equation*}
+\Gamma(\p)_\Omega\hookrightarrow\Gamma(F_j/F_i)
+\end{equation*}
+\item Lo stabilizzatore di ogni vertice si immerge nel gruppo delle simmetrie della corrispondente figura al vertice [!DEFINIRE?]. Ossia, se $V\in\p_0$ \`e un vertice allora
+\begin{equation*}
+\Gamma(\p)_V\hookrightarrow\Gamma(\p/V)
+\end{equation*}
+\item Se $F\in\p_{n-1}$ \`e una faccetta, allora $\Gamma(\p)_F$ si immerge in $\Gamma(F)(=\Gamma(F/F_{-1})$
+\end{enumerate}
+\begin{proof}
+Mostriamo $(1)$. L'immersione in questione \`e data da $\phi\mapsto\phi_{\mid F_j}$ per ogni $\phi\in\Gamma(\p)_\Omega$. Chiaramente - per la monotonia degli
+automorfismi di $\p$ - la sezione $F_j/F_i$ \`e invariante per l'azione di $\Gamma(\p)_\Omega$,
+inoltre tale azione \`e fedele. Infatti, se $\phi\in\Gamma(\p)_\Omega$ fissa una bandiera $\Phi'=\left\{F_i,G_{i+1},\dots,G_{j-1},F_j\right\}$ della sezione
+$F_j/F_i$, allora osserviamo che $\Omega\cup\Phi'\in\mathcal{F}(\p)$ viene fissata da $\phi$ e per \ref{freeAction} questo implica $\phi=1$. Pertanto l'omomorfismo restrizione $\phi\mapsto\phi_{\mid F_j}$ risulta iniettivo.\\
+$(2)$ e $(3)$ sono i due casi particolari estremi di $(1)$.
+\end{proof}
+\end{prop}
+
+Definiamo lo \emph{scheletro} di un politopo.
+\begin{defin}
+Sia $\p$ un $n$-politopo e $0\leq k\leq n-1$, allora diremo $k$-scheletro di $\p$ il suo \emph{taglio a livello $k$} ossia
+\begin{equation*}
+skel_k(\p)=\left\{F\in\p\mid rkF\leq k\right\}
+\end{equation*}
+Chiameremo inoltre $skel_1(\p)$ \emph{grafo degli spigoli} di $\p$
+\end{defin}
+
+\begin{oss}
+Notiamo che se $\p$ \`e un $n$-politopo e $0\leq k\leq n-1$, aggiungendo due facce improprie (come minimo e massimo) al poset $skel_k(\p)$ quest'ultimo
+soddisfer\`a gli assiomi $(P1)-(P3)$ di $(k+1)$-politopo.
+\end{oss}
+
+Enunciamo a questo punto un interessante teorema circa i possibili percorsi sugli spigoli di un politopo, che ci far\`a apprezzare meglio
+la visualizzazione del grafo degli spigoli di un politopo (di cui il $k$-scheletro \`e un'approssimazione).
+Tale teorema risulta interessante e di facile visualizzazione nel caso di politopi concreti.
+\begin{teo}
+Sia $\p$ un $n$-politopo che risulti reticolo. Allora il suo grafo dei vertici, $skel_1(\p)$ \`e $n$-connesso, ossia ogni coppia di vertici
+ \`e connessa in $skel_1(\p)$ da $n$ percorsi \emph{disgiunti}.
+\end{teo}
+\begin{proof}
+[!FARE]
+\end{proof}
+
+
+\subsection{Simboli di Schl\"afli}
+Proseguiamo lo studio definendo degli importantissimi invarianti numerici per i politopi, i cosiddetti \emph{numeri di Schl\"afli}. Questi danno un'idea
+delle \emph{ampiezze} di alcune sezioni del politopo.
+Notiamo che $(P4)$ (insieme chiaramente agli altri assiomi di politopo) forza la struttura delle $2$-sezioni di un politopo $\p$ ad avere oltre al solito
+ massimo e minimo, precisamente due facce proprie.\\
+Il caso pi\`u semplice \`e dato dal segmento, tali facce sono costituite dai due vertici del segmento. Un altro esempio \`e dato, nel caso dei $2$-politopi
+ossia dei poligoni, dalle sezioni date da $\p/V$ se $V\in\p_0$ \`e un vertice. La propriet\`a $(P4)$ ci dir\`a in questo caso che ogni vertice di un
+ poligono \`e contenuto (\`e luogo comune) di due lati. Questo esempio \`e molto facilmente estendibile per farci notare che in un politopo le $(n-2)$-facce
+fanno da luogo d'``incollamento'' tra le faccette.\\
+\begin{defin}
+Sia $\p$ un $n$-politopo ($n\geq 2$), $1\leq i\leq n-1$ e $F\in\p_{i-2}, G\in\p_{i+1}$ con $G>F$. Allora poniamo
+\begin{equation*}
+p_i(F,G):=\left|(G/F)_i\right|
+\end{equation*}
+Ossia il numero delle $i$-facce della $2$-sezione relativa a $F$ e $G$. Osserviamo che \`e contemplato il caso in cui $p_i(F,G)=\infty$
+\end{defin}
+Caso particolarmente importante \`e quello in cui tali numeri dipendano semplicemente da $i$ e non dalle facce in questione, ossia in cui la ``forma''
+locale del poset $\p$ dipenda solamente dall'\emph{altezza} a cui facciamo la sezione e non da quale sezione di quel tipo scegliamo. Tale situazione
+\`e chiaramente un esempio di una sorta di \emph{regolarit\`a}. Procediamo con la definizione.
+\begin{defin}[Equivelarit\`a]
+Sia $\p$ un $n$-politopo e $1\leq i\leq n-1$. Se $\forall F,F'\in\p_{i-2}$ e $G,G'\in\p_{i+1}$
+\begin{equation*}
+p_i(F,G)=p_i(F',G')
+\end{equation*}
+Ossia, se i numeri $p_i(F,G)=:p_i$ dipendono solo dal ``livello'' $i$ della sezione e non dalle facce della stessa, diremo che $\p$ \`e \emph{equivelare}
+con simbolo di Schl\"afli $\left\{p_1,\dots,p_{n-1}\right\}$.\\
+Notiamo che nel caso del $1$-politopo definiamo suo simbolo di Schl\"afli la scrittura $\left\{\right\}$.
+\end{defin} 
+\begin{oss}
+Notiamo che per i politopi pi\`u semplici per cui si possano fare delle $2$-sezioni, e cio\`e per il poligoni, l'equivelarit\`a \`e garantita. Inoltre
+il simbolo di Schl\"afli $\left\{p_1\right\}$ caratterizza univocamente il poligono, che sar\`a appunto detto $p_1$-agono.
+\end{oss}
+Vediamo cosa succede alle sezioni di un politopo equivelare
+\begin{oss}
+Sia $\p$ un $n$-politopo equivelare con simbolo di Schl\"afli $\left\{p_1,\dots,p_{n-1}\right\}$.
+Allora notiamo che ogni sua sezione di rango almeno $1$ \`e equivelare anch'essa. Inoltre se $F\in\p_{n-1}$ e $V\in\p_0$ sono rispettivamente una faccetta
+e un vertice di $\p$ allora [? Le sezioni sono politopi, dimostrato?]
+\begin{itemize}
+\item $F$ \`e equivelare ed ha simbolo di Schl\"afli $\left\{p_1,\dots,p_{n-2}\right\}$
+\item $\p/V$ \`e equivelare ed ha simbolo di Schl\"afli $\left\{p_2,\dots,p_{n-1}\right\}$
+\end{itemize}
+E, pi\`u in generale, se $F\in\p_{i-2}$ e $G\in\p_{j+1}$ con $i\leq j$ allora
+\begin{itemize}
+\item La sezione $G/F$ \`e equivelare con simbolo di Schl\"afli $\left\{p_i,\dots,p_j\right\}$
+\end{itemize}
+\end{oss}
+Inoltre, per comodit\`a, nel caso in cui un politopo abbia simbolo (di Schl\"afli) con numeri consecutivi uguali scriveremo tali numeri con una
+notazione \emph{esponenziale}, ossia, se l'$n$-politopo $\p$ ha simbolo $\left\{p_1,\dots,p_n\right\}$ con $p_i=\cdots=p_{i+k-1}$ allora scriveremo
+tale simbolo pi\`u semplicemente come $\left\{p_1,\dots,p_{i-1},p_i^k,p_{i+k},\dots,p_{n-1}\right\}$.
+Vediamo adesso un'interessante invariante dei politopi seguita da altri invarianti che potremo definire nel caso - per esempio - dei politopi regolari.
+\begin{defin}
+Sia $\p$ un $n$-politopo. Allora chiameremo
+\begin{equation*}
+f(\p):=\left(\left|\p_0\right|,\dots,\left|\p_{n-1}\right|\right)=:\left(f_0,\dots,f_{n-1}\right)
+\end{equation*}
+\emph{vettore delle facce} di $\p$
+\end{defin}
+Inoltre, nel caso in cui il politopo $\p$ sia \emph{sufficientemente} regolare in quanto a locali propriet\`a d'incidenza, ossia qualora le sue sezioni
+risultino isomorfe a meno dei ranghi, sar\`a utile considerare la cardinalit\`a dell'insieme delle bandiere di tali sezioni.
+\begin{defin}
+Se $\p$ \`e un $n$-politopo tale che per ogni $-1\leq i\leq j\leq n$ le sezioni del tipo $G/F$ con $rkG=j$ e $rkF=i$ risultino fra loro isomorfe.
+Allora definiamo
+\begin{equation}
+k_{ij}=k_{ij}(\p)=\left|\mathcal{F}(G/F)\right|\text{ se }F\in\p_i\text{ e }G\in\p_j\text{ con }-1\leq i\leq j\leq n
+\end{equation}
+\end{defin}
+Per esempio, per ogni $n$-politopo avremo che $k_{-1n}=\left|\mathcal{F}(\p)\right|$ e - per la diamond property - anche che
+$k_{i-1,i+1}=2$ per ogni $0\leq i\leq n-1$.
+\begin{oss}
+Inoltre se $n\geq 2$, per l'uniformit\`a delle sezioni, \emph{tagliando} a vari livelli, possiamo osservare che vale la seguente relazione
+\begin{equation}
+\label{kijf}
+k_{-1,n}=f_0k_{0n}=f_{n-1}k_{-1,n-1}=k_{-1,i}f_ik_{in}
+\end{equation}
+\end{oss}
+Continuiamo definendo un altro invariante numerico che esprime quanto sia \emph{sfaccettato} il politopo.
+\begin{defin}
+Sia $\p$ un $n$-politopo con le sezioni isomorfe a meno del rango, come sopra. Allora, per ogni $0\leq i,j\leq n$ definiremo $N_{ij}$ come
+il numero di $j$-facce di $\p$ incidenti con una $i$-faccia fissata.
+Notiamo che per l'ipotesi di regolarit\`a sulle sezioni tale definizione \`e ben posta.
+\end{defin}
+\begin{oss}
+Siano $F\in\p_i$ e - come solito - $F_n,F_{-1}\in\p$ le facce improprie, allora
+\begin{itemize}
+\item $N_{ij}=f_{j-i-1}(F_n/F)$ se $i\leq j$
+\item $N_{ij}=f_j(F/F_{-1})=f_j(F)$ se $i\geq j$
+\end{itemize}
+Notiamo che l'ultima uguaglianza deriva dal poter considerare la $i$-faccia come politopo a s\'e stante.
+\end{oss}
+Concludiamo, alla luce di questi invarianti numerici, con una formula (e la sua versione duale) per il conteggio per il numero di facce di un $n$-politopo.
+Sostanzialmente possiamo contare le bandiere di $\p$ costruendole faccia per faccia, ossia conteggiando il numero di vertici e per ognuno quanti spigoli
+ha sopra e cos\`i via fino alle faccette di $\p$. Per la regolarit\`a di $\p$ otterremo un semplice prodotto.
+La versione duale del conteggio \`e svolto a partire dalla faccette, scendendo alle $(n-2)$-facce sotto di esse e cos\`i via fino ai vertici,
+costruendo ogni bandiera in questione \emph{dall'alto verso il basso}.
+\begin{oss}
+Sia $\p$ un $n$-politopo ($n\geq 2$) che abbia tutte le sezioni tra facce di ranghi $i$ e $j$ fra loro isomorfe.
+Allora essendo $k_{ij}$ e $N_{ij}$ come sopra, per il numero delle bandiere di $\p$ avremo il conteggio
+\begin{equation}
+\left|\mathcal{F}(\p)\right|=k_{-1n}=f_0N_{01}N_{12}\cdots N_{n-2,n-1}=f_{n-1}N_{n-1,n-2}N_{n-2,n-3}\cdots N_{1,0}
+\end{equation}
+\end{oss}
+
+\section{Politopi Regolari}
+Dopo aver introdotto alcune nozioni fondamentali per lo studio dei politopi astratti possiamo intrudurre il concetto di \emph{politopo regolare} e
+cominciare a studiare tali oggetti. Innanzitutto \`e bene notare che volendo generalizzare il concetto di regolarit\`a presente nei politopi concreti
+potremmo tentare pi\`u strade. Per esempio, definendo ricorsivamente il concetto di regolarit\`a, dicendo ossia che un politopo \`e regolare se sono
+regolari le sue faccette e le figure al vertice (facendo quindi ricorsione sia dall'alto che dal basso sul poset-politopo) e definendo per esempio regolari
+gli $0$-politopi, ossia i punti allora otterremmo la spiacevole situazione di scoprire tutti i politopi come regolari. Pertanto tale definizione non risulta
+molto interessante da un punto di vista combinatorico.
+Un altro tentativo - nella direzione che si \`e dimostrata essere quella giusta - potrebbe essere quello di definire come regolare un politopo che abbia le
+facce indistinguibili, chiaramente a meno del rango delle stesse. Un politopo $\p$ sarebbe quindi regolare qualora il suo gruppo di simmetria
+$\Gamma(\p)$ agisse transitivamente su $\p_i$ per ogni $i=-1,\dots,n$. Tuttavia questa definizione, pur restringendo considerevolmente l'insieme dei
+politopi astratti, sembra non essere sufficiente per imbrigliare il concetto che abbiamo di politopo regolare.
+Pertanto la definizione che \`e stata scelta di poligono regolare \`e leggermente pi\`u forte dell'uguaglianza tra le facce ed \'e quella dell'uguaglianza
+tra le \emph{bandiere} del politopo. Descriviamo questo concetto con maggiore precisione.
+\begin{defin}
+Sia $\p$ un politopo di rango $n$. Diremo che $\p$ \`e \emph{regolare} se il suo gruppo di automorfismi $\Gamma(\p)$ agisce transitivamente sull'insieme
+delle bandiere, $\mathcal{F}(\p)$.
+\end{defin}
+Notiamo come questa condizione di regolarit\`a sia chiaramente pi\`u forte della semplice richiesta dell'essenziale uguaglianza tra le facce di $\p$ a meno
+del rango. In particolare quindi avremo che in un politopo regolare sia le faccette, quanto i vertici saranno \emph{indistinguibili}.
+
+Veniamo adesso ad una fondamentale considerazione sui politopi regolari che completa la \ref{freeAction}.
+\begin{prop}
+Sia $\p$ un politopo regolare. Allora l'azione di $\Gamma(\p)$ \`e semplicemente transitiva sulle bandiere di $\p$. Ossia tale azione \`e 
+libera e transitiva e in particolare, numericamente, avremo che
+\begin{equation*}
+\left|\Gamma(\p)\right|=\left|\mathcal{F}(\p)\right|
+\end{equation*}
+se $\p$ \`e finito
+\end{prop}
+\begin{proof}
+Per \ref{freeAction} abbiamo che l'azione di $\Gamma(\p)$ su $\p$ \`e libera, quindi essendo $\p$ regolare per l'equazione degli stabilizzatori
+nel caso in cui $\p$ sia finito, se $\Phi\in\mathcal{F}(\p)$ \`e una bandiera, avremo
+\begin{equation*}
+\left|\mathcal{F}(\p)\right|=\left|\Phi^{\Gamma(\p)}\right|=\left[\Gamma(\p):\Gamma(\p)_\Phi\right]=\left[\Gamma(\p):\{1\}\right]
+=\left|\Gamma(\p)\right|
+\end{equation*}
+\end{proof}
+
+Dimostriamo un semplice lemma che ci servir\`a per la proposizione seguente.
+
+\begin{lem}
+\ref{lem:SectionFlags}
+Sia $\p$ un $n$-politopo e $F/G$ una sua sezione, allora \`e definita la mappa di restrizione
+\begin{gather*}
+s:\mathcal{F}(\p)\longrightarrow\mathcal{F}(F/G)\\
+\qquad\qquad \Phi\longmapsto\Phi\cap F/G=:\Phi_G^F
+\end{gather*}
+E tale mappa risulta suriettiva, ossia ogni bandiera della sezione $F/G$ proviene da una bandiera di $\p$
+\end{lem}
+\begin{proof}
+Notiamo che $s$ \`e ben definita, infatti se $\Phi$ \`e una bandiera di $\p$, $\Phi_G^F$ risulta una catena di $F/G$
+e se tale catena non fosse massimale, esisterebbe $H\in (F/G)\setminus\Phi_G^F$ tale che $\Phi\cup\left\{H\right\}$ risulti ancora essere
+una catena (di $F/G$), ma allora $\Phi\cup\left\{H\right\}\supsetneq\Phi$, contro la massimalit\`a di $\Phi$.\\
+Per mostrare la suriettivit\`a di $s$ \`e sufficiente notare che l'insieme delle catene di $\p$ \`e un insieme 
+parzialmente ordinato (da $\subseteq$) \emph{induttivo} ossia
+ogni catena di catene ha un elemento massimale, pertanto per il lemma di Zorn ogni catena \`e contenuta in una catena massimale.
+Se allora $\Psi\in\mathcal{F}(F/G)$, abbiamo che $\Psi$ \`e una catena di $F/G$, pertanto esiste una $\Phi\in\mathcal{F}(\p)$
+tale che $\Psi\subseteq\Phi$, da cui $s(\Phi)=\Psi$
+\end{proof}
+
+
+Vediamo adesso che la regolarit\`a si preserva per sezioni e mostriamo il collegamento tra i gruppi di simmetria di un politopo e quelli delle sue sezioni.
+
+\begin{prop}
+Sia $\p$ un politopo regolare di rango $n$ e $G<F\in\p$ con $rkG=j$ e $rkF=i$. Allora
+\begin{enumerate}
+\item $F/G$ \`e regolare
+\item Se $G'<F'\in\p$ sono tali che $rkF'=rkF$ e $rkG'=rkG$ allora $F'/G\cong F/G$
+\item Le faccette di $\p$ sono fra loro isomorfe
+\item Le figure al vertice di $\p$ sono fra loro isomorfe
+\item $\p$ 	\`e equivelare, possiede quindi un simbolo di Schl\"afli\\\\
+%\end{enumerate}
+Inoltre
+%\begin{enumerate}
+\item $\Gamma(F/G)\hookrightarrow\Gamma(\p)$, pi\`u precisamente
+\item $\Gamma(F/G)\cong \Gamma(\p)_\Omega\leq\Gamma(\p)$ dove $\Omega$ \`e una catena di tipo $(-1,\dots,j,i,\dots,n)$ tale che $F,G\in\Omega$
+\end{enumerate}
+\end{prop}
 \end{document}
+
+
+% Dire che F e 0 sono massimo e minimo risp.
+% Cambiare notazione, tipo x\in P?
+% · Classificare i poligoni
+% · Dimostrare che le sezioni di politopi sono politopi
