@@ -28,6 +28,9 @@
 
 \newcommand\locallabel[1]{\label{\currentprefix_#1}}
 \newcommand\localref[1]{\ref{\currentprefix_#1}}
+\newcommand\point[1]{$\bm{(#1)}$\textbf{: }}
+
+\def\restrict#1{\raise-.5ex\hbox{\ensuremath|}_{#1}}
 
 \begin{document}
 
@@ -726,10 +729,10 @@ nel caso in cui $\p$ sia finito, se $\Phi\in\mathcal{F}(\p)$ \`e una bandiera, a
 \end{equation*}
 \end{proof}
 
-Dimostriamo un semplice lemma che ci servir\`a per la proposizione seguente.
+Dimostriamo due semplici fatti che ci serviranno nell'immediato seguito per comprendere meglio le sezioni di un politopo regolare.
 
 \begin{lem}
-\ref{lem:SectionFlags}
+\label{lem:SectionFlags}
 Sia $\p$ un $n$-politopo e $F/G$ una sua sezione, allora \`e definita la mappa di restrizione
 \begin{gather*}
 s:\mathcal{F}(\p)\longrightarrow\mathcal{F}(F/G)\\
@@ -748,24 +751,79 @@ Se allora $\Psi\in\mathcal{F}(F/G)$, abbiamo che $\Psi$ \`e una catena di $F/G$,
 tale che $\Psi\subseteq\Phi$, da cui $s(\Phi)=\Psi$
 \end{proof}
 
+\`E bene notare che le regolarit\`a garantisce una enorme simmetria nel politopo, probabilmente la massima che abbia senso chiedere
+in quanto ad uniformit\`a dello stesso. Questo fatto viene chiarito meglio con la seguente osservazione che ci fa naturalmente 
+pensare a ci\`o che accade nel gruppo simmetrico $S_n$, considerando il modo in cui agisce su s\'e stesso.
+
+\begin{oss}
+\label{oss:ChainTransitivity}
+Sia $\p$ un $n$-politopo regolare. Allora due catene $\mathit{C},\mathit{D}\subseteq\p$ sono coniugate tramite l'azione di $G:=\Gamma(\p)$ se
+e solo se hanno lo stesso tipo.
+\end{oss}
+\begin{proof}
+Ogni simmetria di $\p$ preserva il rango delle facce, pertanto chiaramente preserva il tipo delle catene. Mostriamo quindi il converso, ossia che se 
+due catene sono dello stesso tipo, saranno coniugate per l'azione di $G$. Siano quindi $\mathit{C}$ e $\mathit{D}$ catene di $\p$ di tipo
+$(i_1,\cdots,i_k)$. Troviamo due bandiere $\Phi_\mathit{C},\Phi_\mathit{D}\in\mathcal{F}(\p)$ tali che $\mathit{C}\subseteq\Phi_\mathit{C}$ e 
+$\mathit{D}\subseteq\Phi_\mathit{D}$. Per la regolarit\`a di $\p$ esiste un $\sigma\in G$ tale che $\sigma\Phi_\mathit{C}=\Phi_\mathit{D}$
+Notiamo quindi che
+\begin{gather*}
+\mathit{C}=\Phi_\mathit{C}\cap\left(\bigcup_{l=1}^k\p_{i_l}\right)\text{\quad e}\\
+\mathit{D}=\Phi_\mathit{D}\cap\left(\bigcup_{l=1}^k\p_{i_l}\right)
+\end{gather*}
+Pertanto, applicando $\sigma$, avremo
+\begin{gather*}
+\sigma\left(\mathit{C}\right)=\sigma\left(\Phi_\mathit{C}\cap\left(\bigcup_{l=1}^k\p_{i_l}\right)\right)=\\
+=\sigma\left(\Phi_\mathit{C}\right)\cap\sigma\left(\bigcup_{l=1}^k\p_{i_l}\right)=
+\sigma\left(\Phi_\mathit{C}\right)\cap\left(\bigcup_{l=1}^k\sigma(\p_{i_l})\right)=\\
+=\Phi_\mathit{D}\cap\left(\bigcup_{l=1}^k\p_{i_l}\right)=\mathit{D}
+\end{gather*}
+\end{proof}
 
 Vediamo adesso che la regolarit\`a si preserva per sezioni e mostriamo il collegamento tra i gruppi di simmetria di un politopo e quelli delle sue sezioni.
 
+\currentprefix{prop:RegularSections}
 \begin{prop}
-Sia $\p$ un politopo regolare di rango $n$ e $G<F\in\p$ con $rkG=j$ e $rkF=i$. Allora
+\label{prop:RegularSections}
+Sia $\p$ un politopo regolare finito di rango $n$ e $G<F\in\p$ con $rkG=j$ e $rkF=i$. Allora
 \begin{enumerate}
-\item $F/G$ \`e regolare
-\item Se $G'<F'\in\p$ sono tali che $rkF'=rkF$ e $rkG'=rkG$ allora $F'/G\cong F/G$
-\item Le faccette di $\p$ sono fra loro isomorfe
-\item Le figure al vertice di $\p$ sono fra loro isomorfe
-\item $\p$ 	\`e equivelare, possiede quindi un simbolo di Schl\"afli\\\\
+\item\locallabel{(1)} $F/G$ \`e regolare
+\item\locallabel{(2)} Se $G'<F'\in\p$ sono tali che $rkF'=rkF$ e $rkG'=rkG$ allora $F'/G'\cong F/G$
+\item\locallabel{(3)} Le faccette di $\p$ sono fra loro isomorfe
+\item\locallabel{(4)} Le figure al vertice di $\p$ sono fra loro isomorfe
+\item\locallabel{(5)} $\p$ \`e equivelare, possiede quindi un simbolo di Schl\"afli\\\\
 %\end{enumerate}
 Inoltre
 %\begin{enumerate}
-\item $\Gamma(F/G)\hookrightarrow\Gamma(\p)$, pi\`u precisamente
-\item $\Gamma(F/G)\cong \Gamma(\p)_\Omega\leq\Gamma(\p)$ dove $\Omega$ \`e una catena di tipo $(-1,\dots,j,i,\dots,n)$ tale che $F,G\in\Omega$
+\item\locallabel{(6)} $\Gamma(F/G)\hookrightarrow\Gamma(\p)$ e, pi\`u precisamente
+\item\locallabel{(7)} $\Gamma(F/G)\cong \Gamma(\p)_\Omega\leq\Gamma(\p)$ dove $\Omega$ \`e una catena di tipo $(-1,\dots,j,i,\dots,n)$ tale che $F,G\in\Omega$
 \end{enumerate}
 \end{prop}
+
+\begin{proof}
+\point{1}Mostriamo che se $F/G$ \`e una sezione di $\p$, allora \`e anch'essa regolare. Siano quindi $\Psi_1,\Psi_2\in\mathcal{F}(F/G)$, essendo
+bandiere di $F/G$ abbiamo che, come catene di $\p$, queste sono entrambe di tipo $(j,\cdots,i)$ e quindi per \ref{oss:ChainTransitivity} esiste
+$\sigma\in\Gamma(\p)$ tale che $\sigma(\Psi_1)=\Psi_2$. Ora notiamo che $\sigma(F)=F$ e $\sigma(G)=G$, essendo $F$ e $G$ determinate
+dai rispettivi ranghi sia in $\Psi_1$ che in $\Psi_2$. Da questo fatto per la monotonia di $\sigma$ abbiamo che $\sigma(F/G)=F/G$
+(l'uguaglianza deriva dalla finitezza di $\p$). Pertanto effettivamente $\sigma\restrict{F/G}\in\Gamma(F/G)$
+e ci\`o conclude la dimostrazione del primo punto.\\
+\point{2}Se $F/G$ e $F'/G'$ sono sezioni di $\p$ con $rkF=rkF'=i$ e $rkG=rkG'=j$, allora $\left\{F,G\right\}$ e $\left\{F',G'\right\}$ sono entrambe
+catene di tipo $(j,i)$ pertanto, per \ref{oss:ChainTransitivity}, esiste $\sigma\in\Gamma(\p)$ tale che $\sigma(F)=F'$ e 
+$\sigma(G)=G'$ e per la monotonia di $\sigma$ abbiamo che $\sigma(F/G)=F'/G'$. pertanto
+\begin{equation*}
+F/G\xrightarrow{\quad\sigma\restrict{F/G}\quad}F'/G'
+\end{equation*}
+\`e un isomorfismo tra le due sezioni $F/G$ e $F'/G'$.\\
+\point{3}Per il punto \localref{2} basta notare che una faccetta $F\in\p_{n-1}$ come politopo \`e per definizione $F/F_{-1}$\\
+\point{4}Nuovamente, per il punto \localref{2}, essendo le figure al vertice sezioni del tipo $\p/F$\\
+\point{5}Sia $1\leq i\leq n-1$, se $F/G$ e $F'/G'$ sono sezioni con $F,F'\in\p_{i+1}$ e $G,G'\in\p_{i-2}$, allora
+per il punto \localref{2} $F/G\cong F'/G'$, pertanto i numeri $p_i(F,G)$ e $p_i(F',G')$ coincidono, da cui l'quivelarit\`a di $\p$.\\
+
+\end{proof}
+
+
+
+
+
 \end{document}
 
 
