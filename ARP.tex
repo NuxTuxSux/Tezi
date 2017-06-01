@@ -29,8 +29,11 @@
 \newcommand\locallabel[1]{\label{\currentprefix_#1}}
 \newcommand\localref[1]{\ref{\currentprefix_#1}}
 \newcommand\point[1]{$\bm{(#1)}$\textbf{: }}
+\newcommand\implication[2]{$\bm{(#1)\Rightarrow(#2)}$\textbf{: }}
 
+\newcommand\flag[1]{\mathcal{F}(#1)}
 \def\restrict#1{\raise-.5ex\hbox{\ensuremath|}_{#1}}
+
 
 \begin{document}
 
@@ -214,7 +217,7 @@ $\Psi$ \`e una bandiera di $\p$ incidente a $\Phi$ e $H\in\Psi$ una sua faccia, 
 \end{oss}
 
 \begin{prop}
-\label{P3Flags}
+\label{prop:P3Flags}
 Sia $\p$ un insieme parzialmente ordinato che soddisfa (P1)-(P2). Allora $\p$ \`e fortemente connesso se e solo se \`e fortemente
 connesso per bandiere.
 \end{prop}
@@ -508,7 +511,7 @@ Per il lemma \ref{morphAdj}, essendo $\sigma(\Phi)=\Phi$, avremo che (per $i=0,\
 \end{equation*}
 Pertanto $\sigma$ fissa ogni bandiera adiacente a $\Phi$. Per la genericit\`a di $\Phi$ abbiamo mostrato che se un elemento di $\Gamma(\p)$ fissa una
 bandiera, fissa tutte quelle a lei adiacenti. Possiamo concludere grazie all'equivalenza tra forte connessione e forte connessione per bandiere
-(proposizione \ref{P3Flags}) avendo mostrato che $\sigma(\Psi)=\Psi$ per ogni $\Psi\in\mathcal{F}(\p)$.
+(proposizione \ref{prop:P3Flags}) avendo mostrato che $\sigma(\Psi)=\Psi$ per ogni $\Psi\in\mathcal{F}(\p)$.
 \end{proof}
 Continuiamo con un utile criterio numerico che collega le cardinalit\`a del gruppo degli automorfismi di un politopo con quella dell'insieme delle sue
 bandiere.
@@ -541,7 +544,7 @@ Vediamo adesso un pi\`u ``concreto'' significato degli stabilizzatori di $\Gamma
 catene risultano costituire un sottogruppo delle simmetrie di una sezione di $\p$ stesso.
 
 \begin{prop}
-\label{sectionGroups}
+\label{prop:SectionGroups}
 Sia $\p$ un $n$-politopo. Allora
 \begin{enumerate}
 \item Se $\Omega=\left\{F_{-1},F_0,\dots,F_i,F_j,\dots F_n\right\}$ \`e una \emph{catena} di $\p$, dove $i\leq j$ allora
@@ -552,7 +555,7 @@ Sia $\p$ un $n$-politopo. Allora
 \begin{equation*}
 \Gamma(\p)_V\hookrightarrow\Gamma(\p/V)
 \end{equation*}
-\item Se $F\in\p_{n-1}$ \`e una faccetta, allora $\Gamma(\p)_F$ si immerge in $\Gamma(F)(=\Gamma(F/F_{-1})$
+\item Se $F\in\p_{n-1}$ \`e una faccetta, allora $\Gamma(\p)_F$ si immerge in $\Gamma(F)(=\Gamma(F/F_{-1}))$
 \end{enumerate}
 \begin{proof}
 Mostriamo $(1)$. L'immersione in questione \`e data da $\phi\mapsto\phi_{\mid F_j}$ per ogni $\phi\in\Gamma(\p)_\Omega$. Chiaramente - per la monotonia degli
@@ -786,16 +789,16 @@ Vediamo adesso che la regolarit\`a si preserva per sezioni e mostriamo il colleg
 \label{prop:RegularSections}
 Sia $\p$ un politopo regolare finito di rango $n$ e $G<F\in\p$ con $rkG=j$ e $rkF=i$. Allora
 \begin{enumerate}
-\item\locallabel{(1)} $F/G$ \`e regolare
-\item\locallabel{(2)} Se $G'<F'\in\p$ sono tali che $rkF'=rkF$ e $rkG'=rkG$ allora $F'/G'\cong F/G$
-\item\locallabel{(3)} Le faccette di $\p$ sono fra loro isomorfe
-\item\locallabel{(4)} Le figure al vertice di $\p$ sono fra loro isomorfe
-\item\locallabel{(5)} $\p$ \`e equivelare, possiede quindi un simbolo di Schl\"afli\\\\
+\item\locallabel{1} $F/G$ \`e regolare
+\item\locallabel{2} Se $G'<F'\in\p$ sono tali che $rkF'=rkF$ e $rkG'=rkG$ allora $F'/G'\cong F/G$
+\item\locallabel{3} Le faccette di $\p$ sono fra loro isomorfe
+\item\locallabel{4} Le figure al vertice di $\p$ sono fra loro isomorfe
+\item\locallabel{5} $\p$ \`e equivelare, possiede quindi un simbolo di Schl\"afli\\\\
 %\end{enumerate}
 Inoltre
 %\begin{enumerate}
-\item\locallabel{(6)} $\Gamma(F/G)\hookrightarrow\Gamma(\p)$ e, pi\`u precisamente
-\item\locallabel{(7)} $\Gamma(F/G)\cong \Gamma(\p)_\Omega\leq\Gamma(\p)$ dove $\Omega$ \`e una catena di tipo $(-1,\dots,j,i,\dots,n)$ tale che $F,G\in\Omega$
+\item\locallabel{6} $\Gamma(F/G)\cong \Gamma(\p)_\Omega\leq\Gamma(\p)$ dove $\Omega$ \`e una catena di tipo $(-1,\dots,j,i,\dots,n)$ tale che $F,G\in\Omega$ ossia, in particolare
+\item\locallabel{7} $\Gamma(F/G)\hookrightarrow\Gamma(\p)$
 \end{enumerate}
 \end{prop}
 
@@ -817,11 +820,96 @@ F/G\xrightarrow{\quad\sigma\restrict{F/G}\quad}F'/G'
 \point{4}Nuovamente, per il punto \localref{2}, essendo le figure al vertice sezioni del tipo $\p/F$\\
 \point{5}Sia $1\leq i\leq n-1$, se $F/G$ e $F'/G'$ sono sezioni con $F,F'\in\p_{i+1}$ e $G,G'\in\p_{i-2}$, allora
 per il punto \localref{2} $F/G\cong F'/G'$, pertanto i numeri $p_i(F,G)$ e $p_i(F',G')$ coincidono, da cui l'quivelarit\`a di $\p$.\\
-
+\point{6}L'isomorfismo in questione \`e chiaramente l'omomorfismo restrizione definito in \ref{prop:SectionGroups} che avevamo gi\`a mostrato
+essere iniettivo. Non ci resta che mostrare che ogni simmetria di $F/G$ si pu\`o estendere a una simmetria del politopo $\p$. Sia, a tal proposito,
+$\sigma\in\Gamma(F/G)$ e fissiamo una bandiera $\Psi_0\in\mathcal{F}(F/G)$. Allora $\Psi_0\cup\Omega$ \`e una bandiera di $\p$ ed, 
+essendo $\sigma(\Psi_0)\in\mathcal{F}(F/G)$, abbiamo anche $\sigma(\Psi_0)\cup\Omega\in\flag{\p}$
+Per la regolarit\`a di $\p$ abbiamo che esiste un $\tau\in\Gamma(\p)$ tale che
+\begin{equation*}
+\tau(\Psi_0\cup\Omega)=\sigma(\Psi_0)\cup\Omega
+\end{equation*}
+quindi $\tau(\Psi_0)=\sigma(\Psi_0)$ (in effetti, preservando sia $\tau$ che $\sigma$ i ranghi delle facce, avremo che
+ $\tau\restrict{\Psi_0}=\sigma\restrict{\Psi_0}$).
+Allora, ricordando che per \ref{freeAction} l'azione di $\Gamma(F/G)$ su $\flag{F/G}$ \`e libera, concludiamo che
+ $\tau\restrict{F/G}=\sigma\restrict{F/G}$\\
+ \point{7}Discende da \localref{6}
+\end{proof}
+Vediamo adesso un'utile criterio per stabilire se un politopo \`e regolare esibendo particolari esempi di generatori.
+\begin{prop}
+\def\currentprefix{prop:IntroInvolutions}
+\label{prop:IntroInvolutions}
+Sia $\p$ un $n$-politopo. Allora sono equivalenti:
+\begin{enumerate}
+\item\locallabel{1}$\p$ \`e regolare
+\item\locallabel{2}Esiste una bandiera $\Phi\in\flag{\p}$ tale che per ogni $0\leq i\leq n-1$ esiste un (unico) $\sigma_i\in\Gamma(\p)$ con
+$\Phi^{\sigma_i}=\Phi^i$
+\item\locallabel{3}Per ogni bandiera $\Phi\in\flag{\p}$ e $0\leq i\leq n-1$ esiste un (unico) $\sigma_i\in\Gamma(\p)$ tale che
+$\Phi^{\sigma_i}=\Phi^i$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Notiamo che l'unicit\`a degli automorfismi in oggetto \`e in ogni caso garantita dalla libert\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$\\
+\implication{1}{3}Se $\p$ \`e regolare e $\Phi\in\flag{\p}$ allora, ricordando che per $0\leq i\leq n-1\qquad\Phi^i$ \`e l'unica bandiera
+$i$-adiacente a $\Phi$, esister\`a un $\sigma\in\Gamma(\p)$ tale che $\Phi^\sigma=\Phi^i$.\\
+Osserviamo inoltre che se $\sigma$ \`e tale che $\Phi^\sigma=\Phi^i$, allora, rispettando questi adiacenza e rango,
+\begin{equation*}
+\Phi^{\sigma^2}=(\Phi^\sigma)^\sigma=(\Phi^i)^\sigma=(\Phi^\sigma)^i=(\Phi^i)^i=\Phi=\Phi^id
+\end{equation*}
+Pertanto, per la libert\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$ concludiamo che $\sigma^2=id$.\\
+\implication{3}{2}Ovvio\\
+\implication{2}{1}Supposto che valga $(3)$, sia $\Phi$ come da ipotesi e $\Psi\in\flag{\p}$ una bandiera. Mostriamo che
+$\Psi$ \`e coniugata a $\Phi$ secondo l'azione di $\Gamma(\p)$.\\
+Ricordiamo che, per \ref{prop:P3Flags}, $\p$ \`e (fortemente) connesso per bandiere, esiste pertanto una successione
+$\Upsilon_0=\Phi,\cdots,\Upsilon_l=\Psi\in\flag{\p}$ di bandiere adiacenti da $\Phi$ a
+$\Psi$. Mostriamo quindi per induzione su $l$ che esiste $\tau\in\Gamma(\p)$ tale che $\Phi^\tau=\Psi$\\
+Se $l=0\quad\Phi=\Psi$ e basta prendere $\tau=id$. Se $l>0$, per ipotesi induttiva esiste un $\sigma\in\Gamma(\p)$ tale che
+$\Phi^\sigma=\Upsilon_0^\sigma=\Upsilon_{l-1}$. Per ipotesi $\Upsilon_{l-1}$ e $\Upsilon_l$ sono $j$-adiacenti per un opportuno
+$0\leq j\leq n-1$. Sia, quindi, $\sigma_i\in\Gamma(\p)$ tale che $\Phi^{\sigma_i}=\Phi^i$. Rispettando $\sigma$ rango e adiacenza avremo che
+\begin{equation*}
+\Psi=\Upsilon_{l-1}^j=(\Phi^\sigma)^j=(\Phi^j)^\sigma=(\Phi^{\sigma_j})^\sigma=\Phi^{\sigma_j\sigma}
+\end{equation*}
+dove $\sigma_j$ \`e - come da ipotesi - l'automorfismo di $\p$ che manda la bandiera $\Phi$ nella sua $j$-adiacente, $\Phi^j$.
+Abbiamo cos\`i mostrato che $\Phi^{\sigma_j\sigma}=\Psi$ che conclude il passo induttivo, si ha pertanto
+$\Phi^{\Gamma(\p)}=\flag{\p}$, ossia la regolarit\`a di $\p$.
+\end{proof}
+Tali generatori che derivano da ogni scelta di una bandiera di $\p$ avranno un ruolo essenziale per lo studio del gruppo $\Gamma(\p)$.
+Introduciamo quindi la seguente definizione.
+\begin{defin}
+Sia $\p$ un politopo regolare e $\Phi$ una sua bandiera. Allora i $\sigma_i\in\Gamma(\p)$ al variare di $0\leq j\leq n-1$ di cui
+al punto \localref{2} della proposizione \ref{prop:IntroInvolutions} verranno detti \emph{generatori scelti} (relativi a $\Phi$)
+\end{defin}
+Vediamo quindi come la scelta della bandiera influenzi il sistema di generatori scelti.
+\begin{oss}
+\label{oss:GeneratingInvolutions}
+Sia $\p$ un $n$-politopo, $\Phi,\Psi\in\flag{\p}$ due bandiere e $(\phi_i)_{i=0}^{n-1}, (\psi_i)_{i=0}^{n-1}$ i loro rispettivi sistemi di
+generatori scelti. Allora, se $\sigma\in\Gamma(\p)$ \`e tale che $\Phi^\sigma=\Psi$, allora i due sistemi di generatori scelti saranno coniugati
+da $\sigma$, ossia
+\begin{equation*}
+\phi_i^\sigma=\psi_i\quad\text{ per ogni }0\leq i\leq n-1
+\end{equation*}
+\end{oss}
+\begin{proof}
+\`E sufficiente notare che
+\begin{equation*}
+\Psi^{\phi_i^\sigma}=\Psi^{\sigma^{-1}\phi_i\sigma}=\Phi^{\phi_i\sigma}=(\Phi^i)^\sigma=(\Phi^\sigma)^i=\Psi^i
+\end{equation*}
 \end{proof}
 
-
-
+Alla luce di queste propriet\`a nel seguito se $\p$ sar\`a un $n$-politopo fisseremo una $\Phi\in\flag{\p}$ che chiameremo \emph{bandiera di base}
+e - ove non specificamente indicato diversamente - indicheremo con $F_i$ la sua $i$-faccia e con $\phi_i\in\Gamma(\p)$ il suo $i$-esimo generatore
+scelto.\\
+Inoltre, se $J\subseteq\{0,\dots,n-1\}$ diremo i sottogruppi $\left\langle \phi_j|j\in J\right\rangle$ sottogruppi scelti. Pi\`u precisamente introdurremo
+le seguenti definizioni.
+\begin{defin}
+Sia $\p$ un $n$-politopo regolare e $\Phi\in\flag{\p}$ la sua bandiera (scelta) di base. Allora, se $J\subseteq\{0,\dots,n-1\}$ porremo
+\begin{equation*}
+\Phi_J=\left\{F_j\mid j\in J\right\}\subseteq\Phi
+\end{equation*}
+e
+\begin{equation*}
+\Gamma_J=\left\langle \sigma_i\mid i\notin J\right\rangle\leq \Gamma(\p)
+\end{equation*}
+\end{defin}
 
 
 \end{document}
@@ -829,5 +917,6 @@ per il punto \localref{2} $F/G\cong F'/G'$, pertanto i numeri $p_i(F,G)$ e $p_i(
 
 % Dire che F e 0 sono massimo e minimo risp.
 % Cambiare notazione, tipo x\in P?
+% Cambiare altre notazioni, fare un TODO, aggiornare tutto con \flag
 % · Classificare i poligoni
-% · Dimostrare che le sezioni di politopi sono politopi
+% · Corrispondenza di Galois
