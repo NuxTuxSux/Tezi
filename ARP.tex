@@ -898,8 +898,8 @@ da $\sigma$, ossia
 Alla luce di queste propriet\`a nel seguito se $\p$ sar\`a un $n$-politopo fisseremo una $\Phi\in\flag{\p}$ che chiameremo \emph{bandiera di base}
 e - ove non specificamente indicato diversamente - indicheremo con $F_i$ la sua $i$-faccia e con $\phi_i\in\Gamma(\p)$ il suo $i$-esimo generatore
 scelto.\\
-Inoltre, se $J\subseteq\{0,\dots,n-1\}$ diremo i sottogruppi $\left\langle \phi_j|j\in J\right\rangle$ sottogruppi scelti. Pi\`u precisamente introdurremo
-le seguenti definizioni.
+Inoltre, se $J\subseteq\{0,\dots,n-1\}$ diremo i sottogruppi $\left\langle \phi_j\mid j\in J\right\rangle$ sottogruppi scelti. Pi\`u precisamente
+ introdurremo le seguenti definizioni.
 \begin{defin}
 Sia $\p$ un $n$-politopo regolare e $\Phi\in\flag{\p}$ la sua bandiera (scelta) di base. Allora, se $J\subseteq\{0,\dots,n-1\}$ porremo
 \begin{equation*}
@@ -910,7 +910,26 @@ e
 \Gamma_J=\left\langle \sigma_i\mid i\notin J\right\rangle\leq \Gamma(\p)
 \end{equation*}
 \end{defin}
-
+Vediamo quindi che tali sottogruppi scelti altro non sono che gli stabilizzatori in $\Gamma$ di \emph{parti} della bandiera di base $\Phi$.
+\begin{prop}
+\label{prop:DistSubgroups}
+Sia $\p$ un politopo regolare, $\Phi$ la bandiera di base scelta. Allora per ogni $J\subseteq \Phi$
+\begin{equation*}
+\Gamma_J=\Gamma(\p)_{\Phi_J}
+\end{equation*}
+\end{prop}
+\begin{proof}
+\point{\subseteq}\`E sufficiente notare che per ogni $i\notin J$ avremo che $\Phi_J^{\phi_i}=\Phi_J$, essendo $\Phi_J\subset\Phi$ e il rango $i$ non
+presente nel tipo di $\Phi_J$\\
+\point{\supseteq}Osserviamo che, posto
+\begin{equation*}
+X=\{\Psi\in\flag{\p}\mid \Psi\supseteq \Phi_J\}
+\end{equation*}
+$\Gamma_{\Phi_J}$ agisce in modo semplicemente transitivo su $X$ (ci\`o deriva dalla transitivit\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$).
+Pertanto sar\`a sufficiente mostrare che $\Gamma_J\subseteq \Gamma_{\Phi_J}$ agisce anch'esso transitivamente su $X$ per concludere l'uguaglianza tra
+i due sottogruppi.\\
+%[PROSEGUIRE]
+\end{proof}
 
 \end{document}
 
