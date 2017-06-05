@@ -931,7 +931,7 @@ i due sottogruppi.\\
 Dimostriamo quindi che se $\Psi,\Upsilon\in X$ sono incidenti e $\Psi\in\Phi^{\Gamma_J}$ allora 
 anche $\Psi$ sar\`a coniugata tramite l'azione di $\Gamma_J$ a $\Phi$. Siano pertanto
 $\Psi,\Upsilon\in X$ e $k\notin J$ tale che $\Psi^k=\Upsilon$ e $\sigma\in\Gamma_J$ tale che $\Psi=\Phi^\sigma$.
-Allora se $(\phi_i)_{i=1}^n$ e $(\psi_i)_{i=1}^n$ sono sistemi di involuzioni scelte
+Allora se $(\phi_i)_{i=1}^{n-1}$ e $(\psi_i)_{i=1}^{n-1}$ sono sistemi di involuzioni scelte
 per $\Phi$ e $\Psi$ rispettivamente, per l'osservazione \ref{oss:GeneratingInvolutions} avremo che
 \begin{gather*}
 \Upsilon=\Psi^k=\Psi^{\psi_k}=\Phi^{\sigma\psi_k}=\Phi^{\sigma\phi_k^\sigma}=\Phi^{\phi_k\sigma}\in\Phi^{\Gamma_J}
@@ -945,6 +945,18 @@ una catena di bandiere adiacenti \emph{in X} da $\Phi$ a $\Psi$. Procediamo per 
 Se $l>0$ per ipotesi induttiva $\Phi_{l-1}=\Phi^\sigma$ con $\sigma\in\Gamma_J$, pertanto per l'argomento precedente concludiamo che
 $\Psi\in\Phi^{\Gamma_J}$.\\
 Per la genericit\`a di $\Psi\in X$ abbiamo mostrato la transitivit\`a dell'azione di $\Gamma_J$ su $X$ e, pertanto, $\Gamma_J=\Gamma_{\Phi_J}$
+A questo punto possiamo finalmente fornire una prima presentazione del gruppo di simmetrie di un politopo regolare. Dimostreremo infatti che i
+generatori scelti di cui abbiamo parlato sono effettivame dei generatori per il gruppo delle simmetrie del politopo. Pertanto ogni scelta di una bandiera
+fornir\`a una presentazione per il gruppo di simmetrie.\\
+\begin{teo}
+\label{teo:Generators}
+Sia $\p$ un $n$-politopo, $\Phi$ una sua bandiera e $(\phi_i)_{i=0}^{n-1}$ il suo sistema di involuzioni scelte. Allora
+\begin{equation*}
+\Gamma(\p)=\langle\phi_0,\cdots,\phi_{n-1}\rangle
+\end{equation*}
+\end{teo}
+
+
 \end{document}
 
 
