@@ -882,7 +882,7 @@ Vediamo quindi come la scelta della bandiera influenzi il sistema di generatori 
 \begin{oss}
 \label{oss:GeneratingInvolutions}
 Sia $\p$ un $n$-politopo, $\Phi,\Psi\in\flag{\p}$ due bandiere e $(\phi_i)_{i=0}^{n-1}, (\psi_i)_{i=0}^{n-1}$ i loro rispettivi sistemi di
-generatori scelti. Allora, se $\sigma\in\Gamma(\p)$ \`e tale che $\Phi^\sigma=\Psi$, allora i due sistemi di generatori scelti saranno coniugati
+generatori scelti. Allora, se $\sigma\in\Gamma(\p)$ \`e tale che $\Phi^\sigma=\Psi$, i due sistemi di generatori scelti saranno coniugati
 da $\sigma$, ossia
 \begin{equation*}
 \phi_i^\sigma=\psi_i\quad\text{ per ogni }0\leq i\leq n-1
@@ -919,18 +919,32 @@ Sia $\p$ un politopo regolare, $\Phi$ la bandiera di base scelta. Allora per ogn
 \end{equation*}
 \end{prop}
 \begin{proof}
-\point{\subseteq}\`E sufficiente notare che per ogni $i\notin J$ avremo che $\Phi_J^{\phi_i}=\Phi_J$, essendo $\Phi_J\subset\Phi$ e il rango $i$ non
+\point{\leq}\`E sufficiente notare che per ogni $i\notin J$ avremo che $\Phi_J^{\phi_i}=\Phi_J$, essendo $\Phi_J\subset\Phi$ e il rango $i$ non
 presente nel tipo di $\Phi_J$\\
-\point{\supseteq}Osserviamo che, posto
+\point{\geq}Osserviamo che, posto
 \begin{equation*}
 X=\{\Psi\in\flag{\p}\mid \Psi\supseteq \Phi_J\}
 \end{equation*}
 $\Gamma_{\Phi_J}$ agisce in modo semplicemente transitivo su $X$ (ci\`o deriva dalla transitivit\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$).
-Pertanto sar\`a sufficiente mostrare che $\Gamma_J\subseteq \Gamma_{\Phi_J}$ agisce anch'esso transitivamente su $X$ per concludere l'uguaglianza tra
+Pertanto sar\`a sufficiente mostrare che $\Gamma_J\leq\Gamma_{\Phi_J}$ agisce anch'esso transitivamente su $X$ per concludere l'uguaglianza tra
 i due sottogruppi.\\
-%[PROSEGUIRE]
+Dimostriamo quindi che se $\Psi,\Upsilon\in X$ sono incidenti e $\Psi\in\Phi^{\Gamma_J}$ allora 
+anche $\Psi$ sar\`a coniugata tramite l'azione di $\Gamma_J$ a $\Phi$. Siano pertanto
+$\Psi,\Upsilon\in X$ e $k\notin J$ tale che $\Psi^k=\Upsilon$ e $\sigma\in\Gamma_J$ tale che $\Psi=\Phi^\sigma$.
+Allora se $(\phi_i)_{i=1}^n$ e $(\psi_i)_{i=1}^n$ sono sistemi di involuzioni scelte
+per $\Phi$ e $\Psi$ rispettivamente, per l'osservazione \ref{oss:GeneratingInvolutions} avremo che
+\begin{gather*}
+\Upsilon=\Psi^k=\Psi^{\psi_k}=\Phi^{\sigma\psi_k}=\Phi^{\sigma\phi_k^\sigma}=\Phi^{\phi_k\sigma}\in\Phi^{\Gamma_J}
+\end{gather*}
 \end{proof}
-
+Alla luce di quanto visto possiamo ragionare per induzione. Sia $\Psi\in X$ e
+\begin{equation*}
+\Phi=\Phi_0,\cdots,\Phi_l=\Psi
+\end{equation*}
+una catena di bandiere adiacenti \emph{in X} da $\Phi$ a $\Psi$. Procediamo per induzione su $l$. Se $l=0$ non c'\`e nulla da dimostrare. 
+Se $l>0$ per ipotesi induttiva $\Phi_{l-1}=\Phi^\sigma$ con $\sigma\in\Gamma_J$, pertanto per l'argomento precedente concludiamo che
+$\Psi\in\Phi^{\Gamma_J}$.\\
+Per la genericit\`a di $\Psi\in X$ abbiamo mostrato la transitivit\`a dell'azione di $\Gamma_J$ su $X$ e, pertanto, $\Gamma_J=\Gamma_{\Phi_J}$
 \end{document}
 
 
