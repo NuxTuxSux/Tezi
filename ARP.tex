@@ -23,6 +23,7 @@
 \newtheorem{prop}[teo]{Proposizione}
 \newtheorem{oss}[teo]{Osservazione}
 \newtheorem{corol}[teo]{Corollario}
+\newtheorem{example}[teo]{Esempio}
 
 \setcounter{chapter}{1}
 
@@ -958,7 +959,48 @@ Sia $\p$ un $n$-politopo, $\Phi$ una sua bandiera e $(\phi_i)_{i=0}^{n-1}$ il su
 \begin{proof}
 Per dimostrare l'asserto \`e sufficiente applicare la proposizione \ref{prop:DistSubgroups} nel caso particolare $J=\emptyset$
 \end{proof}
-
+Vediamo adesso un semplice esempio di un caso particolare: i politopi regolari di rango $2$, cio\`e i poligoni regolari. Ne calcoleremo
+i gruppi di simmetria mostrando che vale ci\`o che sappiamo dal caso concreto, ossia tali gruppi risultano essere i gruppi diedrali $\mathcal{D}_n$.
+Utilizzeremo a tal fine un semplice lemma che sostanzialmente ci permette di utilizzare una presentazione dei gruppi diedrali pi\'u comoda nel
+nostro contesto.
+\begin{lem}
+\label{lem:DihedralPresentations}
+Sia $G=\langle x,y\rangle$ un gruppo finito generato dalle due \emph{involuzioni} $x$ e $y$. Allora, posto $p=o(xy)$, avremo che
+\begin{equation*}
+G=\langle \sigma,\rho\mid \sigma^2=\rho^p=1,\rho^\sigma=\rho^{-1}\rangle\cong\mathcal{D}_p
+\end{equation*}
+dove $\rho=xy$ e $\sigma=x$
+\end{lem}
+\begin{proof}
+Osserviamo che ha senso considerare solamente il caso in cui $x\neq y$. Posto $\rho=xy$, notiamo che
+\begin{equation*}
+\rho^x=(xy)^x=xxyx=yx=(xy)^{-1}
+\end{equation*}
+Da cui $H:=\langle\rho\rangle\trianglelefteq G$ e la struttura di $G$ risulta pertanto determinata dall'azione di $\langle x\rangle$ sul
+sottogruppo ciclico $H$ (di ordine $p$). Quindi
+\begin{equation*}
+G=\langle x\rangle\ltimes H\cong\mathcal{D}_p
+\end{equation*}
+\end{proof}
+Passiamo quindi ora all'esempio fondamentale dei poligoni.
+\begin{example}
+\label{example:PolygonsDihedral}
+Sia $P$ un poligono (astratto) regolare e $p=\left|P_1\right|$ il numero dei suoi lati (faccette). Allora
+\begin{equation*}
+\Gamma(P)=\langle x,y\rangle\cong\mathcal{D}_p
+\end{equation*}
+dove $x$ e $y$ sono rispettivamente i generatori scelti $\phi_0,\phi_1$ relativi alla bandiera (propria) di base $\Phi_0=\{A_0,l_0\}$ e
+$\mathcal{D}_p=\langle \sigma,\rho\mid \rho^p=\sigma^2=1,\rho^\sigma=\rho^{-1}\rangle$ \`e il $p$-esimo gruppo diedrale.
+\end{example}
+\begin{proof}
+Per il teorema \ref{teo:Generators}, abbiamo che $\Gamma=\langle x,y\rangle$. Inoltre $\Gamma$ agisce transitivamente sull'insieme dei
+lati di $P$, $P_1$. Se $l\in P_1$, per la proposizione \ref{prop:DistSubgroups} abbiamo che $\Gamma_{l_0}=\Gamma(l_0/F_{-1})\cong\langle x\rangle$
+pertanto, passando alle cardinalit\`a:
+\begin{equation*}
+\left|P_1\right|=\left|l_0^\Gamma\right|=\left[\Gamma:\Gamma_{l_0}\right]=\frac{\left|\Gamma\right|}{\left|\Gamma_{l_0}\right|}
+\end{equation*}
+Essendo $\Gamma_{l_0}\cong\Gamma(l_0/F_{-1})$...[!CONTINUARE]
+\end{proof}
 \end{document}
 
 
