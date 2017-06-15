@@ -993,14 +993,43 @@ dove $x$ e $y$ sono rispettivamente i generatori scelti $\phi_0,\phi_1$ relativi
 $\mathcal{D}_p=\langle \sigma,\rho\mid \rho^p=\sigma^2=1,\rho^\sigma=\rho^{-1}\rangle$ \`e il $p$-esimo gruppo diedrale.
 \end{example}
 \begin{proof}
-Per il teorema \ref{teo:Generators}, abbiamo che $\Gamma=\langle x,y\rangle$. Inoltre $\Gamma$ agisce transitivamente sull'insieme dei
-lati di $P$, $P_1$. Se $l\in P_1$, per la proposizione \ref{prop:DistSubgroups} abbiamo che $\Gamma_{l_0}=\Gamma(l_0/F_{-1})\cong\langle x\rangle$
+Per il teorema \ref{teo:Generators}, abbiamo che $\Gamma=\langle x,y\rangle$. Inoltre $\Gamma$ agisce transitivamente su $P_1$, l'insieme dei
+lati di $P$. Se $l\in P_1$, per la proposizione \ref{prop:DistSubgroups} abbiamo che $\Gamma_l=\Gamma(l/F_{-1})\cong\langle x\rangle$
 pertanto, passando alle cardinalit\`a:
 \begin{equation*}
-\left|P_1\right|=\left|l_0^\Gamma\right|=\left[\Gamma:\Gamma_{l_0}\right]=\frac{\left|\Gamma\right|}{\left|\Gamma_{l_0}\right|}
+p=\left|P_1\right|=\left|l^\Gamma\right|=\left[\Gamma:\Gamma_l\right]=\frac{\left|\Gamma\right|}{\left|\Gamma_l\right|}
 \end{equation*}
-Essendo $\Gamma_{l_0}\cong\Gamma(l_0/F_{-1})$...[!CONTINUARE]
+Essendo $\Gamma_l\cong\Gamma(l/F_{-1})$. Ma per il lemma \ref{lem:DihedralPresentations} abbiamo che $\Gamma(P)$ \`e un gruppo diedrale $\mathcal{D}_n$
+quindi concludiamo con le cardinalit\`a:
+\begin{equation*}
+2p=\left|\Gamma(P)\right|=\left|\mathcal{D}_n\right|=2n
+\end{equation*}
+pertanto $\Gamma(P)\cong\mathcal{D}_p$, con $p$ numero di lati di $P$
 \end{proof}
+Vediamo adesso come tali sottogruppi scelti ci aiutino a dare una presentazione dei gruppi di simmetria delle sezioni del politopo regolare $\p$ tra
+cui i casi importanti delle faccette, delle figure al vertice e delle sezioni poligonali (ossia le $2$-sezioni). Tali strutture infatti avranno gruppi
+di simmetria che si descrivono facilmente a mezzo dei generatori scelti, essendo questi alcuni sottogruppi scelti.
+\def\currentprefix{prop:SelectedSubgroupsSections}
+\begin{prop}
+\label{prop:SelectedSubgroupsSections}
+Sia $\p$ un $n$-politopo regolare (con $\Phi$ bandiera di base e $(\phi_i)_{i=0}^{n-1}$ i suoi generatori scelti),
+$F,G\in\p$ due facce di $\p$ con $G<F$ con $rkF=i$ e $rkG=j$. Allora:
+\begin{enumerate}
+\item\locallabel{1}$\Gamma(F/G)\cong\langle \phi_{j+1},\cdots,\phi_{i-1}\rangle$
+\item\locallabel{2}$\Gamma(F/F_{-1})\cong\langle \phi_0,\cdots,\phi_{i-1}\rangle$
+\item\locallabel{3}$\Gamma(\p/F)\cong\langle\phi_{i+1}\cdots\phi_{n-1}\rangle$
+\item\locallabel{4}Se $rkF=k+1$ e $rkG=k-2$ e $\p$ \`e di tipo $\left\{p_1,\cdots,p_{n-1}\right\}$ allora
+\begin{equation}
+\Gamma(F/G)\cong\mathcal{D}_{p_k}
+\end{equation}
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\point{1}\\[FARE]
+$\bm{(2)}$,\point{3} Discendono da \localref{1}
+\end{proof}
+
+
 \end{document}
 
 
