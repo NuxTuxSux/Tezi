@@ -785,7 +785,7 @@ Pertanto, applicando $\sigma$, avremo
 
 Vediamo adesso che la regolarit\`a si preserva per sezioni e mostriamo il collegamento tra i gruppi di simmetria di un politopo e quelli delle sue sezioni.
 
-\currentprefix{prop:RegularSections}
+\def\currentprefix{prop:RegularSections}
 \begin{prop}
 \label{prop:RegularSections}
 Sia $\p$ un politopo regolare finito di rango $n$ e $G<F\in\p$ con $rkG=j$ e $rkF=i$. Allora
@@ -835,7 +835,9 @@ Allora, ricordando che per \ref{freeAction} l'azione di $\Gamma(F/G)$ su $\flag{
  $\tau\restrict{F/G}=\sigma\restrict{F/G}$\\
  \point{7}Discende da \localref{6}
 \end{proof}
-Vediamo adesso un'utile criterio per stabilire se un politopo \`e regolare esibendo particolari esempi di generatori.
+\subsection{Generatori scelti per $\Gamma$}
+Vediamo adesso un'utile criterio per stabilire se un politopo \`e regolare esibendo particolari esempi di generatori che ci permetteranno quindi
+di meglio studiare i gruppi di simmetrie dei politopi regolari.
 \begin{prop}
 \def\currentprefix{prop:IntroInvolutions}
 \label{prop:IntroInvolutions}
@@ -914,7 +916,7 @@ e
 Vediamo quindi che tali sottogruppi scelti altro non sono che gli stabilizzatori in $\Gamma$ di \emph{parti} della bandiera di base $\Phi$.
 \begin{prop}
 \label{prop:DistSubgroups}
-Sia $\p$ un politopo regolare, $\Phi$ la bandiera di base scelta. Allora per ogni $J\subseteq \Phi$
+Sia $\p$ un politopo regolare, $\Phi$ la bandiera di base scelta. Allora per ogni $J\subseteq\{0,\dots,n-1\}$
 \begin{equation*}
 \Gamma_J=\Gamma(\p)_{\Phi_J}
 \end{equation*}
@@ -1025,10 +1027,35 @@ $F,G\in\p$ due facce di $\p$ con $G<F$ con $rkF=i$ e $rkG=j$. Allora:
 \end{enumerate}
 \end{prop}
 \begin{proof}
-\point{1}\\[FARE]
-$\bm{(2)}$,\point{3} Discendono da \localref{1}
+\point{1}Siano $F$ e $G$ come da ipotesi. Posto $J=\{0,\dots,n-1\}$, dobbiamo mostrare che $\Gamma(F/G)\cong\Gamma_J$, pertanto notiamo che per
+\ref{prop:RegularSections} $\Gamma(F/G)\cong\Gamma(\p)_\Omega$ se $\Omega$ \`e una catena in $\p$ di tipo $J$, in particolare essendo per costruzione
+$\Phi_J$ di tipo $J$ avremo che $\Gamma(F/G)\cong\Gamma_J$. Concludiamo osservando che, per \ref{prop:DistSubgroups}, $\Gamma_J\cong\Gamma(\p)_{\Phi_J}$
+da cui $\Gamma(F/G)\cong\Gamma_J$\\
+$\bm{(2)}$,\point{3} Discendono da \localref{1}\\
+\point{4}Se $\p$ ha simbolo $\{p_1,\cdots,p_{n-1}\}$ allora la sezione $F/G$ - essendo $rkF=k+1$ e $rkG=k-1$ - \`e un 
+$p_k$-agono. Ora, da \localref{1} abbiamo che $\Gamma(F/G)\cong\langle\phi_{k-1},\phi_k\rangle$, applichiamo quindi l'esempio \ref{example:PolygonsDihedral}
+per concludere che $\Gamma(F/G)\cong\mathcal{D}_{p_k}$.
 \end{proof}
-
+Proseguiamo nello studio del gruppo $\Gamma$ vedendo un'altra utile propriet\`a dei suoi sottogruppi scelti $\Gamma_J$ (relativi alla scelta di una
+bandiera di base per $\p$). Questi infatti costituiscono una famiglia di sottogruppi di $\Gamma$ chiusa per intersezioni. Nel seguito per comodit\`a
+denoteremo con $N=\{0,\dots,n-1\}$ l'insieme massimo di indici di famiglie proprie dell'$n$-politopo regolare $\p$.
+\begin{prop}[Propriet\`a dell'intersezione]
+\label{prop:IntersectionProperty}
+Se $\p$ regolare con bandiera di base $\Phi$ allora la famiglia $\mathcal{S}_\Phi=\{\Gamma_J\mid J\subseteq N\}$ \`e chiusa per intersezioni.\\
+Pi\`u precisamente, se $I,J\subseteq N$, allora
+\begin{equation*}
+\Gamma_I\cap\Gamma_J=\Gamma_{I\cup J}
+\end{equation*}
+\begin{proof}
+L'asserto deriva dalla caratterizzazione dei sottogruppi scelti come stabilizzatori di particolari sottocatene di $\Phi$. Infatti
+se $I,J\subseteq N$, per \ref{prop:DistSubgroups}, $\Gamma_I=\Gamma(\p)_{\Phi_I}$ e $\Gamma_J=\Gamma(\p)_{\Phi_J}$, gli stabilizzatori
+in $\Gamma(\p)$ di $\Phi_I$ e $\Phi_J$ rispettivamente. pertanto concludiamo notando che
+\begin{equation*}
+\Gamma(\p)_{\Phi_I}\cap\Gamma(\p)_{\Phi_J}=\Gamma(\p)_{\Phi_I\cup\Phi_J}=\Gamma(\p)_{\Phi_{I\cup J}}=\Gamma_{I\cup J}
+\end{equation*}
+per la definizione delle catene $\Phi_I,\Phi_J$
+\end{proof}
+\end{prop}
 
 \end{document}
 
