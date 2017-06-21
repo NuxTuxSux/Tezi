@@ -836,34 +836,42 @@ Allora, ricordando che per \ref{freeAction} l'azione di $\Gamma(F/G)$ su $\flag{
  \point{7}Discende da \localref{6}
 \end{proof}
 \subsection{Generatori scelti per $\Gamma$}
-Vediamo adesso un'utile criterio per stabilire se un politopo \`e regolare esibendo particolari esempi di generatori che ci permetteranno quindi
-di meglio studiare i gruppi di simmetrie dei politopi regolari.
+Vediamo adesso un utile criterio per stabilire se un politopo \`e regolare esibendo particolari esempi di generatori che ci permetteranno quindi
+di meglio studiare i gruppi di simmetrie dei politopi regolari. Cominciamo col definire i generatori scelti per una bandiera.
+\begin{defin}
+Sia $\Phi\in\flag{\p}$ una bandiera. Diremo che una $n$-upla $(\phi_i)_{i=0}^{n-1}$ \`e un sistema di generatori scelti relativi a $\Phi$ se
+\begin{equation*}
+\Phi^{\phi_i}=\Phi^i\qquad\forall i=0\,\dots,n-1
+\end{equation*}
+\end{defin}
+Inoltre spesso sottindenderemo la scelta di una bandiera $\Phi$ di $\p$ che diremo \emph{di base} e quindi ci riferiremo ai generatori scelti
+relativi a $\Phi$ con la pi\`u breve espressione \emph{generatori scelti}
 \begin{prop}
 \def\currentprefix{prop:IntroInvolutions}
 \label{prop:IntroInvolutions}
 Sia $\p$ un $n$-politopo. Allora sono equivalenti:
 \begin{enumerate}
 \item\locallabel{1}$\p$ \`e regolare
-\item\locallabel{2}Esiste una bandiera $\Phi\in\flag{\p}$ tale che per ogni $0\leq i\leq n-1$ esiste un (unico) $\sigma_i\in\Gamma(\p)$ con
-$\Phi^{\sigma_i}=\Phi^i$
-\item\locallabel{3}Per ogni bandiera $\Phi\in\flag{\p}$ e $0\leq i\leq n-1$ esiste un (unico) $\sigma_i\in\Gamma(\p)$ tale che
-$\Phi^{\sigma_i}=\Phi^i$
+\item\locallabel{2}Esiste una bandiera $\Phi\in\flag{\p}$ che possiede un (unico) sistema di generatori scelti
+\item\locallabel{3}Ogni bandiera $\Phi\in\flag{\p}$ possiede un (unico) sistema di generatori scelti
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Notiamo che l'unicit\`a degli automorfismi in oggetto \`e in ogni caso garantita dalla libert\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$\\
+Notiamo che l'unicit\`a dei generatori scelti \`e in ogni caso garantita dalla libert\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$\\
 \implication{1}{3}Se $\p$ \`e regolare e $\Phi\in\flag{\p}$ allora, ricordando che per $0\leq i\leq n-1\qquad\Phi^i$ \`e l'unica bandiera
 $i$-adiacente a $\Phi$, esister\`a un $\sigma\in\Gamma(\p)$ tale che $\Phi^\sigma=\Phi^i$.\\
-Osserviamo inoltre che se $\sigma$ \`e tale che $\Phi^\sigma=\Phi^i$, allora, rispettando questi adiacenza e rango,
+Osserviamo inoltre che se $\sigma$ \`e tale che $\Phi^\sigma=\Phi^i$ allora, rispettando gli automorfismi adiacenza e rango, abbiamo che
+$\sigma$ deve mandare $\Phi^i$ necessariamente in $\Phi$, essendo quest'ultima l'unica bandiera adiacente a $\Phi^i$ rispetto al rango $i$
+(non potendo essere $(\Phi^i)^\sigma=\Phi^i$ essendo $\sigma$ iniettivo). Pertanto
 \begin{equation*}
-\Phi^{\sigma^2}=(\Phi^\sigma)^\sigma=(\Phi^i)^\sigma=(\Phi^\sigma)^i=(\Phi^i)^i=\Phi=\Phi^id
+\Phi^{\sigma^2}=(\Phi^\sigma)^\sigma=(\Phi^i)^\sigma=\Phi=\Phi^{id}
 \end{equation*}
-Pertanto, per la libert\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$ concludiamo che $\sigma^2=id$.\\
+Pertanto, per la libert\`a dell'azione di $\Gamma(\p)$ su $\flag{\p}$, concludiamo che $\sigma^2=id$.\\
 \implication{3}{2}Ovvio\\
 \implication{2}{1}Supposto che valga $(3)$, sia $\Phi$ come da ipotesi e $\Psi\in\flag{\p}$ una bandiera. Mostriamo che
 $\Psi$ \`e coniugata a $\Phi$ secondo l'azione di $\Gamma(\p)$.\\
 Ricordiamo che, per \ref{prop:P3Flags}, $\p$ \`e (fortemente) connesso per bandiere, esiste pertanto una successione
-$\Upsilon_0=\Phi,\cdots,\Upsilon_l=\Psi\in\flag{\p}$ di bandiere adiacenti da $\Phi$ a
+$\Phi=\Upsilon_0,\cdots,\Upsilon_l=\Psi\in\flag{\p}$ di bandiere adiacenti da $\Phi$ a
 $\Psi$. Mostriamo quindi per induzione su $l$ che esiste $\tau\in\Gamma(\p)$ tale che $\Phi^\tau=\Psi$\\
 Se $l=0\quad\Phi=\Psi$ e basta prendere $\tau=id$. Se $l>0$, per ipotesi induttiva esiste un $\sigma\in\Gamma(\p)$ tale che
 $\Phi^\sigma=\Upsilon_0^\sigma=\Upsilon_{l-1}$. Per ipotesi $\Upsilon_{l-1}$ e $\Upsilon_l$ sono $j$-adiacenti per un opportuno
@@ -884,7 +892,7 @@ al punto \localref{2} della proposizione \ref{prop:IntroInvolutions} verranno de
 Vediamo quindi come la scelta della bandiera influenzi il sistema di generatori scelti.
 \begin{oss}
 \label{oss:GeneratingInvolutions}
-Sia $\p$ un $n$-politopo, $\Phi,\Psi\in\flag{\p}$ due bandiere e $(\phi_i)_{i=0}^{n-1}, (\psi_i)_{i=0}^{n-1}$ i loro rispettivi sistemi di
+Sia $\p$ un $n$-politopo regolare, $\Phi,\Psi\in\flag{\p}$ due bandiere e $(\phi_i)_{i=0}^{n-1}, (\psi_i)_{i=0}^{n-1}$ i loro rispettivi sistemi di
 generatori scelti. Allora, se $\sigma\in\Gamma(\p)$ \`e tale che $\Phi^\sigma=\Psi$, i due sistemi di generatori scelti saranno coniugati
 da $\sigma$, ossia
 \begin{equation*}
