@@ -844,8 +844,32 @@ Sia $\Phi\in\flag{\p}$ una bandiera. Diremo che una $n$-upla $(\phi_i)_{i=0}^{n-
 \Phi^{\phi_i}=\Phi^i\qquad\forall i=0\,\dots,n-1
 \end{equation*}
 \end{defin}
-Inoltre spesso sottindenderemo la scelta di una bandiera $\Phi$ di $\p$ che diremo \emph{di base} e quindi ci riferiremo ai generatori scelti
-relativi a $\Phi$ con la pi\`u breve espressione \emph{generatori scelti}
+
+Tali generatori che mostreremo derivare da ogni scelta di una bandiera di $\p$ avranno un ruolo essenziale per lo studio del gruppo $\Gamma(\p)$.
+Vediamo quindi come la scelta della bandiera determini i diversi sistemi di generatori scelti.
+\begin{oss}
+\label{oss:GeneratingInvolutions}
+Sia $\p$ un $n$-politopo, $\Phi,\Psi\in\flag{\p}$ due bandiere e $(\phi_i)_{i=0}^{n-1}, (\psi_i)_{i=0}^{n-1}$ loro rispettivi sistemi di
+generatori scelti. Allora, se $\sigma\in\Gamma(\p)$ \`e tale che $\Phi^\sigma=\Psi$, i due sistemi di generatori scelti saranno anch'essi coniugati
+da $\sigma$, ossia
+\begin{equation*}
+\phi_i^\sigma=\psi_i\quad\text{ per ogni }0\leq i\leq n-1
+\end{equation*}
+\end{oss}
+\begin{proof}
+Sia $0\leq i\leq n-1$, dobbiamo mostrare che $\Psi^{\phi_i^\sigma}=\Psi^i$, a tal fine dimostriamo che $\Psi^{\phi_i^\sigma}$ \`e
+$i$-adiacente a $\Psi$ e da questa diversa. Sia infatti $G\in\Psi\setminus\p_i$ (una faccia di $\Psi$ non di rango $i$), allora
+essendo $G^{\sigma^{-1}}\in\Phi\setminus\p_i$, quest'ultima faccia verr\`a fissata da $\phi_i$, pertanto
+\begin{equation*}
+G^{\phi_i^{\sigma}}=G^{\sigma^{-1}\phi_i\sigma}=G^{\sigma^{-1}\sigma}=G
+\end{equation*}
+Pertanto $\Psi^{\phi_i^\sigma}$ e $\Psi$ coincidono per tutti i ranghi diversi da $i$, per concludere ci basta osservare che se
+coincidessero anche nel rango $i$-esimo, sarebbero uguali, ma da $\Psi^{\phi_i^\sigma}=\Psi$, per la libert\`a dell'azione di
+$\Gamma$ sull'insieme delle bandiere concluderemmo $\phi_i^\sigma=1$, cio\`e $\phi_i=1$, assurdo per definizione del sistema di
+generatori scelti relativi a $\Phi$. Pertanto abbiamo mostrato che $\Psi^{\phi_i^\sigma}$ \`e l'unica bandiera $i$-adiacente a $\Psi$
+(diversa da $\Psi$ stessa) e, quindi, che $\phi_i^\sigma=\psi_i$
+\end{proof}
+
 \begin{prop}
 \def\currentprefix{prop:IntroInvolutions}
 \label{prop:IntroInvolutions}
@@ -875,35 +899,12 @@ $\Phi=\Upsilon_0,\cdots,\Upsilon_l=\Psi\in\flag{\p}$ di bandiere adiacenti da $\
 $\Psi$. Mostriamo quindi per induzione su $l$ che esiste $\tau\in\Gamma(\p)$ tale che $\Phi^\tau=\Psi$\\
 Se $l=0\quad\Phi=\Psi$ e basta prendere $\tau=id$. Se $l>0$, per ipotesi induttiva esiste un $\sigma\in\Gamma(\p)$ tale che
 $\Phi^\sigma=\Upsilon_0^\sigma=\Upsilon_{l-1}$. Per ipotesi $\Upsilon_{l-1}$ e $\Upsilon_l$ sono $j$-adiacenti per un opportuno
-$0\leq j\leq n-1$. Sia, quindi, $\sigma_i\in\Gamma(\p)$ tale che $\Phi^{\sigma_i}=\Phi^i$. Rispettando $\sigma$ rango e adiacenza avremo che
+$0\leq j\leq n-1$ quindi, se $(\upsilon_i)_{i=0}^{n-1}$ \`e il sistema di generatori relativi ad $\Upsilon_{l-1}$, per \ref{oss:GeneratingInvolutions}
+ avremo che il sistema $(\upsilon_i)_{i=0}^{n-1}$ sar\`a il coniugato del sistema $(\phi_i)_{i=0}^{n-1}$ a mezzo di $\sigma$ quindi
 \begin{equation*}
-\Psi=\Upsilon_{l-1}^j=(\Phi^\sigma)^j=(\Phi^j)^\sigma=(\Phi^{\sigma_j})^\sigma=\Phi^{\sigma_j\sigma}
+\Upsilon_l=\Upsilon_{l-1}^j=\Upsilon_{l-1}^{\upsilon_j}=\Upsilon^{\phi_j^\sigma}
 \end{equation*}
-dove $\sigma_j$ \`e - come da ipotesi - l'automorfismo di $\p$ che manda la bandiera $\Phi$ nella sua $j$-adiacente, $\Phi^j$.
-Abbiamo cos\`i mostrato che $\Phi^{\sigma_j\sigma}=\Psi$ che conclude il passo induttivo, si ha pertanto
-$\Phi^{\Gamma(\p)}=\flag{\p}$, ossia la regolarit\`a di $\p$.
-\end{proof}
-Tali generatori che derivano da ogni scelta di una bandiera di $\p$ avranno un ruolo essenziale per lo studio del gruppo $\Gamma(\p)$.
-Introduciamo quindi la seguente definizione.
-\begin{defin}
-Sia $\p$ un politopo regolare e $\Phi$ una sua bandiera. Allora i $\sigma_i\in\Gamma(\p)$ al variare di $0\leq j\leq n-1$ di cui
-al punto \localref{2} della proposizione \ref{prop:IntroInvolutions} verranno detti \emph{generatori scelti} (relativi a $\Phi$)
-\end{defin}
-Vediamo quindi come la scelta della bandiera influenzi il sistema di generatori scelti.
-\begin{oss}
-\label{oss:GeneratingInvolutions}
-Sia $\p$ un $n$-politopo regolare, $\Phi,\Psi\in\flag{\p}$ due bandiere e $(\phi_i)_{i=0}^{n-1}, (\psi_i)_{i=0}^{n-1}$ i loro rispettivi sistemi di
-generatori scelti. Allora, se $\sigma\in\Gamma(\p)$ \`e tale che $\Phi^\sigma=\Psi$, i due sistemi di generatori scelti saranno coniugati
-da $\sigma$, ossia
-\begin{equation*}
-\phi_i^\sigma=\psi_i\quad\text{ per ogni }0\leq i\leq n-1
-\end{equation*}
-\end{oss}
-\begin{proof}
-\`E sufficiente notare che
-\begin{equation*}
-\Psi^{\phi_i^\sigma}=\Psi^{\sigma^{-1}\phi_i\sigma}=\Phi^{\phi_i\sigma}=(\Phi^i)^\sigma=(\Phi^\sigma)^i=\Psi^i
-\end{equation*}
+pertanto $\Psi\in\Phi^(\Gamma(\p))$ che conclude la dimostrazione del passo induttivo e quindi della regolarit\`a di $\p$
 \end{proof}
 
 Alla luce di queste propriet\`a nel seguito se $\p$ sar\`a un $n$-politopo fisseremo una $\Phi\in\flag{\p}$ che chiameremo \emph{bandiera di base}
@@ -1064,7 +1065,37 @@ in $\Gamma(\p)$ di $\Phi_I$ e $\Phi_J$ rispettivamente. pertanto concludiamo not
 per la definizione delle catene $\Phi_I,\Phi_J$
 \end{proof}
 \end{prop}
-
+Proseguiamo con lo studio dei generatori scelti rispetto ad una bandiera di base osservando che questi - a patto che siano di indici
+non conseguenti - commutano, cosa che semplifica notevolmente lo studio del gruppo delle simmetrie di un politopo regolare.
+\begin{prop}
+\label{prop:CommutatingGenerators}
+Sia $\p$ un $n$-politopo regolare con bandiera di base $\Phi$ e $(\phi_l)_{l=0}^{n-1}$ generatori scelti. Allora
+\begin{equation*}
+|i-j|\geq 2\Longrightarrow \phi_i\phi_j=\phi_j\phi_i
+\end{equation*}
+\end{prop}
+\begin{proof}
+Sia $\mathcal{C}=\Phi_{N\setminus\{i,j\}}$ la catena che si ottiene escludendo da $\Phi=\{F_l\}_{l=-1}^n$ le facce di rango $i$ e $j$. Vediamo che tale
+catena ha precisamente $4$ completamenti a bandiere di $\p$, notiamo intanto che essa ha tipo
+\begin{equation*}
+(-1,\cdots,j-1,j+1,\cdots,i-1,i+1,\cdots,n)
+\end{equation*}
+Ora, sia la sezione $F_{i+1}/F_{i-1}$ che la sezione $F_{j+1}/F_{j-1}$ - essendo di rango due - hanno esattamente due facce proprie, ognuna avendone una
+in $\Phi$, chiamiamo quindi le altre due $F'_i$ e $F'_j$ rispettivamente. Allora le estensioni di $\mathcal{C}$ a bandiera di $\p$ saranno esattamente
+\begin{gather*}
+\mathcal{C}_0:=\mathcal{C}\cup\{F_j,F_i\}(=\Phi)\\
+\mathcal{C}_1:=\mathcal{C}\cup\{F_j',F_i\}(=\Phi^{\phi_j})\\
+\mathcal{C}_2:=\mathcal{C}\cup\{F_j,F_i'\}(=\Phi^{\phi_i})\\
+\mathcal{C}_3:=\mathcal{C}\cup\{F_j',F_i'\}
+\end{gather*}
+A questo punto, essendo l'azione sulle bandiere di $\Gamma$ transitiva, avremo che le $4$ bandiere che contengono $\mathcal{C}$ saranno coniugate
+tramite $\Gamma$ e - pi\`u precisamente - $\Gamma_\mathcal{C}$. Ricordiamo che $\Gamma_\mathcal{C}\cong\langle\phi_i,\phi_j\rangle$ per
+la proposizione \ref{prop:DistSubgroups}. Si ha pertanto
+\begin{equation*}
+|\langle\phi_i,\phi_j\rangle|=|\Gamma_\mathcal{C}|=\left[\Gamma_\mathcal{C}:(\Gamma_\mathcal{C})_\Phi\right]=\left|\Phi^{\Gamma_\mathcal{C}}\right|=4
+\end{equation*}
+Questo ci dice che le due involuzioni (distinte) $\phi_i$ e $\phi_j$ generano un gruppo di ordine $4$, pertanto isomorfo al gruppo abeliano $C_2^2$.
+\end{proof}
 \end{document}
 
 
