@@ -1028,7 +1028,7 @@ $F,G\in\p$ due facce di $\p$ con $G<F$ con $rkF=i$ e $rkG=j$. Allora:
 \begin{enumerate}
 \item\locallabel{1}$\Gamma(F/G)\cong\langle \phi_{j+1},\cdots,\phi_{i-1}\rangle$
 \item\locallabel{2}$\Gamma(F/F_{-1})\cong\langle \phi_0,\cdots,\phi_{i-1}\rangle$
-\item\locallabel{3}$\Gamma(\p/F)\cong\langle\phi_{i+1}\cdots\phi_{n-1}\rangle$
+\item\locallabel{3}$\Gamma(\p/F)\cong\langle\phi_{i+1},\cdots,\phi_{n-1}\rangle$
 \item\locallabel{4}Se $rkF=k+1$ e $rkG=k-2$ e $\p$ \`e di tipo $\left\{p_1,\cdots,p_{n-1}\right\}$ allora
 \begin{equation}
 \Gamma(F/G)\cong\mathcal{D}_{p_k}
@@ -1097,6 +1097,26 @@ $\Phi^{\Gamma_\mathcal{C}}=\{C_0,C_1,C_2,C_3\}$ che
 \end{equation*}
 Questo ci dice che le due involuzioni (distinte) $\phi_i$ e $\phi_j$ generano un gruppo di ordine $4$, pertanto isomorfo al gruppo abeliano $C_2^2$.
 \end{proof}
+Fancendo il punto della situazione abbiamo visto che il gruppo $\Gamma$ \`e un gruppo generato da involuzioni $(\phi_i)_{i=0}^{n-1}$ tali che
+se $|i-j|\geq 2$ allora $\phi_i$ e $\phi_j$ commutano. Un gruppo di tal tipo \`e un cosiddetto \emph{string involution generated group},
+abbreviato in \emph{sggi}. Inoltre il punto $4$ di \ref{prop:SelectedSubgroupsSections} ci garantisce che se commutano le ``vicine''
+involuzioni $\phi_{j-1}$ e $\phi_j$ allora necessariamente avremo $p_j=2$ (generando queste il $p_j$-esimo gruppo diedrale, che sar\`a per\`o isomorfo
+a $C_2^2$, essendo $\phi_{j-1}\phi_j=\phi_j\phi_{j-1}$). Situazione che vedremo - nel seguito - come sostanzialmente degenere nel campo dei
+politopi regolari.\\\\
+Continuiamo lo studio di $\Gamma$ e in particolare degli stabilizzatori delle facce di $\p$ (particolari sottogruppi scelti).
+Tali stabilizzatori si spezzano infatti come prodotto di loro sottogruppi normali.
+Possiamo interpretare la cosa come - una volta scelta una faccia $F$ - una decomposizione dell'azione
+dello stabilizzatore di $F$ nella parte \emph{sopra} la faccia e nella parte \emph{sotto} (sostanzialmente la faccia stessa), pi\`u concisamente
+possiamo dire
+che $\Gamma_F$ sar\`a rappresentato (fedelmente) dalle due azioni sulla faccia $F$ (pi\`u propriamente $F/F_{-1}$) e sulla sua co-faccia, $\p/F$.
+\begin{lem}
+\label{lem:StabilizerFaceIsProduct}
+Sia $F\in\p_i$ allora
+\begin{equation*}
+\Gamma_F=\Gamma_{i}\cong\langle\phi_0,\cdots,\phi_{i-1}\rangle\times\langle\phi_{i+1},\cdots,\phi_{n-1}\rangle\cong\Gamma(F/F_{-1})\times\Gamma(\p/F)
+\end{equation*}
+Ossia, le simmetrie che fissano una faccia di $\p$ si scompongono nella loro azione sulle facce sopra $F$ e nell'azione su $F$ stessa.
+\end{lem}
 \end{document}
 
 
