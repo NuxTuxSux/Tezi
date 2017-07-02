@@ -1111,12 +1111,42 @@ possiamo dire
 che $\Gamma_F$ sar\`a rappresentato (fedelmente) dalle due azioni sulla faccia $F$ (pi\`u propriamente $F/F_{-1}$) e sulla sua co-faccia, $\p/F$.
 \begin{lem}
 \label{lem:StabilizerFaceIsProduct}
-Sia $F\in\p_i$ allora
+Sia $F\in\p_i\cap\Phi$ allora
 \begin{equation*}
 \Gamma_F=\Gamma_{i}\cong\langle\phi_0,\cdots,\phi_{i-1}\rangle\times\langle\phi_{i+1},\cdots,\phi_{n-1}\rangle\cong\Gamma(F/F_{-1})\times\Gamma(\p/F)
 \end{equation*}
 Ossia, le simmetrie che fissano una faccia di $\p$ si scompongono nella loro azione sulle facce sopra $F$ e nell'azione su $F$ stessa.
 \end{lem}
+\begin{proof}
+Per \ref{prop:DistSubgroups} abbiamo che 
+\begin{equation*}
+\Gamma_F=\Gamma_{\Phi_i}\cong\langle\phi_j\mid j\neq i\rangle
+\end{equation*}
+Ma, per la propriet\`a dell'intersezione, \ref{prop:IntersectionProperty}, quest'ultimo gruppo si spezza come il prodotto
+$\langle\phi_j\mid j<i\rangle\times\langle\phi_j\mid j>i\rangle$ ma questi due fattori sono effettivamente i gruppi di simmetria
+della faccia $F$ e della sua co-faccia $\p/F$ rispettivamente, infatti per \ref{prop:SelectedSubgroupsSections}, concludiamo che
+\begin{equation*}
+\langle\phi_j\mid j<i\rangle\times\langle\phi_j\mid j>i\rangle\cong\Gamma(F/F_{-1})\times\Gamma(\p/F)
+\end{equation*}
+da cui la tesi.
+\end{proof}
+Proseguiamo con un lemma che caratterizza l'incidenza delle facce mediante il gruppo di simmetria e le facce della bandiera scelta. Quindi ricordiamo che
+nel seguito $\Phi=\{F_i\}_{i=0}^{n-1}$ sar\`a la bandiera scelta e $F_i$ le sue facce.
+\begin{lem}
+\label{lem:IncidenceSelectedFaces}
+Sia $G\in\p_j$. Allora $G$ \`e incidente a $F_i$ in $\p$ se e solo se questa - a meno dell'azione di
+$\Gamma_i$ - lo \`e in $\Phi$. Ossia se
+\begin{equation*}
+G^{\Gamma_i}=F_j^{\Gamma_i}
+\end{equation*}
+\end{lem}
+\begin{proof}
+Supponiamo $G<F_i$ o $G>F_i$. In entrambi i casi sia ${G,F_i}\subseteq\Psi\in\flag{\p}$ e - per la regolarit\`a di $\p$, $\sigma\in\Gamma$ tale che
+$\Psi^\sigma=\Phi$, allora avremo che $G^\sigma=F_j$ e $F_i^\sigma=F_i$, pertanto $G$ e $F_j$ sono coniugati tramite un elemento
+$\sigma\in\Gamma_i=\Gamma_{\Phi_\{i\}}$.\\
+Supponiamo adesso che esista un $\sigma\in\Gamma_i$ tale che $G^\sigma=F_j$. Allora, essendo $\sigma^{-1}\in\Gamma_i$ un automorfismo di $\p$ che fissa
+$F_i$ avremo che la faccia $G=(G^\sigma)^{\sigma^{-1}}=F_j^{\sigma^{-1}}$ \`e incidente a $F_i^{\sigma^{-1}}=F_i$.
+\end{proof}
 \end{document}
 
 
