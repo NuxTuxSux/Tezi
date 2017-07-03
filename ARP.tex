@@ -1,6 +1,12 @@
 \documentclass[a4paper,12pt]{report}
-\usepackage{amssymb}
 \usepackage{amsmath}
+%[
+	% Mi fa schifo \emptyset di \amssymb, evito che lo sovrascriva
+	\let\oldemptyset\emptyset
+	\usepackage{amssymb}
+	% Decider\`o di essere nostalgico o mi aprir\`o al cambiamento?
+%]
+
 \usepackage{amsthm}
 \usepackage{bm}
 \usepackage{varioref}
@@ -42,12 +48,15 @@
 
 
 \section{Politopi astratti}
-In questo capitolo parleremo dei politopi astratti, un'astrazione assiomatica della struttura combinatoria dei politopi (concreti) di $\Rn$. Essi incapsulano la
+In questo capitolo parleremo dei politopi astratti, un'astrazione assiomatica della struttura combinatoria dei politopi (concreti) di $\Rn$.
+Essi incapsulano la
 semplice struttura combinatoria delle facce di un politopo, essendo questa gi\`a molto ricca di informazioni circa il politopo stesso. Cominciamo con alcune 
 definizioni.
 \subsection{Definizioni}
-Un insieme parzialmente ordinato $(\p,\leq)$ si dice \emph{politopo astratto di rango} $n$ (dove $rk\p:=n\in\mathbb{N})$ se soddisfa le propriet\`a $(P1)-(P4)$ scritte 
-di seguito. Per una migliore comprensione delle propriet\`a in questione introduciamo la terminologia di base. Gli elementi di $\p$ verranno chiamati \emph{facce},
+Un insieme parzialmente ordinato $(\p,\leq)$ si dice \emph{politopo astratto di rango} $n$ (dove $rk\p:=n\in\mathbb{N})$ se soddisfa le
+propriet\`a $(P1)-(P4)$ scritte 
+di seguito. Per una migliore comprensione delle propriet\`a in questione introduciamo la terminologia di base. Gli elementi di $\p$ verranno
+chiamati \emph{facce},
 due facce $F,G\in\p$ verranno dette \emph{incidenti} se $F\leq G$ o $G\leq F$. Ricordiamo inoltre che una \emph{catena} di un insieme ordinato \`e un suo 
 sottoinsieme totalmente ordinato. Nel caso dei politopi chiameremo \emph{lunghezza} di una catena $\Omega$ il numero $\left|\Omega\right|-1$ e, vista
 l'importanza delle catene massimali, chiameremo quest'ultime \emph{bandiere}.
@@ -1146,6 +1155,90 @@ $\Psi^\sigma=\Phi$, allora avremo che $G^\sigma=F_j$ e $F_i^\sigma=F_i$, pertant
 $\sigma\in\Gamma_i=\Gamma_{\Phi_\{i\}}$.\\
 Supponiamo adesso che esista un $\sigma\in\Gamma_i$ tale che $G^\sigma=F_j$. Allora, essendo $\sigma^{-1}\in\Gamma_i$ un automorfismo di $\p$ che fissa
 $F_i$ avremo che la faccia $G=(G^\sigma)^{\sigma^{-1}}=F_j^{\sigma^{-1}}$ \`e incidente a $F_i^{\sigma^{-1}}=F_i$.
+\end{proof}
+Utilizziamo questo lemma per dimostrare finalmente come la struttura combinatoria di $\p$ sia sostanzialmente codificata nella struttura
+esclusivamente algebrica del gruppo $\Gamma=\Gamma(\p)$ (a meno della scelta originale di una bandiera e quindi dei conseguenti generatori scelti).
+Infatti il seguente teorema mostra come l'incidenza di due qualsiasi facce di $\p$ sia equivalente a due altre propriet\`a esclusivamente algebriche.
+Enunciamo e dimostriamo il teorema in questione. [FORSE SERVIREBBE DEFINIRLI PRIMA]Ma prima diamo una definizione per semplificare la notazione riguardo
+sottogruppi scelti in alcuni punti, con una conseguente osservazione.
+\begin{defin}
+Se $\Phi$ \`e la bandiera scelta di $\p$, $(\phi_i)_{i=0}^{n-1}$ \`e il suo sistema di generatori scelti, e $-1\leq j,k\leq n$ definiamo
+\begin{equation*}
+\Gamma_{j\leftarrow k}:=\langle\phi_{j+1},\cdots,\phi_{k-1}\rangle=\Gamma_{\{j+1,\dots,k-1\}}
+\end{equation*}
+se $k-j\geq 2$ e
+\begin{equation*}
+\Gamma_{j\leftarrow k}:=\{1\}
+\end{equation*}
+altrimenti
+\end{defin}
+\begin{oss}
+\label{oss:SectionSubgroupNotation}
+Se $-1\leq i,j\leq n$ allora
+\begin{equation*}
+\Gamma_{i\rightarrow j}\cong\Gamma(F_i/F_j)
+\end{equation*}
+\end{oss}
+\begin{proof}
+\`E un'essenziale riformulazione di \ref{prop:SelectedSubgroupsSections}
+\end{proof}
+Inoltre quello che ci servir\`a nel prossimo teorema \`e la seguente osservazione.
+\begin{oss}
+\label{oss:SectionSubgroupCommuting}
+Siano $0\leq j,k,l,m\leq n$. Se $k\leq l$ allora
+\begin{equation*}
+\left[\Gamma_{j\rightarrow k},\Gamma_{l\rightarrow m}\right]=\{1\}
+\end{equation*}
+Dove il termine a sinistra \`e il sottogruppo commutatore tra i due sottogruppi. Abbiamo cio\`e che i due sottogruppi
+commuteranno puntualmente e in particolare $\Gamma_{j\rightarrow k}\Gamma_{l\rightarrow m}=\Gamma_{l\rightarrow m}\Gamma_{j\rightarrow k}$
+che risulter\`a quindi un sottogruppo di $\Gamma$ (cosa altrimenti non garantita)
+\end{oss}
+\begin{proof}
+Nei casi banali $j\geq k$ o $m\geq l$ uno dei due sottogruppi risulter\`a il sottogruppo identico rendendo banale l'asserto. Se, invece, gli indici
+sono nell'ordine
+\begin{equation*}
+0\leq j\leq k\leq l\leq m\leq n
+\end{equation*}
+Ricordando che
+\begin{gather*}
+\Gamma_{j\rightarrow k}=\langle\phi_{j+1},\dots\phi_{k-1}\rangle\text{ e }\\
+\Gamma_{l\rightarrow m}=\langle\phi_{l+1},\dots\phi_{m-1}\rangle
+\end{gather*}
+Ogni generatore di $\Gamma_{j\rightarrow k}$ commuter\`a con ogni generatore di $\Gamma_{l\rightarrow m}$ (per \ref{prop:CommutatingGenerators}), essendo
+\begin{equation*}
+l+1-(k-1)=l-k+2\geq 2
+\end{equation*}
+\end{proof}
+Possiamo ora pi\`u agevolmente procedere con la dimostrazione del teorema.
+\begin{teo}
+[NEL LIBRO SBAGLIATO, PER ME]
+\def\currentprefix{teo:AlgebraicIncidence}
+\locallabel{teo:AlgebraicIncidence}
+Siano $0\leq j\leq i\leq n-1$ ($\Phi=\{F_i\}_{i=0}^{n-1}$ la bandiera di base e $(\phi_i)_{i=0}^{n-1}$ i suoi generatori scelti) 
+e $\sigma,\tau\in\Gamma$ allora
+sono equivalenti le seguenti:
+\begin{enumerate}
+\item\locallabel{1}$F_j^\sigma\leq F_i^\tau$
+\item\locallabel{2}$\Gamma_j\sigma\cap\Gamma_i\tau\neq\emptyset$
+\item\locallabel{3}$\sigma\tau^{-1}\in\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow i}$
+\end{enumerate}
+\end{teo}
+\begin{proof}
+\implication{1}{2}Se $F_j^\sigma\leq F_i^\tau$ allora $F_j^{\sigma\tau^{-1}}\leq F_i$ pertanto, alla luce del lemma \ref{lem:IncidenceSelectedFaces},
+avremo che $F_j^{\sigma\tau^{-1}}=F_j^\gamma$ per un opportuno $\gamma\in\Gamma_i$, perci\`o
+\begin{equation*}
+F_j^{\sigma\tau^{-1}\gamma^{-1}}=F_j
+\end{equation*}
+da cui
+\begin{equation*}
+\sigma\tau^{-1}\gamma^{-1}=:\rho\in\Gamma_j
+\end{equation*}
+si ha pertanto che
+\begin{equation*}
+\Gamma_i\ni\gamma=\rho^{-1}\sigma\tau^{-1}\in\Gamma_j\sigma\tau^{-1}
+\end{equation*}
+Quindi $(\Gamma_j\sigma\tau^{-1})\cap\Gamma_i\neq\emptyset$ e (applicando $\tau$) anche $\Gamma_j\sigma\cap\Gamma_i\tau\neq\emptyset$.\\
+\implication{2}{3}[COMPLETARE]
 \end{proof}
 \end{document}
 
