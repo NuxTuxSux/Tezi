@@ -1164,11 +1164,11 @@ sottogruppi scelti in alcuni punti, con una conseguente osservazione.
 \begin{defin}
 Se $\Phi$ \`e la bandiera scelta di $\p$, $(\phi_i)_{i=0}^{n-1}$ \`e il suo sistema di generatori scelti, e $-1\leq j,k\leq n$ definiamo
 \begin{equation*}
-\Gamma_{j\leftarrow k}:=\langle\phi_{j+1},\cdots,\phi_{k-1}\rangle=\Gamma_{\{j+1,\dots,k-1\}}
+\Gamma_{j\rightarrow k}:=\langle\phi_{j+1},\cdots,\phi_{k-1}\rangle=\Gamma_{\{j+1,\dots,k-1\}}
 \end{equation*}
 se $k-j\geq 2$ e
 \begin{equation*}
-\Gamma_{j\leftarrow k}:=\{1\}
+\Gamma_{j\rightarrow k}:=\{1\}
 \end{equation*}
 altrimenti
 \end{defin}
@@ -1182,7 +1182,7 @@ Se $-1\leq i,j\leq n$ allora
 \begin{proof}
 \`E un'essenziale riformulazione di \ref{prop:SelectedSubgroupsSections}
 \end{proof}
-Inoltre quello che ci servir\`a nel prossimo teorema \`e la seguente osservazione.
+Inoltre nel prossimo teorema ci saranno utili le due seguenti osservazioni.
 \begin{oss}
 \label{oss:SectionSubgroupCommuting}
 Siano $0\leq j,k,l,m\leq n$. Se $k\leq l$ allora
@@ -1209,13 +1209,34 @@ Ogni generatore di $\Gamma_{j\rightarrow k}$ commuter\`a con ogni generatore di 
 l+1-(k-1)=l-k+2\geq 2
 \end{equation*}
 \end{proof}
+La seguente osservazione \`e essenzialmente una conseguenza immediata della definizione dei sottogruppi del tipo $\Gamma_{i\rightarrow j}$
+e dell'osservazione \ref{oss:SectionSubgroupCommuting}, essendo un caso particolare di quest'ultima.
+[E FORSE \`E INUTILE SE INTRODUCIAMO PRIMA LA DEFINIZIONE DEI SOTTOGRUPPI SEZIONE]
+\begin{oss}
+\label{oss:StabilizerFactorsAsSectionSubgroups}
+\begin{itemize}
+\item Se $0\leq j\leq n-1$ allora
+\begin{equation*}
+\Gamma_j\cong\Gamma_{-1\rightarrow j}\Gamma_{j\rightarrow n}=\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow j}
+\end{equation*}
+\item Se $-1\leq j\leq j'\leq i'\leq i\leq n$ allora
+\begin{equation*}
+\Gamma_{i'\rightarrow j'}\leq\Gamma_{i\rightarrow j}
+\end{equation*}
+\end{itemize}
+\end{oss}
+\begin{proof}
+Banale
+\end{proof}
+
 Possiamo ora pi\`u agevolmente procedere con la dimostrazione del teorema.
 \begin{teo}
+\label{teo:AlgebraicIncidence}
 [NEL LIBRO SBAGLIATO, PER ME]
 \def\currentprefix{teo:AlgebraicIncidence}
 \locallabel{teo:AlgebraicIncidence}
-Siano $0\leq j\leq i\leq n-1$ ($\Phi=\{F_i\}_{i=0}^{n-1}$ la bandiera di base e $(\phi_i)_{i=0}^{n-1}$ i suoi generatori scelti) 
-e $\sigma,\tau\in\Gamma$ allora
+Siano $0\leq j\leq i\leq n-1$ (essendo $\Phi=\{F_i\}_{i=0}^{n-1}$ la bandiera di base e $(\phi_i)_{i=0}^{n-1}$ i suoi generatori scelti) 
+e $\sigma,\tau\in\Gamma$. Allora
 sono equivalenti le seguenti:
 \begin{enumerate}
 \item\locallabel{1}$F_j^\sigma\leq F_i^\tau$
@@ -1238,7 +1259,27 @@ si ha pertanto che
 \Gamma_i\ni\gamma=\rho^{-1}\sigma\tau^{-1}\in\Gamma_j\sigma\tau^{-1}
 \end{equation*}
 Quindi $(\Gamma_j\sigma\tau^{-1})\cap\Gamma_i\neq\emptyset$ e (applicando $\tau$) anche $\Gamma_j\sigma\cap\Gamma_i\tau\neq\emptyset$.\\
-\implication{2}{3}[COMPLETARE]
+\implication{2}{3}Essendo $\Gamma_j\phi\psi^{-1}\cap\Gamma_i\neq\emptyset$, prendiamo quindi
+\begin{equation*}
+\gamma=\rho\phi\psi^{-1}\in\Gamma_i\quad\text{con }\rho\in\Gamma_j
+\end{equation*}
+Pertanto avremo che $\phi\psi^{-1}=\rho^{-1}\gamma\in\Gamma_j\Gamma_i$ per avere (\localref{3}) ci baster\`a mostrare che
+\begin{equation*}
+\Gamma_j\Gamma_i=\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow i}
+\end{equation*}
+Quindi, grazie all'osservazione \ref{oss:StabilizerFactorsAsSectionSubgroups}, abbiamo che
+\begin{gather*}
+\Gamma_j\Gamma_i=\Gamma_{-1\rightarrow j}\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow i}\Gamma_{i\rightarrow n}=
+\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow j}\Gamma_{-1\rightarrow i}\Gamma_{i\rightarrow n}=\\
+=\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow i}\Gamma_{i\rightarrow n}=\Gamma_{j\rightarrow n}\Gamma_{i\rightarrow n}\Gamma_{-1\rightarrow i}=
+\Gamma_{j\rightarrow n}\Gamma_{-1\rightarrow i}
+\end{gather*}
+[EVENTUALMENTE AGGIUNGERE MOTIVAZIONI SUGLI UGUALI]
+\implication{3}{1}Supponiamo che $\sigma\tau^{-1}=\rho\gamma$ con $\rho\in\Gamma_{j\rightarrow n}$ e $\gamma\in\Gamma_{-1\rightarrow i}$. Allora
+ricordando \ref{lem:IncidenceSelectedFaces} avremo che
+\begin{equation*}
+F_j^{\sigma\tau^{-1}}=F_j^{\rho\gamma}=F_j^\gamma\leq F_i^\gamma=F_i
+\end{equation*}
 \end{proof}
 \end{document}
 
