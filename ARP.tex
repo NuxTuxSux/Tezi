@@ -1281,6 +1281,55 @@ ricordando \ref{lem:IncidenceSelectedFaces} avremo che
 F_j^{\sigma\tau^{-1}}=F_j^{\rho\gamma}=F_j^\gamma\leq F_i^\gamma=F_i
 \end{equation*}
 \end{proof}
+Questo teorema ci permette di caratterizzare l'incidenza delle facce di un politopo regolare semplicemente dal suo gruppo di simmetria, in effetti
+abbiamo mostrato che due facce $F_i^\phi$ e $F_j^\psi$ sono incidenti precisamente quando si intersecano le loro relative classi laterali (destre)
+$\Gamma_i\phi$ e $\Gamma_j\psi$.\\
+Dopo aver introdotto e compreso un po' dei generatori scelti del politopo regolare $\p$ vediamo quali relazioni fra loro intercorrono, per arrivare
+quindi ad una presentazione del gruppo $\Gamma$.
+\subsection{Relazioni}
+Abbiamo visto che un politopo regolare \`e in particolare univelare, possiede cio\`e un \emph{tipo} (o simbolo di Shl\"afli). Tale simbolo,
+che descrive la ``forma'' locale del politopo ad ogni livello (dicendoci a che poligono corrispondono le sezioni di rango $2$), unitamente
+alla regolarit\`a di $\p$ ci d\`a importantissime informazioni sulla struttura del gruppo di simmetria di $\p$, $\Gamma$. Inoltre tale
+informazione - a sua volta - descriver\`a il politopo stesso, mostrandoci cos\`i come esso possa essere visto sia da un punto di vista
+di insieme parzialmente ordinato, che da un punto di vista squisitamente algebrico, visualizzando come facce particolari classi laterali
+del gruppo $\Gamma$.\\
+Vediamo quindi come il tipo di $\p$ determini in modo diretto delle relazioni tra i generatori scelti. \`E bene notare tuttavia che continueremo
+a presupporre la scelta di una bandiera di base in $\flag{\p}$.
+\begin{teo}
+Sia $\p$ un politopo regolare di tipo $\{p_1,\cdots,p_{n-1}\}$ con generatori scelti $\{\phi_i\}_{i=0}^{n-1}$ allora per $0\leq j\leq i\leq n-1$
+tali generatori soddisferanno le seguenti relazioni
+\begin{equation*}
+(\phi_i\phi_j)^{p_{ij}}=1
+\end{equation*}
+dove gli ordini $p_{ij}$ sono dati da
+\begin{equation*}
+p_{ij}=\begin{cases}
+			1	&	\text{se }i=j\\
+			p_i	&	\text{se }i=j+1\\
+			2	&	\text{se, altrimenti, }i\geq j+2
+		\end{cases}
+\end{equation*}
+\begin{proof}
+Abbiamo in realt\`a gi\`a dimostrato tale teorema, vediamo perch\'e. Siano infatti $0\leq j\leq i\leq n-1$ e consideriamo i tre casi:\\
+\point{i=j}Il caso in cui $i=j$ \`e semplicemente una riformulazione del fatto che i generatori scelti siano involuzioni.\\
+\point{i=j+1}Grazie a \ref{prop:SelectedSubgroupsSections} abbiamo che $\langle\phi_i,\phi_j\rangle\cong\mathcal{D}_i$
+pertanto $\phi_i$ e $\phi_j$ sono due involuzioni generanti il sottogruppo diedrale di cardinalit\`a $2i$ e $\phi_i\phi_j$ genera
+il suo sottogruppo delle rotazioni, isomorfo a $C_i$, l'$i$-esimo gruppo ciclico.\\
+\point{i\geq j+2}In questo caso \`e sufficiente applicare la proposizione \ref{prop:CommutatingGenerators} per concludere che
+$\phi_i\phi_j=\phi_j\phi_i$ e quindi che
+\begin{equation*}
+(\phi_i\phi_j)^2=\phi_i\phi_j\phi_i\phi_j=\phi_i^2\phi_j^2=1
+\end{equation*}
+\end{proof}
+\end{teo}
+Grazie a questo teorema abbiamo mostrato che $\Gamma(\p)$, se $\p$ \`e un $n$-politopo regolare di tipo $\{p_1,\cdots,p_{n-1}\}$, \`e un quoziente
+del gruppo stringa di Coxeter di tipo $\{p_1,\cdots,p_{n-1}\}$. Parleremo dei gruppi di Coxeter stringa nel seguito. [O FORSE \`E MEGLIO ACCENNARE
+E AGGIUNGERE UN DIAGRAMMA?]
+
+
+
+
+
 \end{document}
 
 
