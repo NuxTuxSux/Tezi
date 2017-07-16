@@ -1339,11 +1339,43 @@ Sia $\p$ (regolare) di tipo $\{p_1,\cdots,p_{n-1}\}$ e sia $1\leq k\leq n-1$, al
 Inoltre, quando si verificano tali condizioni, si ha anche che $\Gamma$ si spezza in prodotto diretto dei suoi sottogruppi di sezione
 a livello $k$, ossia
 \begin{equation}
-\Gamma=\Gamma_{-1\rightarrow k}\times\Gamma_{k-1\rightarrow n}=\langle\phi_0,\cdots,\phi_{k-1}\rangle\times\langle\phi_k,\cdots,\phi_{n-1}\rangle
+\locallabel{3}
+\Gamma=\Gamma_{-1\rightarrow k}\times\Gamma_{k-1\rightarrow n}=\langle\phi_0,\cdots,\phi_{k-1}\rangle\times\langle\phi_k,\cdots,\phi_{n-1}\rangle\tag{3}
 \end{equation}
 \end{teo}
 \begin{proof}
-
+$\bm{(1)\Rightarrow(2)\land(\localref{3})}$\textbf{: }Essendo $p_k=2$ abbiamo (come sopra) che $\left[\phi_{k-1},\phi_k\right]=1$, inoltre essendo in
+generale, per \ref{prop:CommutatingGenerators}, $\left[\phi_i,\phi_j\right]=1$ per ogni $0\leq i,j\leq n-1$ con $\left|i-j\right|\geq 2$, avremo che
+\begin{equation}
+\locallabel{commutano}
+\left[\phi_i,\phi_j\right]=1\quad\forall 0\leq j<k\leq i\leq n-1
+\end{equation}
+Ossia, i generatori scelti relativi ai ranghi pi\`u piccoli di $k$ commuteranno con quelli di ranghi pi\`u grandi di $k$.
+Pertanto, essendo $\Gamma=\langle\phi_0,\cdots,\phi_{n-1}\rangle$, grazie a queste relazioni di commutativit\`a, abbiamo
+\begin{gather}
+\locallabel{generano}
+\Gamma=\langle\phi_0,\cdots,\phi_{k-1}\rangle\langle\phi_k,\cdots,\phi_{n-1}\rangle=\\
+=\Gamma_{-1\rightarrow k}\Gamma_{k-1\rightarrow n}=\Gamma_{k-1\rightarrow n}\Gamma_{-1\rightarrow k}
+\end{gather}
+Siano a questo punto $G\in\p_{k-1}$ e $F\in\p_k$, allora esisteranno $\sigma,\tau\in\Gamma$ tali che $G=F_{k-1}^\sigma$ e $F=F_i^\tau$ e utilizzando
+il teorema \ref{teo:AlgebraicIncidence}, essendo ovviamente $\sigma\tau^{-1}\in\Gamma=\Gamma_{k-1\rightarrow n}\Gamma_{-1\rightarrow k}$,
+avremo che $G=F_{k-1}^\sigma<F_i^\tau$, che dimostra \localref{2}.\\
+Per mostrare \localref{3}, notiamo che per \localref{commutano} i sottogruppi $\Gamma_{-1\rightarrow k}$ e $\Gamma_{k-1\rightarrow n}$ commutano
+puntualmente, per \localref{generano} essi generano $\Gamma$ e infine per \ref{prop:IntersectionProperty}
+$\Gamma_{-1\rightarrow k}\cap\Gamma_{k-1\rightarrow n}=\{1\}$. Pertanto $\Gamma$ risulta somma diretta di tali sottogruppi, cio\`e \localref{3}.\\
+\implication{2}{1}Supponiamo adesso che valga \localref{2}, ossia che ogni $(k-1)$-faccia di $\p$ sia incidente con ogni sua $k$-faccia. Per
+mostrare che $p_k=2$ consideriamo una qualunque sezione $\mathcal{S}=F/G$ dove $rF=k+1$ e $rG=k-2$. Essendo $p_k=\left|\mathcal{S}_1\right|$ il numero
+dei lati di $\mathcal{S}$, dimostriamo che $\mathcal{S}$ \`e un \emph{diagono} ossia un segmento doppio. Ogni vertice $G\in\mathcal{S}_0\subseteq\p_{k-1}$
+\`e incidente a ogni lato $F\in\mathcal{S}_1\subseteq\p_k$.
+Scelto quindi un $\overline{G}\in\mathcal{S}_0$, la sezione $\mathcal{S}/{\overline{G}}$ avr\`a come vertici tutti e soli i lati di $\mathcal{S}$ quindi
+\begin{equation*}
+\left|(\mathcal{S}/{\overline{G}})_0\right|=\left|\mathcal{S}_1\right|
+\end{equation*}
+ma - ora - ricordiamo che per la diamond property la $1$-sezione $\mathcal{S}/{\overline{G}}$ deve avere precisamente $2$ vertici, pertanto concludiamo che
+\begin{equation*}
+p_2=\left|\mathcal{S}_1\right|=\left|(\mathcal{S}/{\overline{G}})_0\right|=2
+\end{equation*}
+Cio\`e \localref{3}.
 \end{proof}
 
 
