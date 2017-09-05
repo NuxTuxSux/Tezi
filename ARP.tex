@@ -1378,8 +1378,41 @@ p_2=\left|\mathcal{S}_1\right|=\left|(\mathcal{S}/{\overline{G}})_0\right|=2
 Cio\`e \localref{3}.
 \end{proof}
 
-
-
+\section{Quozienti}
+Cominciamo a sviluppare gli strumenti che servono per definire il quoziente di un politopo. Questo verr\`a definito quozientando rispetto all'azione di
+determinati sottogruppi di simmetrie del politopo in questione, per avere un'identificazione di facce che sia compatibile con la struttura di politopo.
+Cionondimeno sar\`a necessario - in una prima parte - indebolire il concetto di politopo non richiedendo pi\`u la \emph{forte connessione} ottendendo
+quindi una struttura che prende il nome di \emph{prepolitopo}. I naturali e pi\`u usati morfismi tra prepolitopi sono le \emph{rap-map}. Cominciamo quindi
+con le definizioni del caso.
+\begin{defin}[Prepolitopo]
+Sia $\p$ un poset che soddisfa le propriet\`a $(P1)$, $(P2)$ e $(P4)$ (i tre assiomi che, insieme a $(P3)$, definirebbero un politopo). Allora diremo
+$\p$ un prepolitopo di rango $n$ dato dall'assioma $(P2)$.
+\end{defin}
+Notiamo come i concetto di bandiera, rango, adiacenza e sezione continuino ad avere senso e ad essere definiti allo stesso modo per un prepolitopo.
+Introduciamo ora le pi\`u importanti mappe nel contesto dei prepolitopi: le cosiddette \emph{rap-map}. L'acronimo sta per \emph{rank adjacency preserving}.
+Infatti tali mappe preservano il rango delle facce e la relazione di adiacenza tra bandiere nei prepolitopi.
+\begin{defin}
+Siano $\p$ e $\mathcal{Q}$ due prepolitopi dello stesso rango $n$. Allora una funzione $\phi:\p\longrightarrow\mathcal{Q}$ che soddisfi:
+\begin{enumerate}
+\item $rk(\phi(F))=rk(F)$ per ogni $F\in\p$ e
+\item se $\Phi,\Psi\in\flag{\p}$ sono incidenti allora lo sono anche $\phi(\Phi)$ e $\phi(\Psi)$ in $\mathcal{Q}$
+\end{enumerate}
+\`e detta \emph{rap-map}.
+\end{defin}
+Per definire i quozienti sar\`a chiaramente importante il caso in cui una rap-map sar\`a suriettiva.
+\begin{defin}
+Siano $\p$ e $\mathcal{Q}$ due prepolitopi (dello stesso rango) e $\phi:\p\longrightarrow\mathcal{Q}$ una rap-map. Allora, se $\phi$ \`e suriettiva
+diremo $\phi$ ricoprimento e altres\`i che $\p$ ricopre $\mathcal{Q}$.\\
+Inoltre, nel caso in cui $\phi$ mandi isomorficamente sezioni di $\p$ di rango $k$ in sezioni (di rango $k$) di $\mathcal{Q}$, diremo che
+$\phi$ \`e un $k$-ricoprimento.
+\end{defin}
+Osserviamo che particolarmente interessante sar\`a per $n$-prepolitopi il caso degli $(n-1)$-ricoprimenti, in quanto questi
+preservano la struttura delle figure al vertice e delle facce.\\
+Cominciamo quindi a vedere come si comportino queste mappe con un primo risultato.
+\begin{lem}[Ricoprimento]
+Siano $\p$ e $\mathcal{Q}$ due $n$-prepolitopi e $\phi:\p\longrightarrow\mathcal{Q}$ una rap-map. Se $\mathcal{Q}$ \`e connesso per bandiere allora
+$\phi$ \`e un ricoprimento.
+\end{lem}
 
 \end{document}
 
