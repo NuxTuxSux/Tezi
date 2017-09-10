@@ -63,7 +63,8 @@ l'importanza delle catene massimali, chiameremo quest'ultime \emph{bandiere}.
 Denoteremo con $\mathcal{F}(\p)$ l'insieme di tali bandiere. Ovviamente ogni catena di $\p$ sar\`a contenuta in un elemento di $\mathcal{F}(\p)$.
 Enunciamo i primi due assiomi di politopo astratto. Sia $\p$ un insieme ordinato.
 \begin{itemize}
-\item (P1) $\p$ contiene un minimo e un massimo, che chiamiamo $F_{-1}$ e $F_n$ rispettivamente.
+\item (P1) $\p$ contiene un minimo e un massimo, che chiamiamo $\bot_\p$ e $\top_\p$ (o - ove non creasse confusione $\bot$ e $\top$ o ancora
+con un piccolo abuso di notazione $\emptyset$ e $\p$) rispettivamente.
 \item (P2) Le bandiere di $\p$ hanno tutte la medesima lunghezza
 \end{itemize}
 Se un insieme ordinato $\p$ soddisfa le propriet\`a $(P1)-(P2)$ diremo \emph{rango} di $\p$ il numero intero  $\left|\Phi\right|-2$, dove
@@ -74,7 +75,7 @@ Date $F,G\in\p$ chiameremo sezione di $\p$ relativa a $F$ e $G$ il suo sottoinsi
 \begin{equation*}
 G/F=\left\{H\in\p\mid F\leq H\leq G\right\}
 \end{equation*}
-Diremo inoltre che una sezione \`e propria se questa \`e distinta da $\p$ e da $\left\{F_{-1}\right\}$.
+Diremo inoltre che una sezione \`e propria se questa \`e distinta da $\p$ e da $\left\{\bot\right\}$.
 \`E bene mostrare che una sezione di un poset che soddisfa $(P1)-(P2)$ soddisfa essa stessa $(P1)-(P2)$. Mostreremo in effetti (nel seguito) che una sezione
  di un politopo astratto continuer\`a ad essere un politopo astratto. Dimostriamo per ora il seguente lemma che ci permetter\`a, fra le altre cose,
  di definire un rango tra le facce di un poset che soddisfi $(P1)-(P2)$ e quindi nel seguito di un politopo astratto.
@@ -89,7 +90,7 @@ La propriet\`a $(P1)$ \`e banale, essendo per definizione di $F/G$, gli elementi
 Mostriamo la pi\`u interessante $(P2)$, ossia che le bandiere di $F/G$ abbiano la stessa lunghezza. Siano $\Phi,\Psi\in\mathcal{F}(F/G)$
 completiamo $\Phi$ a $\bar{\Phi}\in\mathcal{F}(\p)$. Allora, posti
 \begin{equation*}
-\Phi_0=\bar{\Phi}\cap G/F_{-1}\text{\quad e\quad }\Phi_1=\bar{\Phi}\cap\p/F
+\Phi_0=\bar{\Phi}\cap G/\bot\text{\quad e\quad }\Phi_1=\bar{\Phi}\cap\p/F
 \end{equation*}
 possiamo estendere $\Phi$ a bandiera di $\p$ in modo \emph{compatibile} con $\bar{\Phi}$. Ossia, posto
 \begin{equation*}
@@ -99,7 +100,7 @@ avremo che $\bar{\Psi}\in\mathcal{F}(\p)$. \`E chiaro che $\bar{\Psi}$ sia una c
 minorante per $\Psi$ e $F$ maggiorante per $\Phi$ e minorante per $\Phi_1$.\\
 Se inoltre, avessimo $H\in\p$ tale che $\bar{\Psi}\cup\left\{H\right\}>\bar{\Psi}$ continui ad essere una catena, allora si presenterebbero tre casi.\\
 \textbf{Caso $\bm{H<G}$:}
-In tal caso avremmo $H\in G/F_{-1}$ pertanto, essendo $H\notin\Psi\supseteq\Phi_0$, avremmo che $H\notin\bar{\Phi}$, tuttavia
+In tal caso avremmo $H\in G/\bot$ pertanto, essendo $H\notin\Psi\supseteq\Phi_0$, avremmo che $H\notin\bar{\Phi}$, tuttavia
 \begin{equation*}
 \left(\Phi_0\cup\left\{H\right\}\right)\cup\Phi\cup\Phi_1
 \end{equation*}
@@ -123,11 +124,11 @@ da cui $|\Phi|=|\Psi|$.
 \par
 Se un poset $\p$ soddisfa le propriet\`a $(P1)-(P2)$, alla luce di \ref{P1P2Sections}, osserviamo che \`e possibile estendere la nozione di \emph{rango}
 alle facce (elementi) di $\p$.\\
-Infatti, per vedere le facce di un politopo come politopi a loro volta, ne considereremo le sezioni con la faccia minima, $F_{-1}$,
+Infatti, per vedere le facce di un politopo come politopi a loro volta, ne considereremo le sezioni con la faccia minima, $\bot$,
 cos\`i da identificare una faccia $F\in\p$ con l'insieme delle facce \emph{sotto} $F$ (sottoinsieme di $\p$ che risulta avere $F$ come massimo).
-Se $F\in\p$ chiameremo quindi $rk_\p F:=rk(F/F_{-1})$ \emph{rango} della faccia $F$, ove non ci sia possibilit\`a di confusione scriveremo
+Se $F\in\p$ chiameremo quindi $rk_\p F:=rk(F/\bot)$ \emph{rango} della faccia $F$, ove non ci sia possibilit\`a di confusione scriveremo
 pi\`u semplicemente $rk F:=rk_\p F$. Diremo inoltre che $F$ \`e una $i$-faccia.
-Notiamo che $rk(F_{-1})=-1$ e $rk(F_n)=n$ queste facce sono ovviamente le uniche di $\p$ con tali ranghi e verranno dette
+Notiamo che $rk(\bot)=-1$ e $rk(F_n)=n$ queste facce sono ovviamente le uniche di $\p$ con tali ranghi e verranno dette
 facce improprie di $\p$.
 Definiamo inoltre
 \begin{equation*}
@@ -139,7 +140,7 @@ Mostreremo nell'immediato seguito che se $F,G\in\p$ con $F\leq G$ allora
 \begin{equation*}
 rk(G/F)=rkG-rkF-1
 \end{equation*}
-In particolare $rk(F/F_{-1})=rkF$ e $rk(P/F)=n-rkF-1$. Chiameremo quest'ultimo \emph{co-rango} di $F$.
+In particolare $rk(F/\bot)=rkF$ e $rk(P/F)=n-rkF-1$. Chiameremo quest'ultimo \emph{co-rango} di $F$.
 Parlando di una catena $\Omega$ di $\p$ chiameremo \emph{tipo} di $\Omega$ l'insieme ordinato dei ranghi dei suoi elementi e scrivendo 
 $\Omega=\left\{F_{i_1},\dots,F_{i_l}\right\}$ assumeremo implicitamente che $rkF_{i_t}=i_t$, che $i_1<\cdots<i_l$ e, quindi,
 che $\Omega$ sia di tipo $(i_1,\dots,i_l)$.
@@ -158,15 +159,15 @@ Sia $\p$ un poset che soddisfi $(P1)-(P2)$, $G<F\in\p$ e inoltre $H\in F/G$, all
 \end{itemize}
 \end{lem}
 \begin{proof}
-Per quanto riguarda il primo punto, osserviamo che sia $F=F/F_{-1}$ che $G=G/G_{-1}$ e $F/G$ soddisfano le propriet\`a $(P1)-(P2)$ per
+Per quanto riguarda il primo punto, osserviamo che sia $F=F/\bot$ che $G=G/\bot$ e $F/G$ soddisfano le propriet\`a $(P1)-(P2)$ per
 \ref{P1P2Sections}, pertanto, scelti
 \begin{gather*}
-\underline{\Phi}\in\mathcal{F}(G)=\mathcal{F}(G/F_{-1}),\\
+\underline{\Phi}\in\mathcal{F}(G)=\mathcal{F}(G/\bot),\\
 \overline{\Phi}\in\mathcal{F}(F/G)
 \end{gather*}
 avremo che
 \begin{equation*}
-\Phi=\underline{\Phi}\cup\overline{\Phi}\in\mathcal{F}(F)=\mathcal{F}(F/F_{-1})
+\Phi=\underline{\Phi}\cup\overline{\Phi}\in\mathcal{F}(F)=\mathcal{F}(F/\bot)
 \end{equation*}
 quindi, avremo
 \begin{gather*}
@@ -235,7 +236,7 @@ connesso per bandiere.
 Procediamo per induzione su $n=rk\p$, non essendoci nulla da dimostrare per $n\leq 1$ supponiamo $n\geq 2$. Mostriamo che se $\p$ \`e
 fortemente connesso allora esso \`e fortemente connesso per bandiere.\\
 Siano $\Phi,\Psi\in\mathcal{F}(\p)$, due bandiere che per ora considereremo non disgiunte. Sia allora $\Omega=\Phi\cap\Psi=\left\{F_{j_1},\dots,F_{j_k}\right\}$ 
-la loro parte comune. Posto $F_{j_0}=F_{-1}$ (la faccia minima di $\p$) avremo che le sezioni $F_{j_i}/F_{j_{i-1}}$ sono fortemente connesse e, quindi,
+la loro parte comune. Posto $F_{j_0}=\bot$ (la faccia minima di $\p$) avremo che le sezioni $F_{j_i}/F_{j_{i-1}}$ sono fortemente connesse e, quindi,
 per ipotesi induttiva (essendo queste di rango strettamente minore di $n$), fortemente connesse per bandiere. \`E quindi possibile \emph{muovere} la parte di
 $\Phi$ contenuta in ognuna di queste sezioni nella relativa parte in $\Psi$. Per fissare le idee consideriamo, ad esempio, la sezione
 $\mathcal{G}_0:=F_{j_1}/F_{j_0}$.\\
@@ -277,8 +278,7 @@ F<H<G
 
 Notiamo che $(P4)$ asserisce che ogni sezione unidimensionale \`e a forma di \emph{diamante} [INSERIRE DIAGRAMMA!], da cui il nome dell'assioma. Notiamo
 inoltre che, essendo contemplato il caso $i=0$ abbiamo da questa propriet\`a che ogni $1$-faccia (lato, spigolo, \dots) ha esattamente due vertici 
-(ricordando che la faccia
-minima $F_{-1}$ \`e contenuta in ogni altra faccia del politopo).\\
+(ricordando che la faccia minima $\bot$ \`e contenuta in ogni altra faccia del politopo).\\
 In modo pi\`u compatto possiamo esprimere $(P4)$ come segue
 \begin{oss}
 Sia $\p$ politopo astratto e $F,G\in\p$ con $rkG = rkF + 2$ allora
@@ -323,11 +323,11 @@ Inoltre, seguendo il caso generale, un $2$-apeirotopo sar\`a detto \emph{apeirog
 \end{oss}
 [AGGIUNGERE DIAGRAMMI!]
 Procediamo con degli esempi e studiamo i casi pi\`u banali, ossia i politopi astratti di rango al pi\`u $2$.\\
-L'unico politopo di rango $-1$ \`e il politopo con un'unica faccia $F_{-1}(=F_n)$, questo sar\`a il politopo \emph{vuoto}.
+L'unico politopo di rango $-1$ \`e il politopo con un'unica faccia $\bot(=\top)$, questo sar\`a il politopo \emph{vuoto}.
 Passando al rango $0$, ossia i politopi \emph{punti}, un politopo $\p$ avr\`a un diagramma costituito
-da due nodi e un arco che li connette, ossia $\p=\left\{F_{-1},F_0\right\}$ con ovviamente $F_{-1}<F_0$. $F_0$ sar\`a il punto stesso.\\
-Nel caso in cui $rk\p=1$, invece, avremo un diagramma a diamante, essendo $rkF_1-rkF_{-1}=2$, cio\`e $\p$ coincide con la sua 
-$1$-sezione $F_1/F_{-1}$. Quindi $\p$ sar\`a un segmento e le sue due facce proprie saranno i suoi due vertici.\\
+da due nodi e un arco che li connette, ossia $\p=\left\{\bot,F_0\right\}$ con ovviamente $\bot<F_0$. $F_0$ sar\`a il punto stesso.\\
+Nel caso in cui $rk\p=1$, invece, avremo un diagramma a diamante, essendo $rkF_1-rk\bot=2$, cio\`e $\p$ coincide con la sua 
+$1$-sezione $F_1/\bot$. Quindi $\p$ sar\`a un segmento e le sue due facce proprie saranno i suoi due vertici.\\
 Il caso $rk\p=2$ \`e quello dei poligoni [DIAGRAMMI!].	\\
 Notiamo che un politopo potrebbe analogamente essere definito ricorsivamente. Ossia
 \begin{oss}
@@ -355,12 +355,12 @@ pertanto, applicando $(P4)$ relativamente a $\p$ avremo che la sezione $K/H$ ha 
 sezione risulta essere la stessa in $\p$ e in $F/G$
 \end{proof}
 Alla luce di quanto visto, essendo le sezioni di $\p$ esse stesse politopi, viene naturale considerare le facce di $\p$ (gli elementi del poset)
-come sottostrutture, identificando ogni $F\in\p$ con la sezione $F/F_{-1}$.
+come sottostrutture, identificando ogni $F\in\p$ con la sezione $F/\bot$.
 \begin{corol}
 Sia $\p$ un $n$-politopo e $F\in\p_k$ una sua $k$-faccia, allora $F$ \`e un $k$-politopo.
 \end{corol}
 \begin{proof}
-Per \ref{teo:SectionIsPoly} basta notare che $rk(F/F_{-1})=rkF-rkF_{-1}-1=rkF$
+Per \ref{teo:SectionIsPoly} basta notare che $rk(F/\bot)=rkF-rk\bot-1=rkF$
 \end{proof}
 
 Proseguiamo lo studio di queste strutture definendo i loro morfismi e le loro simmetrie.
@@ -557,7 +557,7 @@ catene risultano costituire un sottogruppo delle simmetrie di una sezione di $\p
 \label{prop:SectionGroups}
 Sia $\p$ un $n$-politopo. Allora
 \begin{enumerate}
-\item Se $\Omega=\left\{F_{-1},F_0,\dots,F_i,F_j,\dots F_n\right\}$ \`e una \emph{catena} di $\p$, dove $i\leq j$ allora
+\item Se $\Omega=\left\{F\bot,F_0,\dots,F_i,F_j,\dots F_n\right\}$ \`e una \emph{catena} di $\p$, dove $i\leq j$ allora
 \begin{equation*}
 \Gamma(\p)_\Omega\hookrightarrow\Gamma(F_j/F_i)
 \end{equation*}
@@ -565,7 +565,7 @@ Sia $\p$ un $n$-politopo. Allora
 \begin{equation*}
 \Gamma(\p)_V\hookrightarrow\Gamma(\p/V)
 \end{equation*}
-\item Se $F\in\p_{n-1}$ \`e una faccetta, allora $\Gamma(\p)_F$ si immerge in $\Gamma(F)(=\Gamma(F/F_{-1}))$
+\item Se $F\in\p_{n-1}$ \`e una faccetta, allora $\Gamma(\p)_F$ si immerge in $\Gamma(F)(=\Gamma(F/\bot))$
 \end{enumerate}
 \begin{proof}
 Mostriamo $(1)$. L'immersione in questione \`e data da $\phi\mapsto\phi_{\mid F_j}$ per ogni $\phi\in\Gamma(\p)_\Omega$. Chiaramente - per la monotonia degli
@@ -684,10 +684,10 @@ il numero di $j$-facce di $\p$ incidenti con una $i$-faccia fissata.
 Notiamo che per l'ipotesi di regolarit\`a sulle sezioni tale definizione \`e ben posta.
 \end{defin}
 \begin{oss}
-Siano $F\in\p_i$ e - come solito - $F_n,F_{-1}\in\p$ le facce improprie, allora
+Siano $F\in\p_i$ e - come solito - $F_n,F\bot\in\p$ le facce improprie, allora
 \begin{itemize}
 \item $N_{ij}=f_{j-i-1}(F_n/F)$ se $i\leq j$
-\item $N_{ij}=f_j(F/F_{-1})=f_j(F)$ se $i\geq j$
+\item $N_{ij}=f_j(F/\bot)=f_j(F)$ se $i\geq j$
 \end{itemize}
 Notiamo che l'ultima uguaglianza deriva dal poter considerare la $i$-faccia come politopo a s\'e stante.
 \end{oss}
@@ -826,7 +826,7 @@ $\sigma(G)=G'$ e per la monotonia di $\sigma$ abbiamo che $\sigma(F/G)=F'/G'$. p
 F/G\xrightarrow{\quad\sigma\restrict{F/G}\quad}F'/G'
 \end{equation*}
 \`e un isomorfismo tra le due sezioni $F/G$ e $F'/G'$.\\
-\point{3}Per il punto \localref{2} basta notare che una faccetta $F\in\p_{n-1}$ come politopo \`e per definizione $F/F_{-1}$\\
+\point{3}Per il punto \localref{2} basta notare che una faccetta $F\in\p_{n-1}$ come politopo \`e per definizione $F/\bot$\\
 \point{4}Nuovamente, per il punto \localref{2}, essendo le figure al vertice sezioni del tipo $\p/F$\\
 \point{5}Sia $1\leq i\leq n-1$, se $F/G$ e $F'/G'$ sono sezioni con $F,F'\in\p_{i+1}$ e $G,G'\in\p_{i-2}$, allora
 per il punto \localref{2} $F/G\cong F'/G'$, pertanto i numeri $p_i(F,G)$ e $p_i(F',G')$ coincidono, da cui l'quivelarit\`a di $\p$.\\
@@ -1014,12 +1014,12 @@ $\mathcal{D}_p=\langle \sigma,\rho\mid \rho^p=\sigma^2=1,\rho^\sigma=\rho^{-1}\r
 \end{example}
 \begin{proof}
 Per il teorema \ref{teo:Generators}, abbiamo che $\Gamma=\langle x,y\rangle$. Inoltre $\Gamma$ agisce transitivamente su $P_1$, l'insieme dei
-lati di $P$. Se $l\in P_1$, per la proposizione \ref{prop:DistSubgroups} abbiamo che $\Gamma_l=\Gamma(l/F_{-1})\cong\langle x\rangle$
+lati di $P$. Se $l\in P_1$, per la proposizione \ref{prop:DistSubgroups} abbiamo che $\Gamma_l=\Gamma(l/\bot)\cong\langle x\rangle$
 pertanto, passando alle cardinalit\`a:
 \begin{equation*}
 p=\left|P_1\right|=\left|l^\Gamma\right|=\left[\Gamma:\Gamma_l\right]=\frac{\left|\Gamma\right|}{\left|\Gamma_l\right|}
 \end{equation*}
-Essendo $\Gamma_l\cong\Gamma(l/F_{-1})$. Ma per il lemma \ref{lem:DihedralPresentations} abbiamo che $\Gamma(P)$ \`e un gruppo diedrale $\mathcal{D}_n$
+Essendo $\Gamma_l\cong\Gamma(l/\bot)$. Ma per il lemma \ref{lem:DihedralPresentations} abbiamo che $\Gamma(P)$ \`e un gruppo diedrale $\mathcal{D}_n$
 quindi concludiamo con le cardinalit\`a:
 \begin{equation*}
 2p=\left|\Gamma(P)\right|=\left|\mathcal{D}_n\right|=2n
@@ -1036,7 +1036,7 @@ Sia $\p$ un $n$-politopo regolare (con $\Phi$ bandiera di base e $(\phi_i)_{i=0}
 $F,G\in\p$ due facce di $\p$ con $G<F$ con $rkF=i$ e $rkG=j$. Allora:
 \begin{enumerate}
 \item\locallabel{1}$\Gamma(F/G)\cong\langle \phi_{j+1},\cdots,\phi_{i-1}\rangle$
-\item\locallabel{2}$\Gamma(F/F_{-1})\cong\langle \phi_0,\cdots,\phi_{i-1}\rangle$
+\item\locallabel{2}$\Gamma(F/\bot)\cong\langle \phi_0,\cdots,\phi_{i-1}\rangle$
 \item\locallabel{3}$\Gamma(\p/F)\cong\langle\phi_{i+1},\cdots,\phi_{n-1}\rangle$
 \item\locallabel{4}Se $rkF=k+1$ e $rkG=k-2$ e $\p$ \`e di tipo $\left\{p_1,\cdots,p_{n-1}\right\}$ allora
 \begin{equation}
@@ -1117,12 +1117,12 @@ Tali stabilizzatori si spezzano infatti come prodotto di loro sottogruppi normal
 Possiamo interpretare la cosa come - una volta scelta una faccia $F$ - una decomposizione dell'azione
 dello stabilizzatore di $F$ nella parte \emph{sopra} la faccia e nella parte \emph{sotto} (sostanzialmente la faccia stessa), pi\`u concisamente
 possiamo dire
-che $\Gamma_F$ sar\`a rappresentato (fedelmente) dalle due azioni sulla faccia $F$ (pi\`u propriamente $F/F_{-1}$) e sulla sua co-faccia, $\p/F$.
+che $\Gamma_F$ sar\`a rappresentato (fedelmente) dalle due azioni sulla faccia $F$ (pi\`u propriamente $F/\bot$) e sulla sua co-faccia, $\p/F$.
 \begin{lem}
 \label{lem:StabilizerFaceIsProduct}
 Sia $F\in\p_i\cap\Phi$ allora
 \begin{equation*}
-\Gamma_F=\Gamma_{i}\cong\langle\phi_0,\cdots,\phi_{i-1}\rangle\times\langle\phi_{i+1},\cdots,\phi_{n-1}\rangle\cong\Gamma(F/F_{-1})\times\Gamma(\p/F)
+\Gamma_F=\Gamma_{i}\cong\langle\phi_0,\cdots,\phi_{i-1}\rangle\times\langle\phi_{i+1},\cdots,\phi_{n-1}\rangle\cong\Gamma(F/\bot)\times\Gamma(\p/F)
 \end{equation*}
 Ossia, le simmetrie che fissano una faccia di $\p$ si scompongono nella loro azione sulle facce sopra $F$ e nell'azione su $F$ stessa.
 \end{lem}
@@ -1135,7 +1135,7 @@ Ma, per la propriet\`a dell'intersezione, \ref{prop:IntersectionProperty}, quest
 $\langle\phi_j\mid j<i\rangle\times\langle\phi_j\mid j>i\rangle$ ma questi due fattori sono effettivamente i gruppi di simmetria
 della faccia $F$ e della sua co-faccia $\p/F$ rispettivamente, infatti per \ref{prop:SelectedSubgroupsSections}, concludiamo che
 \begin{equation*}
-\langle\phi_j\mid j<i\rangle\times\langle\phi_j\mid j>i\rangle\cong\Gamma(F/F_{-1})\times\Gamma(\p/F)
+\langle\phi_j\mid j<i\rangle\times\langle\phi_j\mid j>i\rangle\cong\Gamma(F/\bot)\times\Gamma(\p/F)
 \end{equation*}
 da cui la tesi.
 \end{proof}
@@ -1451,11 +1451,11 @@ applicando \ref{lem:Connectness-Covering}, abbiamo che $\phi\restrict{F/G}$ \`e 
 \implication{2}{1}Supponiamo quindi che l'immagine di ogni sezione di $\p$ sia una sezione di $\mathcal{Q}$. Mostriamo intanto che $\phi$ risulta
 un ricoprimento. Ricordando che $\phi$ preserva rango e condizione d'adiacenza, la sua suriettivit\`a discende dalla seguente considerazione:
 \begin{equation*}
-\phi(\p)=\phi(\p/F_{-1})=\phi(\p)/\phi(F_{-1})=\mathcal{Q}/G_{-1}=\mathcal{Q}
+\phi(\p)=\phi(\p/\bot_\p)=\phi(\p)/\phi(\bot_\p)=\mathcal{Q}/\bot_\mathcal{Q}=\mathcal{Q}
 \end{equation*}
 Mostriamo ora che se $H/K$ \`e una sezione di $\mathcal{Q}$, allora questa risulta connessa. Per la suriettivit\`a di $\phi$ appena mostrata
 esiste $F\in\p$ tale che $\phi(F)=H$ ma ogni faccia sotto $H$ \`e immagine di una faccia sotto $F$,
-[PROBLEMA DI NOTAZIONE] in quanto $\phi(F/F_{-1})=\phi(F)/G_{-1}=H/G_{-1}$, pertanto sia $G\leq F\in\p$ tale che $\phi(G)=K$.\\
+in quanto $\phi(F/\bot_\p)=\phi(F)/\bot_\mathcal{Q}=H/\bot_\mathcal{Q}$, pertanto sia $G\leq F\in\p$ tale che $\phi(G)=K$.\\
 Siano $L',L''\in H/K$, mostriamo che queste sono connesse da una catena di facce (proprie) in $H/K$. Per ipotesi abbiamo che
 $\phi(F)/\phi(G)=H/K$ pertanto esisteranno $T',T''\in F/G$ tali che $\phi(T')=L'$ e $\phi(T'')=L''$, per la connessione di $F/G$ avremo inoltre che
 esiste una successione di facce proprie $T'=S_0,\cdots,S_k=T''$ che connette $T'$ a $T''$. Allora l'immagine della successione, cio\`e
