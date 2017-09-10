@@ -1382,7 +1382,8 @@ Cio\`e \localref{3}.
 Cominciamo a sviluppare gli strumenti che servono per definire il quoziente di un politopo. Questo verr\`a definito quozientando rispetto all'azione di
 determinati sottogruppi di simmetrie del politopo in questione, per avere un'identificazione di facce che sia compatibile con la struttura di politopo.
 Cionondimeno sar\`a necessario - in una prima parte - indebolire il concetto di politopo non richiedendo pi\`u la \emph{forte connessione} ottendendo
-quindi una struttura che prende il nome di \emph{prepolitopo}. I naturali e pi\`u usati morfismi tra prepolitopi sono le \emph{rap-map}.
+quindi una struttura che prende il nome di \emph{prepolitopo}. In questo contesto dovremo rafforzare le richieste sui morfismi tra politopi
+definendo cos\`i le \emph{rap-map}.
 \subsection{Prepolitopi}
 Cominciamo quindi con le definizioni del caso circa i prepolitopi e le rap-map.
 \begin{defin}[Prepolitopo]
@@ -1391,14 +1392,14 @@ $\p$ un prepolitopo di rango $n$ dato dall'assioma $(P2)$.
 \end{defin}
 Notiamo come i concetto di bandiera, rango, adiacenza e sezione continuino ad avere senso e ad essere definiti allo stesso modo per un prepolitopo.
 Introduciamo ora le pi\`u importanti mappe nel contesto dei prepolitopi: le cosiddette \emph{rap-map}. L'acronimo sta per \emph{rank adjacency preserving}.
-Infatti tali mappe preservano il rango delle facce e la relazione di adiacenza tra bandiere nei prepolitopi.
+Infatti tali particolari morfismi preservano il rango delle facce e la relazione di adiacenza tra bandiere nei prepolitopi.
 \begin{defin}
-Siano $\p$ e $\mathcal{Q}$ due prepolitopi dello stesso rango $n$. Allora una funzione $\phi:\p\longrightarrow\mathcal{Q}$ che soddisfi:
+Siano $\p$ e $\mathcal{Q}$ due prepolitopi dello stesso rango $n$. Allora un omomorfismo $\phi:\p\longrightarrow\mathcal{Q}$ che soddisfi:
 \begin{enumerate}
 \item $rk(\phi(F))=rk(F)$ per ogni $F\in\p$ e
 \item se $\Phi,\Psi\in\flag{\p}$ sono incidenti allora lo sono anche $\phi(\Phi)$ e $\phi(\Psi)$ in $\mathcal{Q}$
 \end{enumerate}
-\`e detta \emph{rap-map}.
+\`e detto una \emph{rap-map}.
 \end{defin}
 Per definire i quozienti sar\`a chiaramente importante il caso in cui una rap-map sar\`a suriettiva.
 \begin{defin}
@@ -1410,24 +1411,65 @@ $\phi$ \`e un $k$-ricoprimento.
 Osserviamo che particolarmente interessante sar\`a per $n$-prepolitopi il caso degli $(n-1)$-ricoprimenti, in quanto questi
 preservano la struttura delle figure al vertice e delle facce.\\
 Cominciamo quindi a vedere come si comportino queste mappe con un primo risultato.
-\begin{lem}[Ricoprimento]
+\begin{lem}
+\label{lem:Connectness-Covering}
 Siano $\p$ e $\mathcal{Q}$ due $n$-prepolitopi e $\phi:\p\longrightarrow\mathcal{Q}$ una rap-map. Se $\mathcal{Q}$ \`e connesso per bandiere allora
 $\phi$ \`e un ricoprimento.
 \end{lem}
 \begin{proof}
 Dobbiamo mostrare che sotto le ipotesi, $\phi$ risulta suriettiva. Sia pertanto $G\in\mathcal{G}$. Scelta $\Phi$ una bandiera di $\p$, notiamo che,
 come nel caso di politopi, essa ha tipo $(-1,\cdots,n)$ ed, essendo $\phi$ una rap-map, $\phi(\Phi)$ ha il medesimo tipo ed \`e pertanto una bandiera
-di $\mathcal{G}$. Per sfruttare l'ipotesi di connessione (per bandiere) di $G$ estendiamo $\{G\}$ a una bandiera $\Psi\in\flag{\mathcal{G}}$. Avremo
-quindi che esisteranno ranghi $-1<r_0\leq\cdots\leq r_l<n$ tali che
+di $\mathcal{Q}$. Per sfruttare l'ipotesi di connessione (per bandiere) di $\mathcal{Q}1$ estendiamo $\{G\}$ a una bandiera
+$\Psi\in\flag{\mathcal{G}}$. Avremo quindi che esisteranno ranghi $-1<r_0\leq\cdots\leq r_l<n$ tali che
 \begin{equation*}
-0
+\Psi=\phi(\Phi)^{r_0\cdots r_l}=\phi(\Phi^{r_0\cdots r_l})=:\phi(\Phi')
 \end{equation*}
+pertanto $G\in\Psi=\phi(\Phi')\subseteq\phi(\p)$ da cui la suriettivit\`a.
+\end{proof}
+Essendo interessati principalmente ai politopi vediamo una propriet\`a interessante che ci garantisce che l'immagine di un politopo tramite
+una rap-map sia anch'essa un politopo (quindi sostanzialmente che sia fortemente connesso, ossia $(P4)$).\\
+Una condizione necessaria e sufficiente \`e che la mappa sia "localmente suriettiva'' in un certo senso, pi\`u formalmente che mandi sezioni
+del dominio in sezioni del codominio. Vediamo quindi la seguente:
+\begin{prop}
+\label{prop:PrepolytopeCovering}
+Siano $\p$ un politopo e $\mathcal{Q}$ un prepolitopo, entrambi di rango $n$, e $\phi:\p\longrightarrow\mathcal{Q}$ una rap-map. Allora sono equivalenti:
+\begin{itemize}
+\item$\mathcal{Q}$ \`e un politopo
+\item$\phi(F/G)=\phi(F)/\phi(G)$ per ogni $G\leq F\in\p$
+\end{itemize}
+Inoltre, quando ci\`o accade, $\mathcal{Q}$ risulta ricoperto da $\p$ a mezzo di $\phi$.
+\end{prop}
+\begin{proof}
+\implication{1}{2}Supponiamo dapprima che $\mathcal{Q}$ sia un politopo. Sia $F/G$ una sezione di $\p$, vogliamo mostrare che anche $\phi(F/G)$
+risulta sezione (di $\mathcal{Q}$), ossia che $\phi(F/G)=\phi(F)/\phi(G)$.\\
+Essendo $\p$ e $\mathcal{Q}$ entrambi politopi abbiamo che le due sezioni $F/G$ e $\phi(F)/\phi(G)$ sono politopi e che
+\begin{equation*}
+\phi\restrict{F/G}:F/G\longrightarrow\phi(F)/\phi(G)\subseteq\mathcal{Q}
+\end{equation*}
+risulta ancora una rap-map. Inoltre notiamo che - per la forte connessione di $\mathcal{Q}$ - la sezione $\phi(F)/\phi(G)$ \`e connessa, da cui,
+applicando \ref{lem:Connectness-Covering}, abbiamo che $\phi\restrict{F/G}$ \`e suriettiva su $\phi(F)/\phi(G)$, cio\`e quanto si voleva mostrare.\\
+\implication{2}{1}Supponiamo quindi che l'immagine di ogni sezione di $\p$ sia una sezione di $\mathcal{Q}$. Mostriamo intanto che $\phi$ risulta
+un ricoprimento. Ricordando che $\phi$ preserva rango e condizione d'adiacenza, la sua suriettivit\`a discende dalla seguente considerazione:
+\begin{equation*}
+\phi(\p)=\phi(\p/F_{-1})=\phi(\p)/\phi(F_{-1})=\mathcal{Q}/G_{-1}=\mathcal{Q}
+\end{equation*}
+Mostriamo ora che se $H/K$ \`e una sezione di $\mathcal{Q}$, allora questa risulta connessa. Per la suriettivit\`a di $\phi$ appena mostrata
+esiste $F\in\p$ tale che $\phi(F)=H$ ma ogni faccia sotto $H$ \`e immagine di una faccia sotto $F$,
+[PROBLEMA DI NOTAZIONE] in quanto $\phi(F/F_{-1})=\phi(F)/G_{-1}=H/G_{-1}$, pertanto sia $G\leq F\in\p$ tale che $\phi(G)=K$.\\
+Siano $L',L''\in H/K$, mostriamo che queste sono connesse da una catena di facce (proprie) in $H/K$. Per ipotesi abbiamo che
+$\phi(F)/\phi(G)=H/K$ pertanto esisteranno $T',T''\in F/G$ tali che $\phi(T')=L'$ e $\phi(T'')=L''$, per la connessione di $F/G$ avremo inoltre che
+esiste una successione di facce proprie $T'=S_0,\cdots,S_k=T''$ che connette $T'$ a $T''$. Allora l'immagine della successione, cio\`e
+$L'=\phi(S_0),\cdots,\phi(S_k)=L''$ sar\`a formata da facce proprie ($\phi$ preserva il rango delle facce) di $H/K$ che connettono
+($phi$ essendo un omomorfismo rispetta l'adiacenza tra le facce) $L'$ a $L''$, da cui connessione di $H/K$ e quindi per la genericit\`a della scelta
+della sezione in $\mathcal{Q}$, la forte connessione di $\mathcal{Q}$.
+$\perp$
+
 \end{proof}
 \end{document}
 
 
 % Dire che F e 0 sono massimo e minimo risp.
-% Cambiare notazione, tipo x\in P?
+% Cambiare notazione, tipo x\in P? Lo preferirei molto in verit\`a
 % Cambiare altre notazioni, fare un TODO, aggiornare tutto con \flag
 % · Classificare i poligoni
 % · Corrispondenza di Galois
