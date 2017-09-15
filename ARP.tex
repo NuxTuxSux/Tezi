@@ -1462,6 +1462,7 @@ esiste una successione di facce proprie $T'=S_0,\cdots,S_k=T''$ che connette $T'
 $L'=\phi(S_0),\cdots,\phi(S_k)=L''$ sar\`a formata da facce proprie ($\phi$ preserva il rango delle facce) di $H/K$ che connettono
 ($phi$ essendo un omomorfismo rispetta l'adiacenza tra le facce) $L'$ a $L''$, da cui connessione di $H/K$ e quindi per la genericit\`a della scelta
 della sezione in $\mathcal{Q}$, la forte connessione di $\mathcal{Q}$.
+\end{proof}
 
 La proposizione \ref{prop:PrepolytopeCovering} appena vista sostanzialmente ci d\`a una condizione necessaria e sufficiente affinch\`e l'immagine di
 un politopo (basta chiedere che sia semplicemente codominio) tramite una rap-map sia anch'essa un politopo. In effetti tale condizione esprime
@@ -1473,8 +1474,46 @@ Siano $\p$ politopo, $\mathcal{Q}$ un prepolitopo e $\phi:\p\longrightarrow\math
 se e solo se per ogni $G\leq F\in\p$ e per ogni $\phi(G)\leq\tilde{H}\leq\phi(F)$ esiste una $G\leq H\leq F$ tale che ${H}=\phi(H)$
 \end{corol}
 
+\subsection{Definizioni e prime considerazioni}
+Adesso siamo nelle condizioni di poter definire il quoziente di un politopo e di mostrare quali propriet\`a si perdono e sotto quali condizioni
+tale quoziente (a priori un semplice poset) risulti ancora un politopo, caso che maggiormente ci interessa. I quozienti di strutture sono normalmente
+dati da \emph{opportune} relazioni d'equivalenza e dal conseguente morfismo di proiezione. In questo caso, perché la relazione sia in qualche
+modo compatibile con la struttura del politopo, faremo s\`i che questa proceda identificando facce coniugate a meno di certi automorfismi scelti.
+Ossia, scelto un sottogruppo di simmetrie del politopo, considereremo l'equivalenza a meno dell'azione del sottogruppo in questione.
+Riflettiamo un momento sui due casi estremi: se il sottogruppo \`e $\{1\}\leq\Gamma_\p$ allora chiaramente il quoziente ci restituir\`a $\p$ stesso
+identificando ogni faccia solo con se stessa. Il caso opposto \`e pi\`u delicato, otterremo un poset con a priori non sar\`a un politopo, ad esempio
+gi\`a nel caso in cui $\p$ sia regolare, tale quoziente incoller\`a ogni faccia con le sue pari rango, dando luogo sostanzialmente ad una bandiera.
+Anche per questo motivo ci serviranno condizioni che ci assicurino che l'operazione di quoziente rimanga interna. Cominciamo con le definizioni.
 
+\begin{defin}
+Sia $\p$ un $n$-politopo con gruppo di simmetria $\Gamma$ e $\Sigma\leq\Gamma$ un sottogruppo di quest'ultimo. Allora ricordiamo che (in seguito all'azione
+di $\Gamma$ su $\p$) \`e definito
+\begin{equation*}
+\p/\Sigma=\left\{F^\Sigma\mid F\in\p\right\}
+\end{equation*}
+l'insieme delle orbite a mezzo del sottogruppo $\Sigma$ di $\Gamma$. Inoltre tale insieme eredita l'ordine da $\p$ ponendo
+\begin{equation*}
+G'\leq F'\text{ se esistono }F\in F',G\in G'\text{ tali che }G\leq F
+\end{equation*}
+Chiameremo $\p/\Sigma$ il quoziente di $\p$ rispetto a $\Sigma$. Ricordiamo inoltre che
+\begin{equation*}
+\phi:\p\longrightarrow\p/\Sigma
+\quad F\longmapsto F^\Sigma
+\end{equation*}
+prende il nome di \emph{proiezione canonica}
+\end{defin}
+Cominciamo a vedere di che propriet\`a gode il quoziente, essendo a priori semplicemente un poset.
+\begin{prop}
+\label{prop:QuotientP1P2}
+Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma(\p)$ un sottogruppo di sue simmetrie. Allora il poset quoziente $\p/\Sigma$ gode degli assiomi $(P1)$ e $(P2)$
+di politopo, con rango $n$.
+\end{prop}
+\begin{proof}
+\point{P1}Chiaramente $\bot^\Sigma$ e $\top^\Sigma$ sono rispettivamente il minimo e il massimo di $\p/\Sigma$. Sia infatti $F^\Sigma\in\p/\Sigma$
+allora $\bot\leq F\leq\top$ da cui $\bot^\Sigma\leq F^\Sigma\leq\top^\Sigma$
 \end{proof}
+\point{P2}Notiamo che se $F\in\p$ allora ogni elemento di $F^\Sigma$ ha lo stesso rango di $F$.[CONTINUA]
+
 \end{document}
 
 
