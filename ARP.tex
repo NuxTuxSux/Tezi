@@ -1496,13 +1496,22 @@ l'insieme delle orbite a mezzo del sottogruppo $\Sigma$ di $\Gamma$. Inoltre tal
 G'\leq F'\text{ se esistono }F\in F',G\in G'\text{ tali che }G\leq F
 \end{equation*}
 Chiameremo $\p/\Sigma$ il quoziente di $\p$ rispetto a $\Sigma$. Ricordiamo inoltre che
-\begin{equation*}
-\phi:\p\longrightarrow\p/\Sigma
-\quad F\longmapsto F^\Sigma
-\end{equation*}
+\begin{gather*}
+\phi:\p\longrightarrow\p/\Sigma\\
+\quad F\mapsto F^\Sigma
+\end{gather*}
 prende il nome di \emph{proiezione canonica}
 \end{defin}
-Cominciamo a vedere di che propriet\`a gode il quoziente, essendo a priori semplicemente un poset.
+\begin{oss}
+\label{oss:QuotientPolytopeIsPoset}
+Osserviamo che - anche se in genere il quoziente di un poset non \`e un poset - nel caso dei politopi questa propriet\`a si preserva, grazie al rango
+\end{oss}
+\begin{proof}
+L'unica propriet\`a interessante da verificare per l'ordine (per comodit\`a stretto) che indichiamo $<_\Sigma$ indotto dall'ordine di $\p$ \`e
+l'antisimmetria. Ma se $F^\Sigma,G^\Sigma\in\p/\Sigma$ sono tali che $G^\Sigma<_\Sigma F^\Sigma$ allora, preservando gli elementi di $\Sigma$ il rango
+delle facce, avremo necessariamente $rkG<rkF$ da cui consegue che non potr\`a valere anche $F^\Sigma<_\Sigma G^\Sigma$
+\end{proof}
+Cominciamo quindi a vedere di che propriet\`a gode il quoziente, essendo - come appena visto - a priori semplicemente un poset.
 \begin{prop}
 \label{prop:QuotientP1P2}
 Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma(\p)$ un sottogruppo di sue simmetrie. Allora il poset quoziente $\p/\Sigma$ gode degli assiomi $(P1)$ e $(P2)$
@@ -1514,15 +1523,19 @@ allora $\bot\leq F\leq\top$ da cui $\bot^\Sigma\leq F^\Sigma\leq\top^\Sigma$
 \end{proof}
 \point{P2}Notiamo che se $F\in\p$ allora ogni elemento di $F^\Sigma$ ha lo stesso rango di $F$. Quindi sia
 \begin{equation*}
-\upsilon=\left\{F_i^\Sigma\right\}_{i=-1}^m
+\Upsilon=\left\{F_i^\Sigma\right\}_{i=-1}^m
 \end{equation*}
-una bandiera di $\p/\Sigma$ e $F_i^\Sigma<F_{i+1}^\Sigma$, allora esistono $\phi,\psi\in\Sigma$ tali che $F_i^\phi<F_{i+1}^\psi$ o
-$F_i<F_{i+1}^{\psi\phi^{-1}}$[CONTINUARE]
+una bandiera di $\p/\Sigma$. Mostriamo che tale bandiera deve avere cardinalit\`a $n+2$ (come le bandiere di $\p$)
+Supponiamo d'apprima per assurdo che vi siano $F_i^\Sigma<F_{i+1}^\Sigma$ con $rkF_{i+1}>rkF_i+1$, per definizione esistono $\phi,\psi\in\Sigma$
+tali che $F_i^\phi<F_{i+1}^\psi$ cio\`e $F_i<F_{i+1}^{\psi\phi^{-1}}$. Essendo per\`o $\p$ un politopo avremo che esister\`a $G\in\p$ tale che
+$F_i<G<F_{i+1}^{\psi\phi^{-1}}$ (avendo supposto $rkF_{i+1}>rkF_i+1=rkF^{\psi\phi^{-1}}+1$). Pertanto avremo che $F_i^\Sigma<H^\Sigma<F_{i+1}^\Sigma$
+contro la massimalit\`a di $\Upsilon$.\\
+Pertanto essendo necessariamente $\bot^\Sigma\in\Upsilon$, avremo che $rkF_i=i$ e quindi $m+2=\left|\Upsilon\right|=rkF_m+2=rk\top+2=n+2$.
 
 \end{document}
 
 
-% Dire che F e 0 sono massimo e minimo risp.
+% Dire che \p e 0 sono massimo e minimo risp.
 % Cambiare notazione, tipo x\in P? Lo preferirei molto in verit\`a
 % Cambiare altre notazioni, fare un TODO, aggiornare tutto con \flag
 % · Classificare i poligoni
