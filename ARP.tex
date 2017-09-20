@@ -1514,13 +1514,13 @@ delle facce, avremo necessariamente $rkG<rkF$ da cui consegue che non potr\`a va
 Cominciamo quindi a vedere di che propriet\`a gode il quoziente, essendo - come appena visto - a priori semplicemente un poset.
 \begin{prop}
 \label{prop:QuotientP1P2}
-Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma(\p)$ un sottogruppo di sue simmetrie. Allora il poset quoziente $\p/\Sigma$ gode degli assiomi $(P1)$ e $(P2)$
+Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma(\p)$ un sottogruppo di sue simmetrie. Allora il poset quoziente $\p/\Sigma$ \`e connesso
+per bandiere e gode degli assiomi $(P1)$ e $(P2)$
 di politopo, con rango $n$.
 \end{prop}
 \begin{proof}
 \point{P1}Chiaramente $\bot^\Sigma$ e $\top^\Sigma$ sono rispettivamente il minimo e il massimo di $\p/\Sigma$. Sia infatti $F^\Sigma\in\p/\Sigma$
 allora $\bot\leq F\leq\top$ da cui $\bot^\Sigma\leq F^\Sigma\leq\top^\Sigma$
-\end{proof}
 \point{P2}Notiamo che se $F\in\p$ allora ogni elemento di $F^\Sigma$ ha lo stesso rango di $F$. Quindi sia
 \begin{equation*}
 \Upsilon=\left\{F_i^\Sigma\right\}_{i=-1}^m
@@ -1530,12 +1530,101 @@ Supponiamo d'apprima per assurdo che vi siano $F_i^\Sigma<F_{i+1}^\Sigma$ con $r
 tali che $F_i^\phi<F_{i+1}^\psi$ cio\`e $F_i<F_{i+1}^{\psi\phi^{-1}}$. Essendo per\`o $\p$ un politopo avremo che esister\`a $G\in\p$ tale che
 $F_i<G<F_{i+1}^{\psi\phi^{-1}}$ (avendo supposto $rkF_{i+1}>rkF_i+1=rkF^{\psi\phi^{-1}}+1$). Pertanto avremo che $F_i^\Sigma<H^\Sigma<F_{i+1}^\Sigma$
 contro la massimalit\`a di $\Upsilon$.\\
-Pertanto essendo necessariamente $\bot^\Sigma\in\Upsilon$, avremo che $rkF_i=i$ e quindi $m+2=\left|\Upsilon\right|=rkF_m+2=rk\top+2=n+2$.
+Pertanto essendo necessariamente $\bot^\Sigma\in\Upsilon$, avremo che $rkF_i=i$ e quindi $m+2=\left|\Upsilon\right|=rkF_m+2=rk\top+2=n+2$.\\
+Notiamo infine che - per la suriettivit\`a della mappa $\pi:\flag{\p}\longrightarrow\flag{\p/\Sigma}$ e il fatto che questa preservi l'adiacenza
+tra bandiere - avremo la connessione per bandiere di $\p/\Sigma$.
+\end{proof}
+\`E bene notare che in genere il quoziente $\p/\Sigma$ non sar\`a un politopo, abbiamo mostrato come questo sar\`a connesso (per bandiere) ma non sar\`a
+necessariamente fortemente connesso (per bandiere). Tuttavia soddisfa una versione un po' pi\`u forte della normale connessione per bandiere.
+Come nella forte connessione si richiede che segmenti iniziali e finali di una bandiera rimangano fissi, considerandone tutte le bandiere adiacenti,
+nel caso di $\p/\Sigma$ possiamo \emph{fissare} una singola faccia nella bandiera considerandone le adiacenti. Ossia
+\begin{oss}
+\label{oss:ConnectionFixingFace}
+Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma_\p$ allora, se $F^\Sigma\in\p/\Sigma$ \`e una faccia contenuta nelle bandiere $\Upsilon$ e $\Upsilon'$
+allora tali bandiere sono connesse da una successione di bandiere che contengono anch'esse $F^\Sigma$
+\end{oss}
+\begin{proof}
+[OMISSIS]
+\end{proof}
+Da questo possiamo dedurre la seguente versione indebolita della forte connessione
+\begin{oss}
+Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma_\p$, allora le sezioni di rango $n-1$, ossia le faccette e le figure al vertice di $\p/\Sigma$ sono
+connesse per bandiere.
+\end{oss}
+\begin{proof}
+Ovvio da \ref{oss:ConnectionFixingFace}
+\end{proof}
+Essendo noi interessati chiaramente al caso in cui il quoziente di un politopo continui ad essere politopo, abbiamo bisogno di un criterio per
+garantire che si sia in questo caso. Notiamo a tal fine che ci\`o che ci manca, avendo mostrato che il quoziente di un politopo \`e un poset
+connesso per bandiere che soddisfa $(P1)-(P2)$, \`e il fatto che tale quoziente soddisfi anche $(P3)$ e $(P4)$, ossia la forte connessione e la
+diamond property.\\
+Osserviamo che entrambe queste propriet\`a sono esprimibili naturalmente tramite le sezioni del politopo (o, nel nostro caso, del poset $\p/\Sigma$).
+Vogliamo quindi capire \emph{in che modo si comportano le operazioni di sezione e di quoziente su un politopo}.\\
+Pi\`u concretamente, fissate due facce $G<F\in\p$ di ranghi $f$ e $g$ rispettivamente, possiamo considerare la sezione $F/G$ e ci chiediamo in che
+modo questa si ripresenti nel quoziente rispetto a $\Sigma$. Per poter ``guardare solo dentro" $F/G$ ignorando per cos\`i dire il resto,
+completiamo $\{F,G\}$ in alto e in basso, prendendo ossia una catena $\Omega$ che contenga $F$ e $G$ e di tipo
+\begin{equation*}
+(-1,0,\cdots,f-1,f,g,g+1,\cdots,n-1,n)
+\end{equation*}
+e consideriamo il suo stabilizzatore (rispetto al sottogruppo $\Sigma$)
+\begin{equation*}
+\Sigma_\Omega=\left\{\sigma\in\Sigma\mid\Omega^\sigma=\Omega\right\}
+\end{equation*}
+A questo punto $\Sigma_\Omega$ indurr\`a un \emph{raffinamento} del quoziente $\p/\Sigma$ con mappa quoziente
+\begin{equation}
+\label{eq:betaMap}
+\beta:F/G\longrightarrow\frac{(F/G)}{\Sigma_\Omega}
+\end{equation}
+che ci \`e pi\`u comodo rispetto alla sezione $G/F$, restando definito il morfismo
+\begin{gather}
+\label{eq:gammaMap}
+\gamma:\frac{F/G}{\Sigma_\Omega}\longrightarrow \pi(F)/\pi(G)\\
+\quad H^{\Sigma_\Omega}\longmapsto H^\Sigma
+\end{gather}
+Che ci fa vedere il quoziente (tramite $\Sigma_\Omega$) della sezione $F/G$ come sezione delle ovvie facce nel quoziente (tramite $\Sigma$).
+Quello che abbiamo \`e che tali morfismi si comportano bene, ossia la loro composizione
+\begin{equation*}
+\gamma\beta:F/G\longrightarrow\pi(F)/\pi(G)
+\end{equation*}
+coincide con $\pi$, o meglio con la sua restrizione alla sezione $F/G$, $\pi\restrict{F/G}$. Questo ci garantisce una sorta di compatibilit\`a tra
+le operazioni di quoziente e di sezione che ci servir\`a nell'immediato seguito.
+Possiamo infatti adesso enunciare un utile criterio per capire se un certo quoziente di un politopo sar\`a ancora un politopo.
+\begin{prop}
+\label{prop:QuotientIsPolitope}
+Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma_\p$ un gruppo di sue simmetrie. Allora il quoziente $\p/\Gamma$ risulta un ($n$-)politopo se e solo se
+valgono per le mappe $\beta$ e $\gamma$ di cui a \ref{eq:betaMap}, \ref{eq:gammaMap}, le seguenti propriet\`a:
+\begin{enumerate}
+\item$\gamma$ risulta suriettiva per ogni scelta di $F$, $G$ e $\Omega$\\
+\item sia $\beta$ che $\gamma$ sono suriettive per ogni scelta di $F/G$ segmento ($1$-sezione) di $\p$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Dapprima notiamo che $\gamma$ se e solo se lo \`e la restrizione $\pi\restrict{G/F}$, inoltre $\p/\Sigma$ soddisfa la diamond property, $(P4)$, 
+se e solo se $\beta$ e $\gamma$ sono isomorfismi quando si considerano $1$-sezioni (essendo che $\p$ soddisfa esso stesso la diamond property).
+A questo punto possiamo concludere grazie a \ref{prop:PrepolytopeCovering}, avendo mostrato che i quozienti di sezioni di $\p$ sono effettivamente
+sezioni e ricordando che $\p/\Sigma$ soddisfa $(P1)-(P2)$ per \ref{prop:QuotientP1P2}.
+\end{proof}
+Continuiamo lo studio dei quozienti vedendo in che modo sono collegte le bandiere di $\p$ e di un suo quoziente. Esplicitamo quindi intanto la mappa che
+manda bandiere del primo nel secondo.
+\begin{defin}
+\label{def:mu}
+Sia $\p$ un $n$-politopo, allora ad ogni bandiera $\phi\in\flag{\p}$ possiamo associare la sua immagine tramite la mappa quoziente $\pi$
+(bandiera di $\p/\Sigma$). Inoltre \`e anche definita la naturale azione di $\Sigma$ sull'insieme $\flag{\p}$. Definiamo quindi
+\begin{gather*}
+\mu:\flag{\p}/\Sigma\longrightarrow\flag{\p/\Sigma}\\
+\quad\Phi^\Sigma\longmapsto\pi(\Phi)
+\end{gather*}
+che risulta chiaramente ben definita.
+\end{defin}
+\begin{oss}
+Notiamo che, dalla dimostrazione di \ref{prop:QuotientP1P2}, abbiamo che la mappa $\mu$ di cui alla \ref{def:mu} risulta suriettiva
+\end{oss}
+
+
+
 
 \end{document}
 
-
-% Dire che \p e 0 sono massimo e minimo risp.
 % Cambiare notazione, tipo x\in P? Lo preferirei molto in verit\`a
 % Cambiare altre notazioni, fare un TODO, aggiornare tutto con \flag
 % · Classificare i poligoni
