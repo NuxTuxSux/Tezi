@@ -1595,7 +1595,7 @@ Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma_\p$ un gruppo di sue simmetrie. All
 valgono per le mappe $\beta$ e $\gamma$ di cui a \ref{eq:betaMap}, \ref{eq:gammaMap}, le seguenti propriet\`a:
 \begin{enumerate}
 \item$\gamma$ risulta suriettiva per ogni scelta di $F$, $G$ e $\Omega$\\
-\item sia $\beta$ che $\gamma$ sono suriettive per ogni scelta di $F/G$ segmento ($1$-sezione) di $\p$
+\item sia $\beta$ che $\gamma$ sono iniettive per ogni scelta di $F/G$ segmento ($1$-sezione) di $\p$
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -1628,7 +1628,57 @@ la mappa relativa alle bandiere, $\mu$ (\ref{def:mu}) \`e una biiezione se e sol
 un isomorfismo
 \end{lem}
 \begin{proof}
-[FARE]
+Abbiamo intanto che per \ref{prop:QuotientIsPolitope} le mappe $\gamma$ sono suriettive. Pertanto dimostriamo che queste risultano anche iniettive
+assumendo che $\p/\Sigma$ sia un politopo e che $\mu$ sia una biiezione.
+Siano $F,G$ e $\Omega$ come da ipotesi e supponiamo che $H,K\in F/G$ siano tali che $H^\Sigma=K^\Sigma$, vogliamo mostrare che tali facce
+sono equivalenti anche ``guardando" solo dentro $F/G$ ossia a mezzo di un elemento dello stabilizzatore $\Sigma_\Omega$.\\
+Estendiamo quindi $\Omega$ a bandiere di $\p$ sia con $H$ che con $K$, siano cio\`e $\Phi,\Psi\in\flag{\p}$ tali che
+$\Omega\subseteq\Phi,\Psi$, $H\in\Phi$ e $K\in\Psi$. Prendiamo le loro immagini nel quoziente,
+\begin{gather*}
+\Phi^\Sigma=\left\{J^\Sigma\mid J\in\Phi\right\}\\
+\Psi^\Sigma=\left\{J^\Sigma\mid J\in\Psi\right\}
+\end{gather*}
+che saranno bandiere di $\p/\Sigma$ contenenti la faccia $H^\Sigma(=K^\Sigma)$. A questo punto usiamo l'ipotesi di politopicit\`a di $\p$ trovando
+una successione di bandiere che le connettono dentro la sezione $F^\Sigma/G^\Sigma$ (e quindi estendendo $\Omega^\Sigma$):
+\begin{equation*}
+\Phi^\Sigma=\Upsilon_0,\cdots,\Upsilon_m=\Psi^\Sigma
+\end{equation*}
+Dove ogni $\Upsilon_i$ \`e adiacente ad $\Upsilon_{i+1}$ differendo per un rango $j(i)\neq rk(H^\Sigma)=rkH$. Ora, per la suriettivit\`a della mappa
+$\mu$ tali bandiere proverranno da bandiere di $\p$, ossia per ogni $0\leq i\leq m$ $\Upsilon_i=\Phi_i^\Sigma$ e a meno di moltiplicare pe un elemento
+di $\Sigma_\Omega$ possiamo supporre $\Phi_0=\Phi$.\\
+Ricordando che, per l'iniettivit\`a di $\gamma\beta:F/G\longrightarrow F^\pi/G^\pi$ di cui a \ref{prop:QuotientIsPolitope}, bandiere adiacenti
+non possono essere identificate nel quoziente (se tale quoziente \`e come nelle ipotesi un politopo) abbiamo che la mappa
+$\mu\pi:\flag{\p}\longrightarrow\flag{\p/\Sigma}$ manda bandiere adiacenti in bandiere adiacenti, perci\`o possiamo scegliere le $\Phi_i$ in modo
+che $\Phi_{i}$ e $\Phi_{i+1}$ siano $j(i)$-adiacenti. Questo, nel quoziente, ci d\`a una successione:
+\begin{equation*}
+\Phi^\Sigma=\Phi_0^\Sigma,\cdots,\Phi_m^\Sigma=\Psi^\Sigma
+\end{equation*}
+Pur non potendo concludere che $\Phi_m=\Psi$ notiamo che essendo $rkF<j(i)<rkG$ e $j(i)\neq rkH$ per ogni $0\leq i\leq m$, ogni bandiera
+$\Phi_i$ deve contenere sia $H$ che $\Omega$.\\
+Inoltre, essendo $\Phi_m^\Sigma=\Psi^\Sigma$ esiste $\sigma\in\Sigma$ tale che $\Phi_m^\sigma=\Psi$ per cui $H^\sigma=K$ ma, essendo
+$\Omega\subseteq\Psi,\Phi_m$, abbiamo che $\sigma(\Omega)=\Omega$, ossia $\sigma\in\Sigma_\Omega$, e quindi le facce $H$ e $K$ sono 
+equivalenti anche rispetto a $\Sigma_\Omega$, ossia $H^{\Sigma_\Omega}=K^{\Sigma_\Omega}$ da cui, come volevasi dimostrare, l'iniettivit\`a
+di $\gamma$.\\
+Viceversa, assumiamo che ogni $\gamma:\frac{F/G}{\Sigma_\Omega}\longrightarrow\frac{F^\pi}{G^\pi}$ sia un isomorfismo e mostriamo
+l'iniettivit\`a di $\mu:\flag{\p}/\Sigma\longrightarrow\flag{\p/\Sigma}$. Siano quindi $\Phi,\Psi\in\flag{\p}$ due bandiere
+\begin{gather*}
+\Phi=\left\{F_{-1},\dots,F_n\right\}\\
+\Psi=\left\{G_{-1},\dots,G_n\right\}
+\end{gather*}
+le cui facce siano equivalenti (nel rispetto del rango) ossia le cui immagini coincidano in $\flag{\p/\Sigma}$. Allora esisteranno elementi
+$\sigma_i\in\Sigma$ tali che $F_i^{\sigma_i}=G_i$ ma noi vogliamo mostrare che esiste anche un elemento di $\Sigma$ che mandi la bandiera $\Phi$
+\emph{interamente} in $\Psi$.\\
+Procediamo per induzione su $j$ che esiste un $\sigma\in\Sigma$ tale che
+\begin{equation*}
+F_i^\sigma=G_i\qquad\text{per ogni }0\leq i\leq j
+\end{equation*}
+Per $j=0$ l'asserto \`e vero per ipotesi, se $j\geq 1$ sia $\phi\in\Sigma$ tale che $F_i^\phi=G_i$ per ogni $0\leq i<j$.
+Allora abbiamo che $G_{j-1}\in F_j^\phi,G_j$ concentriamoci quindi sulla sezione $\top/G_{j-1}$ e scegliamo la catena
+$\Omega=\{\bot,G_0,\dots,G_{j-1},\top\}$, abbiamo che le due facce $G_j$ e $F_j^\phi$ sono equivalenti tramite $\Sigma$ (per ipotesi), applicando adesso
+la biiettivit\`a di $\gamma:\frac{\top/G_{j-1}}{\Sigma_\Omega}\longrightarrow\frac{\top^\pi}{G_{j-1}^\pi}$ otteniamo che tali facce sono
+nella equivalenti \emph{anche} rispetto alla pi\`u fine equivalenza indotta da $\Sigma_\Omega$. Se, quindi, $\psi\in\Sigma_\Omega$ \`e tale
+che $F_j^{\phi\psi}=G_j$ ci basta notare che - essendo $G_{-1},G_0,\cdots,G_{j-1}\in\Omega$ - avremo che $\sigma:=\phi\psi$ sar\`a
+l'elemento di $\Sigma$ cercato per ottenere l'ipotesi induttiva.
 \end{proof}
 Abbiamo sostanzialmente visto che - nel caso in cui il quoziente rispetto un sottogruppo $\Sigma$ di simmetrie risulti un politopo (il caso ``buono")
 la compatibilit\`a dell'azione di $\Gamma$ sulle sezioni \`e equivalente alla compatibilit\`a della sua azione sulle bandiere.
