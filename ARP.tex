@@ -1681,10 +1681,38 @@ che $F_j^{\phi\psi}=G_j$ ci basta notare che - essendo $G_{-1},G_0,\cdots,G_{j-1
 l'elemento di $\Sigma$ cercato per ottenere l'ipotesi induttiva.
 \end{proof}
 Abbiamo sostanzialmente visto che - nel caso in cui il quoziente rispetto un sottogruppo $\Sigma$ di simmetrie risulti un politopo (il caso ``buono")
-la compatibilit\`a dell'azione di $\Gamma$ sulle sezioni \`e equivalente alla compatibilit\`a della sua azione sulle bandiere.
+la compatibilit\`a dell'azione di $\Gamma$ sulle sezioni \`e equivalente alla compatibilit\`a della sua azione sulle bandiere. Questo motiva la seguente
+definizione.
+\begin{defin}
+\label{def:SectionCompatible}
+Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma_\p$ un sottogruppo di sue simmetrie. Se per ogni $G<F\in\p$ e per ogni $\Omega\subset\p$ catena di tipo
+$(-1,\cdots,rkG,rkF,\cdots,n)$ si ha che l'applicazione
+\begin{equation}
+\gamma:\frac{F/G}{\Sigma_\Omega}\longrightarrow F^\pi/G^\pi
+\end{equation}
+\`e un isomorfismo, allora diremo che $\Sigma$ agisce su $\p$ in modo \emph{compatibile} sulle bandiere o che il quoziente $\p/\Sigma$ \`e compatibile
+con le sezioni.
+\end{defin}
+Cominciamo quindi a vedere l'importanza della compatibilit\`a con le sezioni di un quoziente nel caso in cui stiamo quozientando un politopo regolare.
+La prossima importante proposizione ci permette di calcolare il gruppo di simmetria del quoziente di un politopo regolare. Nel caso in cui l'azione
+di $\Sigma$ sia compatibile con le sezioni abbiamo una situazione ottimale, ossia che il quoziente risulti un politopo e inoltre che questo abbia
+come gruppo di simmetrie il massimo quoziente rispetto a $\Sigma$. Per enunciarlo meglio ricordiamo la definizione di normalizzatore.
 
-
-
+\begin{defin}
+Sia $G$ un gruppo e $H\leq G$ un suo sottogruppo. Allora definiamo il normalizzatore di $H$ in $G$
+\begin{equation*}
+N_G(H)=\left\{g\in G\mid H^g=H\right\}
+\end{equation*}
+come il massimo sottogruppo di $G$ che ha $H$ per sottogruppo normale.
+\end{defin}
+\begin{prop}
+\label{prop:RegularQuotientGroup}
+Sia $\p$ un $n$-politopo regolare e $\Sigma\leq\Gamma_\p$ un sottogruppo che agisce compatibilmente alle sezioni. Allora
+\begin{itemize}
+\item$\p/\Sigma$ \`e un $n$-politopo e ha gruppo di simmetria $\Gamma_{\p/\Sigma}\cong N_{\Gamma_\p}(\Sigma)/\Sigma$.\\
+\item In particolare $\p/\Sigma$ \`e regolare se e solo se $\Sigma\unlhd\Gamma_\p$, in tal caso abbiamo che $\Gamma_{\p/\Sigma}\cong\Gamma_\p/\Sigma$
+\end{itemize}
+\end{prop}
 
 \end{document}
 
