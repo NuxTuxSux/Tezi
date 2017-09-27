@@ -1686,7 +1686,7 @@ definizione.
 \begin{defin}
 \label{def:SectionCompatible}
 Sia $\p$ un $n$-politopo e $\Sigma\leq\Gamma_\p$ un sottogruppo di sue simmetrie. Se per ogni $G<F\in\p$ e per ogni $\Omega\subset\p$ catena di tipo
-$(-1,\cdots,rkG,rkF,\cdots,n)$ si ha che l'applicazione
+$(-1,\cdots,rkG,rkF,\cdots,n)$ che contenga $F$ e $G$ si ha che l'applicazione
 \begin{equation}
 \gamma:\frac{F/G}{\Sigma_\Omega}\longrightarrow F^\pi/G^\pi
 \end{equation}
@@ -1713,6 +1713,29 @@ Sia $\p$ un $n$-politopo regolare e $\Sigma\leq\Gamma_\p$ un sottogruppo che agi
 \item In particolare $\p/\Sigma$ \`e regolare se e solo se $\Sigma\unlhd\Gamma_\p$, in tal caso abbiamo che $\Gamma_{\p/\Sigma}\cong\Gamma_\p/\Sigma$
 \end{itemize}
 \end{prop}
+\begin{proof}
+Innanzitutto, per il lemma \ref{lem:QuotientFlags} abbiamo che la mappa $\mu:\flag{\p}/\Sigma\longrightarrow\flag{\p/\Sigma}$ \`e una biiezione. Pertanto
+procediamo calcolando il gruppo $\Gamma_{\p/\Sigma}$. Definiamo quindi
+\begin{gather*}
+f:N_\Gamma(\Sigma)\longrightarrow\Gamma_{\p/\Sigma}\\
+\qquad\eta\mapsto f_\eta
+\end{gather*}
+dove $f_\eta$ \`e definita da
+\begin{gather*}
+f_\eta:\p/\Sigma\longrightarrow\p/\Sigma\\
+\qquad F^\Sigma\mapsto (F^{\eta})^\Sigma=F^{\eta\Sigma}
+\end{gather*}
+Mostriamo intanto che tali $f_\eta$ sono bendefinite, ossia che se $F^\Sigma=G^\Sigma$ allora anche $F^{\eta\Sigma}=G^{\eta\Sigma}$. Ma questo \`e vero
+perch\'e, essendo $\eta\in N_\Gamma(\Sigma)$ avremo $F^{\eta\Sigma}=(F^\Sigma)^\eta=(G^\Sigma)^\eta=G^{\eta\Sigma}$.\\
+Mostriamo adesso che $\ker{f}=\Sigma$.\\
+\point{\leq}Sia $\tau\in\ker{f}$, allora per la suriettivit\`a della mappa $\mu$ abbiamo che, scelta una bandiera
+$\Upsilon\in\flag{\p/\Sigma}$ esiste una bandiera $\Phi\in\flag{\p}$ tale che $\mu(\Phi)=\Phi^{\Sigma}=\Upsilon$.[CONTINUARE]
+\end{proof}
+
+
+
+
+
 
 \end{document}
 
