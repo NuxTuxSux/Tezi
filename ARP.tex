@@ -1706,7 +1706,7 @@ N_G(H)=\left\{g\in G\mid H^g=H\right\}
 come il massimo sottogruppo di $G$ che ha $H$ per sottogruppo normale.
 \end{defin}
 \begin{prop}
-\label{prop:RegularQuotientGroup}
+\label{teo:RegularQuotientGroup}
 Sia $\p$ un $n$-politopo regolare e $\Sigma\leq\Gamma_\p$ un sottogruppo che agisce compatibilmente alle sezioni. Allora
 \begin{itemize}
 \item$\p/\Sigma$ \`e un $n$-politopo e ha gruppo di simmetria $\Gamma_{\p/\Sigma}\cong N_{\Gamma_\p}(\Sigma)/\Sigma$.\\
@@ -1725,11 +1725,19 @@ dove $f_\eta$ \`e definita da
 f_\eta:\p/\Sigma\longrightarrow\p/\Sigma\\
 \qquad F^\Sigma\mapsto (F^{\eta})^\Sigma=F^{\eta\Sigma}
 \end{gather*}
-Mostriamo intanto che tali $f_\eta$ sono bendefinite, ossia che se $F^\Sigma=G^\Sigma$ allora anche $F^{\eta\Sigma}=G^{\eta\Sigma}$. Ma questo \`e vero
-perch\'e, essendo $\eta\in N_\Gamma(\Sigma)$ avremo $F^{\eta\Sigma}=(F^\Sigma)^\eta=(G^\Sigma)^\eta=G^{\eta\Sigma}$.\\
-Mostriamo adesso che $\ker{f}=\Sigma$.\\
-\point{\leq}Sia $\tau\in\ker{f}$, allora per la suriettivit\`a della mappa $\mu$ abbiamo che, scelta una bandiera
-$\Upsilon\in\flag{\p/\Sigma}$ esiste una bandiera $\Phi\in\flag{\p}$ tale che $\mu(\Phi)=\Phi^{\Sigma}=\Upsilon$.[CONTINUARE]
+Mostriamo intanto che tali $f_\eta$ sono bendefinite, ossia in primo luogo che se $F^\Sigma=G^\Sigma$ allora anche $F^{\eta\Sigma}=G^{\eta\Sigma}$.
+Ma questo \`e vero perch\'e, essendo $\eta\in N_\Gamma(\Sigma)$, avremo $F^{\eta\Sigma}=(F^\Sigma)^\eta=(G^\Sigma)^\eta=G^{\eta\Sigma}$.\\
+Osserviamo inoltre che tali $f_\eta$ rispettano l'adiacenza di $\p/\Sigma$ perch\'e la rispetta ogni $\eta\in N_\Gamma(\Sigma)$ e che risultano automorfismi
+essendo che $f_\eta\circ f_{\eta^{-1}}=1$. Questo conclude la buona definizione di $f$. Inoltre tale funzione risulta essere un omomorfismo di gruppi 
+essendo che per ogni $\eta,\eta'\in N_\Gamma(\Sigma)$ risulta $f_{\eta\eta'}=f_\eta'\circ f_\eta$ (stiamo considerando azioni destre) e osserviamo che
+per quanto appena visto $f_{\eta^{-1}}={f_\eta}^{-1}$\\
+Per calcolare quindi $\ker{f}$ osserviamo intanto che per la suriettivit\`a della mappa $\mu$ abbiamo che, scelta una bandiera
+$\Upsilon\in\flag{\p/\Sigma}$ esiste una bandiera $\Phi\in\flag{\p}$ tale che $\mu(\Phi^\Sigma)=\Upsilon$
+Mostriamo adesso quindi che $\ker{f}=\Sigma$.\\
+\point{\leq}Sia $\tau\in\ker{f}$, allora per quanto visto, essendo $f_\tau=1$, questa fissa la bandiera $\Upsilon$, pertanto
+$\Phi^{\tau\Sigma}=\Phi^\Sigma$, esiste cio\`e un $\sigma\in\Sigma$ tale che $\Phi=\Phi^{\tau\sigma}$, ma quindi $\tau=\sigma^{-1}\in\Sigma$.\\
+\point{\leq}Ovviamente se $\sigma\in\Sigma$ avremo che $f_\sigma(F^\Sigma)=F^{\sigma\Sigma}=F^\Sigma$ quindi $f_\sigma=1$\\
+Concludiamo vedendo che l'omomorfismo $f$ \`e anche suriettivo.[CONCLUDERE]
 \end{proof}
 
 
