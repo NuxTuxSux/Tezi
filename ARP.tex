@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{report}
 \usepackage{amsmath}
+\usepackage{yfonts}
 %[
 	% Mi fa schifo \emptyset di \amssymb, evito che lo sovrascriva
 	\let\oldemptyset\emptyset
@@ -37,6 +38,7 @@
 \newcommand\localref[1]{\ref{\currentprefix_#1}}
 \newcommand\point[1]{$\bm{(#1)}$\textbf{: }}
 \newcommand\implication[2]{$\bm{(#1)\Rightarrow(#2)}$\textbf{: }}
+\newcommand\multi[1]{\text{\textswab{#1}}}
 
 \newcommand\flag[1]{\mathcal{F}(#1)}
 \def\restrict#1{\raise-.5ex\hbox{\ensuremath|}_{#1}}
@@ -1599,13 +1601,15 @@ valgono per le mappe $\beta$ e $\gamma$ di cui a \ref{eq:betaMap}, \ref{eq:gamma
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Dapprima notiamo che $\gamma$ se e solo se lo \`e la restrizione $\pi\restrict{G/F}$, inoltre $\p/\Sigma$ soddisfa la diamond property, $(P4)$, 
+Dapprima notiamo che $\gamma$ \`e suriettiva se e solo se lo \`e la restrizione $\pi\restrict{G/F}$, inoltre $\p/\Sigma$ soddisfa la diamond
+ property, $(P4)$, 
 se e solo se $\beta$ e $\gamma$ sono isomorfismi quando si considerano $1$-sezioni (essendo che $\p$ soddisfa esso stesso la diamond property).
-A questo punto possiamo concludere grazie a \ref{prop:PrepolytopeCovering}, avendo mostrato che i quozienti di sezioni di $\p$ sono effettivamente
+A questo punto possiamo concludere grazie a \ref{prop:PrepolytopeCovering}, avendo mostrato che i quozienti di sezioni di $\p$ sono
+ effettivamente
 sezioni e ricordando che $\p/\Sigma$ soddisfa $(P1)-(P2)$ per \ref{prop:QuotientP1P2}.
 \end{proof}
-Continuiamo lo studio dei quozienti vedendo in che modo sono collegate le bandiere di $\p$ e di un suo quoziente. Esplicitamo quindi intanto la mappa che
-manda bandiere del primo nel secondo.
+Continuiamo lo studio dei quozienti vedendo in che modo sono collegate le bandiere di $\p$ e di un suo quoziente. Esplicitamo quindi intanto la
+mappa che manda bandiere del primo nel secondo.
 \begin{defin}
 \label{def:mu}
 Sia $\p$ un $n$-politopo, allora ad ogni bandiera $\phi\in\flag{\p}$ possiamo associare la sua immagine tramite la mappa quoziente $\pi$
@@ -1696,7 +1700,40 @@ con le sezioni.
 Cominciamo quindi a vedere l'importanza della compatibilit\`a con le sezioni di un quoziente nel caso in cui stiamo quozientando un politopo regolare.
 La prossima importante proposizione ci permette di calcolare il gruppo di simmetria del quoziente di un politopo regolare. Nel caso in cui l'azione
 di $\Sigma$ sia compatibile con le sezioni abbiamo una situazione ottimale, ossia che il quoziente risulti un politopo e inoltre che questo abbia
-come gruppo di simmetrie il massimo quoziente rispetto a $\Sigma$. Per enunciarlo meglio ricordiamo la definizione di normalizzatore.
+come gruppo di simmetrie il massimo quoziente rispetto a $\Sigma$. Per enunciarlo meglio introduciamo una pi\`u comoda
+notazione per i ``cammini" di bandiere, dimostriamo un piccolo lemma e ricordiamo quindi la definizione di normalizzatore.
+\begin{defin}
+Sia $\p$ un $n$-politopo e $\Phi\in\flag\p$ una sua bandiera. Allora se $\multi{i}=(i_0,\cdots,i_t)$ \`e una tupla di indici in
+$\{1,\dots,n-1\}$ poniamo
+\begin{equation*}
+\Phi^\multi{i}:=\Phi^{i_0\cdots i_t}
+\end{equation*}
+Ricordando che $\Phi^{i_j}$ \`e la bandiera $i_j$-adiacente a $\Phi$. Diremo inoltre che il multi-indice $\multi{i}$ \`e
+una \emph{sequenza di ranghi} di $\p$.
+\end{defin}
+La definizione appena data d\`a sostanzialmente un modo per descrivere un cammino nell'insieme delle bandiere esplicitando punto base
+(bandiera di partenza) e ``percorso" nel rispetto dell'adiacenza. Osserviamo che tali multi-indici risultano in biiezione con i cammini
+con bandiera di base fissata. Una propriet\`a interessante \`e che tali cammini, visti come multi-indici, vengono preservati da automorfismi
+e proiezioni.
+\begin{oss}
+\label{oss:PathAction}
+Sia $\p$ un $n$-politopo e $\multi{i}$ una sua sequenza di ranghi. Allora
+\begin{enumerate}
+\item$(\Phi^\multi{i})^\sigma=(\Phi^\sigma)^\multi{i}$ se $\sigma\in\Gamma_\p$\\
+\item$(\Phi^\multi{i})^\pi=(\Phi^\pi)^{\multi{i}}$ se $\pi:\p\longrightarrow\p/\Sigma$ \`e relativa ad un quoziente che risulti politopo
+\end{enumerate}
+\end{oss}
+\begin{proof}
+\point{1}Ovvio dal fatto che gli elementi di $\Gamma_\p$ risultino biiezioni e preservino l'adiacenza tra bandiere, essendo per ogni
+$0<i<n$ e per ogni $\Phi\in\flag{\p}\quad\Phi^{i\sigma}=\Phi^{\sigma i}$ se $\sigma\in\Gamma_\p$.\\
+\point{2}Per come \`e definito l'ordine nel quoziente $\p/\Sigma$ due facce incidenti vengono mandate da $\pi$ in due facce incidenti
+o vengono identificate. Lo stesso quindi accade per due bandiere adiacenti. Quindi l'unica cosa da verificare \`e che due bandiere adiacenti non
+vengano identificate. Essendo per\`o $\p/\Sigma$ un ($n$-)politopo, se $\Phi=(F_i)_{i=-1}^n\in\flag{\p}$ e $\Psi=\Phi^j$ \`e la sua bandiera
+$j$-adiacente, allora $(F_{j+1}/F_{j-1})^\pi=F_{j+1}^\pi/F_{j-1}^\pi$ risulta una $1$-sezione del politopo $\p/\Sigma$, pertanto le due facce 
+proprie di $F_{j+1}/F_{j-1}$ vengono mandate biiettivamente nelle due facce proprie di $F_{j+1}^\pi/F_{j-1}^\pi$ che sono le $j$-facce di
+$\Phi$ e di $\Phi^j$. Pertanto $\Phi^\pi\neq(\Phi^j)^\pi$ e $(\Phi^j)^\pi$ risulta essere l'unica bandiera $j$-adiacente a $\Phi^\pi$. Cio\`e
+$(\Phi^j)^\pi=(\Phi^\pi)^j$. Essendo vero per ogni $j$, otteniamo la tesi.
+\end{proof}
 
 \begin{defin}
 Sia $G$ un gruppo e $H\leq G$ un suo sottogruppo. Allora definiamo il normalizzatore di $H$ in $G$
@@ -1725,24 +1762,144 @@ dove $f_\eta$ \`e definita da
 f_\eta:\p/\Sigma\longrightarrow\p/\Sigma\\
 \qquad F^\Sigma\mapsto (F^{\eta})^\Sigma=F^{\eta\Sigma}
 \end{gather*}
-Mostriamo intanto che tali $f_\eta$ sono bendefinite, ossia in primo luogo che se $F^\Sigma=G^\Sigma$ allora anche $F^{\eta\Sigma}=G^{\eta\Sigma}$.
+Mostriamo intanto che tali $f_\eta$ sono ben definite, ossia in primo luogo che se $F^\Sigma=G^\Sigma$ allora anche
+$F^{\eta\Sigma}=G^{\eta\Sigma}$.
 Ma questo \`e vero perch\'e, essendo $\eta\in N_\Gamma(\Sigma)$, avremo $F^{\eta\Sigma}=(F^\Sigma)^\eta=(G^\Sigma)^\eta=G^{\eta\Sigma}$.\\
-Osserviamo inoltre che tali $f_\eta$ rispettano l'adiacenza di $\p/\Sigma$ perch\'e la rispetta ogni $\eta\in N_\Gamma(\Sigma)$ e che risultano automorfismi
-essendo che $f_\eta\circ f_{\eta^{-1}}=1$. Questo conclude la buona definizione di $f$. Inoltre tale funzione risulta essere un omomorfismo di gruppi 
-essendo che per ogni $\eta,\eta'\in N_\Gamma(\Sigma)$ risulta $f_{\eta\eta'}=f_\eta'\circ f_\eta$ (stiamo considerando azioni destre) e osserviamo che
+Osserviamo inoltre che tali $f_\eta$ rispettano l'adiacenza di $\p/\Sigma$ perch\'e la rispetta ogni $\eta\in N_\Gamma(\Sigma)$ e che
+risultano automorfismi
+essendo che $f_\eta\circ f_{\eta^{-1}}=1$. Questo conclude la buona definizione di $f$. Inoltre tale funzione risulta essere un omomorfismo
+di gruppi 
+essendo che per ogni $\eta,\eta'\in N_\Gamma(\Sigma)$ risulta $f_{\eta\eta'}=f_\eta'\circ f_\eta$ (stiamo considerando azioni destre) e
+osserviamo che
 per quanto appena visto $f_{\eta^{-1}}={f_\eta}^{-1}$\\
 Per calcolare quindi $\ker{f}$ osserviamo intanto che per la suriettivit\`a della mappa $\mu$ abbiamo che, scelta una bandiera
 $\Upsilon\in\flag{\p/\Sigma}$ esiste una bandiera $\Phi\in\flag{\p}$ tale che $\mu(\Phi^\Sigma)=\Upsilon$
 Mostriamo adesso quindi che $\ker{f}=\Sigma$.\\
 \point{\leq}Sia $\tau\in\ker{f}$, allora per quanto visto, essendo $f_\tau=1$, questa fissa la bandiera $\Upsilon$, pertanto
-$\Phi^{\tau\Sigma}=\Phi^\Sigma$, esiste cio\`e un $\sigma\in\Sigma$ tale che $\Phi=\Phi^{\tau\sigma}$, ma quindi $\tau=\sigma^{-1}\in\Sigma$.\\
-\point{\leq}Ovviamente se $\sigma\in\Sigma$ avremo che $f_\sigma(F^\Sigma)=F^{\sigma\Sigma}=F^\Sigma$ quindi $f_\sigma=1$\\
-Concludiamo vedendo che l'omomorfismo $f$ \`e anche suriettivo.[CONCLUDERE]
+$\Phi^{\tau\Sigma}=\Phi^\Sigma$, esiste cio\`e un $\sigma\in\Sigma$ tale che $\Phi=\Phi^{\tau\sigma}$, ma quindi
+$\tau=\sigma^{-1}\in\Sigma$.\\
+\point{\geq}Ovviamente se $\sigma\in\Sigma$ avremo che $f_\sigma(F^\Sigma)=F^{\sigma\Sigma}=F^\Sigma$ quindi $f_\sigma=1$\\
+Concludiamo vedendo che l'omomorfismo $f$ \`e anche suriettivo. Sia $\chi\in\Gamma_{\p/\Sigma}$ e $\Phi\in\flag{\p}$ una bandiera
+di base scelta per $\p$. Allora, essendo $\p$ regolare e $\pi$ suriettiva sulle bandiere, esister\`a un $\phi\in\Gamma_\p$ tale che
+$(\Phi^\pi)^\chi=(\Phi^\phi)^\pi$, ossia $\chi$ su $\Phi$ agisce come $f_\phi$.
+Mostriamo che quindi $\chi=f_\phi$, ossia che per ogni $\psi\in\Gamma_\p$ vale $\Phi^{\psi\pi\chi}=\Phi^{\psi\phi\pi}$.
+Per farlo utilizziamo \ref{oss:PathAction} osservando che $\Phi^\psi=\Phi^\multi{i}$ per un opportuna sequenza di ranghi di $\p$. Abbiamo
+dunque
+\begin{gather*}
+\Phi^{\psi\pi\chi}=\Phi^{\multi{i}\pi\chi}=\Phi^{\pi\multi{i}\chi}=\Phi^{\pi\chi\multi{i}}=\\
+=\Phi^{\phi\pi\multi{i}}=\Phi^{\phi\multi{i}\pi}=\Phi^{\multi{i}\phi\pi}=\Phi^{\psi\phi\pi}
+\end{gather*}
+Per concludere la suriettivit\`a osserviamo che se $F^\Sigma\in\p/\Sigma$ allora
+\begin{equation*}
+\chi(F^\Sigma)=(F^\pi)^\chi=(F^\phi)^\pi=(F^\phi)^\Sigma=f_\phi(F)
+\end{equation*}
+Mostriamo quindi che $\phi$ normalizza effettivamente $\Sigma$. Per quanto visto, se $\psi\in\Sigma$ in particolare, allora
+\begin{equation*}
+(\Phi^{\psi\phi})^\pi=(\Phi^{\psi\pi})^\chi=(\Phi^\pi)^\chi=(\Phi^\phi)^\pi
+\end{equation*}
+Vediamo infine che il quoziente $\p/\Sigma$ risulta regolare se e solo se $\Sigma\trianglelefteq\Gamma_\p$. Supponiamo
+$\Sigma\trianglelefteq\Gamma_\p$. Siano $\Upsilon,
+\Upsilon'\in\flag{\p/\Sigma}$, allora esistono $\Psi,\Psi'\in\flag{\p}$ tali che $\Psi^\pi=\Upsilon$ e $\Psi'^\pi=\Upsilon'$,
+ma essendo $\p$ regolare e per la normalit\`a di $\Sigma$ in $\Gamma_\p$ esiste $\tau\in\Gamma_\p=N_{\Gamma_\p}(\Sigma)$
+tale che $\Psi^\tau=\Psi'$, pertanto, posto $f_\tau(\Upsilon)=f_\tau(\Psi^\Sigma)=(\Psi^\tau)^\Sigma=\Psi'^\Sigma=\Upsilon'$
+ed, essendo $f_\tau\in\Gamma_{\p/\Sigma}$ abbiamo la regolarit\`a di $\p/\Sigma$.\\
+Supponiamo adesso che $\p/\Sigma$ sia regolare e siano, quindi, $\tau\in\Gamma_\p$ e $\Phi\in\flag{\p}$ una bandiera di base. Allora
+$\Phi^{\tau\pi}\in\flag{\p/\Sigma}$ e, per la regolarit\`a di $\p/\Sigma$ troviamo un $\chi\in\Gamma_{\p/\Sigma}$ tale che
+$(\Phi^\tau)^\pi=(\Phi^\pi)^\chi$, ma per la suriettivit\`a di $f$ sia $\eta\in N_{\Gamma_\p}(\Sigma)$ tale che $f_\eta=\chi$. Allora
+$(\Phi^\eta)^\pi=f_\eta(\Phi^\pi)=(\Phi^\pi)^\chi=(\Phi^\tau)^\pi$, quindi le due bandiere $\Phi^\eta$ e $\Phi^\tau$ vengono
+identificate da $\pi$ al quoziente, cio\`e esiste un elemento $\sigma\in\Sigma$ tale che $\Phi^\tau=\Phi^{\eta\sigma}$ cio\`e
+(per la libert\`a dell'azione di $\Gamma_\p$ su $\flag{\p}$) $\tau=\sigma\eta$ e, ricordando che $\eta\in N_{\Gamma_\p}(\Sigma)$
+otteniamo che anche $\tau\in N_{\Gamma_\p}(\Sigma)$, quindi $\Gamma_\p=N_{\Gamma_\p}(\Sigma)$, cio\`e la normalit\`a di $\Sigma$.
 \end{proof}
-
-
-
-
+Vediamo adesso un'equivalente della propriet\`a dell'intersezione guardando ``a meno di elementi di $\Sigma$" le classi laterali
+dei sottogruppi scelti per le sezioni di $\p$.
+\begin{prop}
+\label{prop:IntersectionPropertySigma}
+Sia $\p$ un $n$-politopo regolare con gruppo $\Gamma_\p=\langle\rho_0,\rho_{n-1}\rangle$ e $\Sigma\leq\Gamma_\p$ un suo sottogruppo
+che agisce compatibilmente con le sezioni. Allora per ogni $-1\leq f<g\leq n$ e $\phi\in\Gamma_\p$ si ha:
+\begin{equation*}
+\Gamma_{-1\rightarrow g}\phi\Sigma\cap\Gamma_{f\rightarrow n}\phi\Sigma=\Gamma_{f\rightarrow g}\phi\Sigma
+\end{equation*}
+\end{prop}
+\begin{proof}
+Per le ipotesi di compatibilit\`a di $\Sigma$ $\p/\Sigma$ \`e un politopo e la mappa $\mu$ di cui a \ref{def:mu} \`e una biiezione.
+Sia quindi $\Phi=(F_i)_{i=-1}^n$ la bandiera di base scelta di $\p$ e poniamo $\hat{F_i}=F_i^\phi$. Consideriamo quindi le orbite
+$(\Phi^{\gamma\phi})^\Sigma$ con
+\begin{equation*}
+\gamma\phi\Sigma\subseteq\langle\rho_{f+1},\dots,\rho_{n-1}\rangle\phi\Sigma\cap\langle\rho_0,\dots,\rho_{g-1}\rangle\phi\Sigma
+\end{equation*}
+Ognuna delle loro immagini tramite $\mu$ contiene le facce $\hat{F_{-1}},\dots,\hat{F_f},\hat{F_g},\dots,\hat{F_n}$.
+Pertanto, restringendole a sezioni di $\p/\Sigma$ relative a facce di ranghi $f<g$ otteniamo bandiere di $\hat{F_g}/\hat{F_f}$. Per\`o
+scelti
+\begin{equation*}
+F=F_f\phi\qquad G=F_g\phi\qquad\Omega=\{F_{-1},F_0\phi,\dots,F_f\phi,F_g\phi,F_{g+1}\phi,\dots,F_n\}
+\end{equation*}
+La mappa $\gamma$ relativa a $(F,G,\Omega)$ risulta un isomorfismo, quindi queste bandiere sono le immagini tramite $\mu$ delle
+orbite della forma $(\Phi^{\gamma\phi})^\Sigma$ al variare di $\gamma\in\langle\rho_{f+1},\dots,\rho_{g-1}\rangle=\Gamma_{f\rightarrow g}$.
+Ma ricordiamo che $\mu$ \`e anche iniettiva, pertanto le orbite coincideranno e avremo
+$\gamma\phi\Sigma\subseteq\Gamma_{f\rightarrow g}\phi\Sigma$ da cui un'implicazione. L'altra \`e banale, derivando dalle inclusioni degli
+insiemi di generatori in questione.
+\end{proof}
+Osserviamo che nel caso in cui $\Sigma\trianglelefteq\Gamma_\p$ e il quoziente $\p/\Sigma$ risulti effettivamente un politopo, la proposizione
+\ref{prop:IntersectionPropertySigma} appena vista risulta effettivamente la propriet\`a dell'intersezione per il politopo $\p/Sigma$.
+Pertanto vediamo adesso un criterio tramite sottogruppi scelti che descrive esattamente i casi in cui $\p/\Sigma$ sia un politopo
+(nel caso in cui $\p$ sia un politopo regolare).
+\begin{prop}
+\label{prop:QuotientRegularIsPoly}
+\currentprefix{prop:QuotientRegularIsPoly}
+Sia $\p$ un $n$-politopo regolare con gruppo di simmetrie $\Gamma_\p=\langle\rho_0,\cdots,\rho_{n-1}\rangle$. Sia inoltre $\Sigma\leq\Gamma_\p$
+Allora $\p/\Sigma$ \`e un ($n$-)politopo se e solo se valgono le sequenti:
+\begin{enumerate}
+\item\locallabel{1} per ogni $-1\leq f\leq k\leq g\leq n$ e per ogni $\phi\in\Gamma_\p$ abbiamo
+\begin{equation*}
+\Gamma_k\Gamma_{-1\rightarrow g}\phi\Sigma\cap\Gamma_k\Gamma_{f\rightarrow n}\phi\Sigma=\Gamma_k\Gamma_{f\rightarrow g}\phi\Sigma
+\end{equation*}
+\item\locallabel{2} per ogni $0\leq k\leq n-1$ e per ogni $\phi\in\Gamma_\p$ abbiamo
+\begin{equation*}
+\Gamma_k\rho_k\cap\Sigma^\phi=\emptyset
+\end{equation*}
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Per dimostrare questo criterio utilizzeremo il criterio gi\`a visto, \ref{prop:QuotientIsPolitope}. Cominciamo quindi col mostrare che la
+suriettivit\`a di $\gamma$ per qualunque scelta di $(F,G,\Omega)$ \`e equivalente a \localref{1}. Sia $\Phi$ la bandiera base di $\p$ scelta.
+Per la regolarit\`a di $\p$ ogni catena \`e coniugata tramite elementi di $\Gamma_\p$ ad un sottoinsieme di $\Phi$ pertanto, qualunque
+sia la terna $(F,G,\Omega)$ con $F,G\in\Omega$ e $\Omega$ catena di $\p$ di tipo $(-1,\cdots,f,g,\cdots,n)$ (quindi come dalla
+definizione di $\gamma$), esiste un $\phi\in\Gamma_\p$ tale che $F=F_f^\phi$, $G=F_g^\phi$ e
+$\Omega=\left\{F_i^\phi\mid i\notin\{f+1,\dots,g-1\}\right\}$, quindi possiamo scrivere
+\begin{equation*}
+\gamma:\frac{F_g^\phi/F_f^\phi}{\Sigma_\Omega}\longrightarrow\frac{(F_g^\phi)^\Sigma}{(F_f^\phi)^\Sigma}
+\end{equation*}
+Sia quindi $f<k<g$. Le facce di rango $k$ in $\p/\Sigma$ incidenti con $(F_g^\phi)^\Sigma$ sono precisamente quelle del tipo
+$(F_k^{\alpha_1\phi})^\Sigma$ con $\alpha_1\in\Gamma_{-1\rightarrow g}$, invece quelle incidenti con $(F_f^\phi)^\Sigma$ sono
+precisamente quelle del tipo$(F_k^{\alpha_2\phi})^\Sigma$ con $\alpha_2\in\Gamma_{f\rightarrow n}$.\\
+Da ci\`o abbiamo che le $k$-facce della sezione $F_g^{\phi\Sigma}/F_f^{\phi\Sigma}$ possono essere scritte in ambo i modi (e sono
+caratterizzate da questa propriet\`a) e, in tal caso quindi si avr\`a
+\begin{equation*}
+F_k^{\alpha_1\phi\Sigma}=F_k^{\alpha_2\phi\Sigma}
+\end{equation*}
+e quindi $\alpha_1\phi\in\Gamma_k\alpha_2\phi\Sigma$.\\
+Pertanto, assumendo \localref{1}, abbiamo che esiste un $\alpha_3\in\Gamma_{f\rightarrow g}$ tale che $\alpha_1\phi\Gamma_k\alpha_3\phi\Sigma$
+e $F_k^{\alpha_1\phi\Sigma}=F_k^{\alpha_3\phi\Sigma}$, per\`o $F_k^{\alpha_3\phi}\in F_g^\phi/F_f^\phi$, cio\`e $\gamma$ \`e suriettiva.\\
+Viceversa, supponendo $\gamma$ suriettiva per ogni scelta di $(F,G,\Omega)$ come sopra, allora una $k$-faccia
+$F_k^{\alpha_1\phi\Sigma}=F_k^{\alpha_2\phi\Sigma}$ in $F_g^{\phi\Sigma}/F_f^{\phi\Sigma}$ \`e della forma $F_k^{\alpha_3\phi\Sigma$
+con $\alpha_3\in\Gamma_{f\rightarrow g}$.\\
+Pertanto, se $\beta_1,\beta_2\in\Gamma_k$, $\alpha_1\in\Gamma_{-1\rightarrow g}$ e $\alpha_2\in\Gamma_{f\rightarrow n}$ sono tali che
+$\beta_1\alpha_1\phi\Sigma=\beta_2\alpha_2\phi\Sigma$ allora $F_k^{\alpha_1\phi\Sigma}=F_k^{\alpha_2\phi\Sigma}=F_k^{\alpha_3\phi\Sigma$
+per un opportuno $\alpha_3\in\Gamma_{f\rightarrow g}$ pertanto
+$\beta_1\alpha_1\phi\Sigma\subseteq\Gamma_k\Gamma_{f\rightarrow g}\phi\Sigma$ che prova un'inclusione di \localref{1}, l'altra \`e
+banale.\\
+Adesso mostriamo che il punto \localref{2} \`e invece equivalente alla seconda condizione del criterio \ref{prop:QuotientIsPolitope}.
+Osserviamo intanto che $\Sigma$ non contiene nessun elemento coniugato a $\rho_i$ se e solo se la proiezione relativa a $\Sigma$ non
+identifica nessuna coppia di bandiere adiacenti di $\p$, in quanto se $\phi\in\Gamma_\p$ allora
+$(\Phi\phi)^i\Sigma=(\Phi\phi)(\rho_i^\phi)\Sigma$. Pertanto, se vale \localref{2} allora le orbite di bandiere adiacenti di $\p$ devono
+essere rimanere distinte, pertanto le mappe $\beta$ e $\gamma$ di cui al \ref{prop:QuotientIsPolitope} devono essere iniettive.\\
+Viceversa, supponendo che \localref{2} non valga per un $k$ e un $\phi$, cio\`e che $\rho_k\phi^{-1}\in\Gamma_k\phi^{-1}\Sigma$.
+Allora $F_k^{\rho_k\phi^{-1}\Sigma}=F_k^{\phi^{-1}\Sigma}$ cos\`i che le due facce $F_k^{\rho_k\phi^{-1}}$ e $F_k^{\phi^{-1}}$
+della sezione $F_{k+1}^{\phi^{-1}}/F_{k-1}^{\phi^{-1}}$ vengono identificate tramite $\pi=\beta\gamma$. Pertanto $beta$ e $\gamma$
+non possono essere (entrambe) iniettive. Questo mostra che il presente criterio \`e in effetti equivalente al precedente
+\ref{prop:QuotientIsPolitope}.
+\end{proof}
 
 
 \end{document}
