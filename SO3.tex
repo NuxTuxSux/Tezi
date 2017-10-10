@@ -1,0 +1,426 @@
+\newcommand{\SOtre}{SO_3(\mathbb{R})}
+\newcommand{\Rtre}{\mathbb{R}^3}
+
+\section{Classificazione dei sottoruppi finiti di $\SOtre$}
+Per visualizzare in modo pi\`u concreto alcuni gruppi di automorfismi di politopi regolari, possiamo passare al caso di politopi convessi,
+in cui abbiamo una naturale realizzazione di tali gruppi come automorfismi dello spazio euclideo. Ossia, considerando una versione concreta
+del politopo che sar\`a quindi un politopo convesso, il suo gruppo di simmetrie sar\`a un sottogruppo del gruppo delle isometrie di 
+$\mathbb{R}^n$, cio\`e il gruppo $O_n(\mathbb{R})$. Nel presente capitolo, motivati dal calcolo dei gruppi di simmetrie dei politopi astratti,
+guarderemo alle simmetrie dirette, le rotazioni, ossia quelle che preservano l'orientazione, nel caso tridimensionale. Questo \`e chiaramente
+l'esempio primo e fondante della teoria, emergendo naturalmente dai cosiddetti \emph{solidi platonici}.
+In questo capitolo studieremo quindi il caso tridimensionale da un punto di vista algebrico procedendo, quindi, con la caratterizzazione dei
+sottogruppi finiti di $SO_3=\SOtre$.\\
+Per tali sottogruppi, considereremo le loro azioni sullo spazio euclideo, in particolare sul sotto $SO_3-$sottoinsieme
+$S^2=\left\{v\in\Rtre\mid\|v\|=1\right\}$ della $2-$sfera unitaria.\\
+Sia $G\leq SO_3$ finito, consideriamo l'azione $G \curvearrowright S^2$ ponendo
+\begin{equation*}
+X=\left\{x\in S^2\mid G_x\neq\left\{1\right\}\right\}
+\end{equation*}
+l'insieme dei punti che vengono fissati da qualche rotazione non identica di $G$.\\
+Osserviamo innanzitutto che $\left|X\right|\leq 2(\left|G\right|-1)$, in particolare $X$ \`e un $G$~-~sottoinsieme finito di $S^2$.\\
+Infatti ogni rotazione non identica di $G$ fissa esattamente due punti e
+\begin{equation*}
+X=\bigcup_{g\in G\setminus\left\{1\right\}}Fix_{S^2}g
+\end{equation*}
+quindi
+\begin{equation*}
+\left|X\right|\leq\sum_{g\in G\setminus\left\{1\right\}}\left|Fix_{S^2}g\right|=2(\left|G\right|-1)
+\end{equation*}
+Osserviamo, inoltre, che $\forall g\in G, \forall x\in X\quad G_{gx}=G_x^{g^{-1}}$, pertanto $X$ \`e effettivamente un
+$G$-sottoinsieme di $S^2$.
+\begin{oss}
+Se $G$ fissa (almeno) un punto di $S^2$ allora \`e ciclico.
+\end{oss}
+Infatti, $\forall x \in S^2\quad (SO_3)_x\cong SO_2\cong\mathbb{S}$ quindi $G\hookrightarrow\mathbb{S}$ pertanto $G\cong C_n$ dove
+$n=\left|G\right|$.\\
+A meno di coniugio per una rotazione che mandi il primo vettore della base canonica dell'asse comune $\left<x\right>$ di $G$, gli elementi
+di $G$ hanno matrici (della forma di):
+\begin{equation*}
+\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \cos{\frac{2\pi}{n}} & -\sin{\frac{2\pi}{n}}\\
+0 & \sin{\frac{2\pi}{n}} & \cos{\frac{2\pi}{n}}
+\end{array}\right)^n\quad \text{per } k=0,\dots,n-1.
+\end{equation*}
+\subsection{Studio di $G$ mediante l'azione di $G\curvearrowright X$}
+Sia $X=\left\{x\in S^2 \mid G_x\neq\left\{1\right\}\right\}$ come sopra. Conteggiando gli elementi di $X$ con le molteplicit\`a date da
+\begin{equation*}
+m(x)=\left|G_x\right|
+\end{equation*}
+si ha:
+\begin{equation*}
+\sum_{x\in X}(\left|G_x\right|-1)=\sum_{x\in X}(m(x)-1)=\\
+\sum_{g\in G\setminus\left\{1\right\}}2=2(\left|G\right|-1).
+\end{equation*}
+Sia quindi $Y$ una scelta di rappresentanti per $X/G=\left\{x^G\mid x\in X\right\}$, notando che se $x_1^G=x_2^G$ allora
+$m(x_1)=m(x_2)$, avremo
+\begin{equation*}
+2(\left| G\right|-1)=\sum_{x\in X}(m(x)-1)=\sum_{y\in Y}\left|y^G\right|(m(y)-1)=\sum_{y\in Y}\frac{\left|G\right|}{m(y)}(m(y)-1).
+\end{equation*}
+Da cui, dividendo per la cardinalit\`a di $G$, si ottiene
+\begin{equation} \label{eq:1}
+\sum_{y\in Y}\frac{m(y)-1}{m(y)}=2-\frac{2}{\left|G\right|}
+\end{equation}
+Ricordiamo che $y\in Y\subseteq X$ implica $G_y\neq\left\{1\right\}$, cio\`e $m(y)\geq 2$, quindi, nella \ref{eq:1},
+\begin{equation*}
+2-\frac{2}{\left| G\right|}=\sum_{y\in Y}(1-\frac{1}{m(y)})\geq\left|Y\right|(1-\frac{1}{2})=\frac{\left|Y\right|}{2}
+\end{equation*}
+pertanto
+\begin{equation*}
+\frac{\left|Y\right|}{2}\leq 2-\frac{2}{\left|G\right|}<2
+\end{equation*}
+e $\left|Y\right|<4$, cio\`e $\left|Y\right|\leq 3$.\\
+Pertanto $X$ si decompone, sotto l'azione di $G$, in al pi\`u tre orbite.\\
+\begin{oss}
+Notiamo che, in effetti, non pu\`o verificarsi il caso che ci sia una sola orbita (ossia l'azione $G\curvearrowright X$ non \`e transitiva).
+Infatti, se fosse $\left|Y\right|=1$, avremmo (essendo $\left|G\right|>1$) dalla \ref{eq:1}:
+\begin{equation*}
+1>1-\frac{1}{m(y)}=2-\frac{2}{\left|G\right|}\geq 1\qquad\text{dove}\quad\left\{y\right\}=Y
+\end{equation*}
+\end{oss}
+
+Quindi $X$ si decompone come unione di due o tre orbite sotto l'azione del gruppo $G$\\
+Vedremo che si presenteranno entrambi i casi e questi daranno luogo, enl primo caso alla famiglia dei gruppi ciclici diniti $C_n$
+con $n\in\mathbb{N}^+$ e alla famiglia dei gruppi diedrali $D_n$ con $n\in\mathbb{N}^+$ e, nel secondo a tre altri sottogruppi
+(che si riveleranno essere i pi\`u geometricamente interessanti ai nostri fini).
+\subsection{Caso $\left|Y\right|=2$}
+Studiamo il caso in cui $X$ si decompone in due orbite sotto l'azione di $G$.\\
+Sia $Y=\left\{y_1,y_2\right\}$ e poniamo $m=m(y_1)$, $n=m(y_2)$. Allora la \ref{eq:1} diventa:
+\begin{equation*}
+1-\frac{1}{m}+1-\frac{1}{n}=2-\frac{2}{\left|G\right|},\qquad\text{cio\`e}
+\end{equation*}
+\begin{equation*}
+\frac{1}{m}+\frac{1}{n}=\frac{2}{\left|G\right|}\qquad\text{da cui}
+\end{equation*}
+\begin{equation*}
+\frac{\left|G\right|}{m}+\frac{\left|G\right|}{n}=2
+\end{equation*}
+ed, essendo $m=\left|G_{y_1}\right|$ e $n=\left|G_{y_2}\right|$,
+si ha che $\frac{\left|G\right|}{m},\frac{\left|G\right|}{n}\in\mathbb{N}^+$.
+Quindi le uniche soluzioni sono per $m=n=\left|G\right|$.\\
+Pertanto $G=G_{y_1}=G_{y_2}$ agisce banalmente su $y_1$ e $y_2$ ($y_i^G=\left\{y_i\right\}$ per $i=1,2$) e
+$Y=Fix_{S^2}g\quad\forall g\in G$. Cio\`e gli elementi di $G$ sono tutte rotazioni con asse $\left<y_1\right>=\left<y_2\right>$.\\
+Quindi in questo caso si ottiene la famiglia infinita dei gruppi ciclici (finiti) che risultano coniugati nel rispetto dell'ordine
+(per la transitivit\`a dell'azione $SO_3\curvearrowright S^2$).
+
+\subsection{Caso $\left|Y\right|=3$}
+Questo caso risulter\`a pi\`u interessante, racchiudendo la famiglia dei gruppi diedrali e altri tre gruppi.
+Identificheremo dei sottocasi derivanti dall'equazione \ref{eq:1}.\\
+Sia
+\begin{equation*}
+Y=\left\{y_1,y_2,y_3\right\}
+\end{equation*}
+Posti $m=m(y_1), n=m(y_2), k=m(y_3)$ la \ref{eq:1} diventa:
+\begin{equation*}
+1-\frac{1}{m}+1-\frac{1}{n}+1-\frac{1}{k}=2-\frac{2}{\left|G\right|}\qquad\text{cio\`e:}
+\end{equation*}
+\begin{equation} \label{eq:2}
+\frac{1}{m}+\frac{1}{n}+\frac{1}{k}=1+\frac{2}{\left|G\right|}
+\end{equation}
+Cerchiamo le soluzioni $(m,n,k)$ supposte $m\leq n\leq k$ di \ref{eq:2}.\\
+Notiamo d'apprima che $m=2$, infatti $m,n,k\geq 2$ e, se avessimo $m,n,k\geq 3$, allora otterremmo
+\begin{equation*}
+\frac{1}{m}+\frac{1}{n}+\frac{1}{k}\leq\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=1\quad\text{contro la \ref{eq:2}}
+\end{equation*}
+Pertanto $m=2$ e riscriviamo la \ref{eq:2} in
+\begin{equation*}
+\frac{1}{2}+\frac{1}{n}+\frac{1}{k}=1+\frac{2}{\left|G\right|}\qquad\text{cio\`e:}
+\end{equation*}
+\begin{equation} \label{eq:3}
+\frac{1}{n}+\frac{1}{k}=\frac{1}{2}+\frac{2}{\left|G\right|}
+\end{equation}
+Notiamo adesso che non pu\`o essere $n,k\geq 4$, altrimenti avremmo
+\begin{equation*}
+\frac{1}{n}+\frac{1}{k}\leq\frac{1}{4}+\frac{1}{4}=\frac{1}{2}\qquad\text{contro la \ref{eq:3}}
+\end{equation*}
+Allora $n$ pu\`o assumere solamente due valori: $2$ o $3$.
+
+\begin{oss} \label{oss:1}
+Siano $\sigma,\rho\in SO_3\setminus\left\{1\right\}$ tali che $\sigma\in N_{SO_3}(\left<\rho\right>)\setminus C_{SO_3}(\left<\rho\right>)$. Allora $\sigma$ \`e un'involuzione con asse perpendicolare all'asse di $\rho$ e $\left<\sigma,\rho\right>\cong D_k$, dove $k=o(\rho)$.
+\end{oss}
+\begin{proof}
+Siano $\left\{\pm y\right\}=Fix_{S^2}\rho$, allora $\left<\sigma\right>\curvearrowright Fix_{S^2}\rho$ quindi
+\begin{gather*}
+\sigma^{-1}\rho\sigma(y)=\rho^\sigma(y)=y\qquad\text{cio\`e}\\
+\rho\sigma(y)=\sigma(y)\quad\text{e}\quad \sigma(y)\in Fix_{S^2}\rho\\
+(\text{quindi anche}\quad \sigma(-y)\in Fix_{S^2}\rho)
+\end{gather*}
+Se avessimo $\sigma(y)=y$ allora $\sigma\in C_{SO_3}(\left<\rho\right>)$ perch\'e coassiali, quindi $\sigma(\pm y)~=~\mp~y$, cio\`e
+$y\in Aut_{-1}\sigma\neq\left\{0\right\}$ e
+\begin{equation*}
+\mathbb{R}^3=Aut_1\sigma\overset{\scriptscriptstyle{\bot}}\oplus Aut_{-1}\sigma
+\end{equation*}
+Dove $Aut_1\sigma$ \`e l'asse di $\sigma$ e $Aut_{-1}=(Aut_1\sigma)^\bot$ \`e il suo piano ortogonale, sul quale $\sigma$ agisce antipodalmente.\\
+Se $x\in Aut_1\sigma\setminus\left\{0\right\}$ e $\mathcal{B}=\left(y,x,z\right)$ \`e una base ortonormale relativa a tale decomposizione,
+posti $R={}_\mathcal{B}\!\left[\rho\right]_\mathcal{B}$	e $S={}_\mathcal{B}\!\left[\sigma\right]_\mathcal{B}$,		% 	QUESTO FA SCHIFO
+si ha 
+\begin{equation*}
+S=\left(\begin{array}{ccc}
+-1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1
+\end{array}\right)
+\qquad\text{in particolare}\quad S^2=1\quad\text{e}
+\end{equation*}
+
+\begin{equation*}
+R=\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \cos{\theta} & -\sin{\theta}\\
+0 & \sin{\theta} & \cos{\theta}
+\end{array}\right)
+\qquad\text{se }\theta\text{ \`e l'angolo di }\rho\text{ e}
+\end{equation*}
+
+
+\begin{equation*}
+\begin{split}
+R^S & =\left(\begin{array}{ccc}
+-1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1
+\end{array}\right)
+\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \cos{\theta} & -\sin{\theta}\\
+0 & \sin{\theta} & \cos{\theta}
+\end{array}\right)
+\left(\begin{array}{ccc}
+-1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1
+\end{array}\right)=\\
+& =\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \cos{\theta} & \sin{\theta}\\
+0 & -\sin{\theta} & \cos{\theta}
+\end{array}\right)=R^{-1}
+\end{split}
+\end{equation*}
+
+Riassumendo, $R^k=S^2=1$ e $R^S=R^{-1}$, pertanto $G=\left<R,S\right>\cong D_k$.
+\end{proof}
+Proseguiamo quindi con lo studio del gruppo $G$ nel
+\subsection{Caso ($m=2$) $n=2$}
+Dalla formula \ref{eq:3} notiamo che $k=\frac{\left|G\right|}{2}=\left|G_{y_3}\right|$. Pertanto $G_{y_3}\trianglelefteq G$,
+quindi sia $\sigma\in G\setminus G_{y_3}$ tale che $\sigma$ non centralizza $G_{y_3}$, altrimenti fisserebbe $y_3$ e possiamo
+utilizzare l'osservazione \ref{oss:1} per concludere che $\sigma$ \`e un'involuzione e che $G\cong D_k$ \`e il $k$-esimo gruppo
+diedrale.
+Inoltre una sua presentazione come sottogruppo di $SO_3$ \`e data nell'osservazione \ref{oss:1} stessa.
+
+Continuiamo adesso con lo studio del terzo (sotto)caso che corrisponder\`a ai gruppi di simmetria dei poliedri regolari
+di $\mathbb{R}^3$ (i \emph{solidi platonici}).
+Facciamo una considerazione che ci sar\`a a tal fine utile.
+\begin{oss} \label{oss:2}
+Sia $G\leq SO_3$ e $X$ un $G$-sottoinsieme di $S^2$ con $\left|X\right|\geq 3$. Allora l'azione di $G$ su $X$ \`e fedele.
+\end{oss}
+\begin{proof}
+Se $G\overset{\alpha}\longrightarrow S_X$ \`e la restrizione dell'azione, sia $g\in Ker\alpha$. Allora
+$\left|Fix_{S^2}g\right|=\left|X\right|\geq 3$ quindi, essendo $g\in SO_3$ abbiamo $g=1$
+\end{proof}
+
+Riscriviamo adesso la formula \ref{eq:3} nell'ultimo caso, per cui vale $n=3$:
+\begin{equation} \label{eq:4}
+\frac{1}{k} = \frac{1}{6} + \frac{2}{\left|G\right|}
+\end{equation}
+Da questa notiamo che $\frac{1}{k}>\frac{1}{6}$, quindi $k$ pu\`o assumere i tre valori $3,4,5 (k~\geq~n~=~3)$.
+
+Studiamo singolarmente i tre (sotto)casi, nei quali vale:
+\begin{equation} \label{eq:5}
+\left|G\right| = \frac{12k}{6-k}
+\end{equation}
+\subsection{Caso $(m=2,n=3)\ k=3$}
+Innanzitutto notiamo che $\left|G\right|=12$ e vedremo che questo determiner\`a univocamente la struttura di $G$.
+Per capire di che gruppo si tratti, basta notare che
+\begin{equation*}
+\left|y_3^G\right| = \left[G:G_{y_3}\right]=\frac{\left|G\right|}{m(y_3)}=\frac{12}{3}=4\quad\text{(ricordiamo che }k=m(y_3)\text{)}
+\end{equation*}
+
+Pertanto, per l'osservazione \ref{oss:2}, l'azione di $G$ su $y_3^G$ \`e fedele, quindi abbiamo un'immersione di $G$ in $S_4$.
+Per concludere che l'immagine di questa immersione \`e effettivamente $A_4$ basta notare che $G$ possiede otto elementi di ordine $3$
+le cui immagini in $S_4$ devono essere gli otto $3$-cicli, che generano $A_4$.
+
+Concludiamo che 
+\begin{equation*}
+G\cong A_4
+\end{equation*}
+
+Nel seguito considereremo, oltre alle azioni del gruppo $G$ su $X$ e sulle relative orbite, anche quella che ne deriva
+sugli stabilizzatori.
+
+Questo permette di semplificare lo studio di $G$ tramite l'azione du un insieme (in generale) pi\`u piccolo.
+Inoltre quest'azione ha un esplicito significato geometrico, possiamo infatti immaginare gli stabilizzatori come una
+``versione algebrica'' degli assi degli elementi di $G$.
+Ad ogni asse possiamo infatti far corrispondere lo stabilizzatore della sua intersezione con $S^2$ e per il viceversa
+abbiamo visto che gli elementi non identici di uno stabilizzatore condividono l'asse.
+
+\begin{oss} \label{oss:3}
+Siano $G\leq SO_3$ che agisce su $X=\left\{v\in S^2\mid G_v\neq\left\{1\right\}\right\}$ e $x, y\in X$. Allora
+\begin{equation*}
+G_x = G_y\quad \Longleftrightarrow\quad x=\pm y.
+\end{equation*}
+\begin{proof}
+Sia $g\in G_x\setminus\left\{1\right\}$ da cui $Fix_{S^2}g = \left\{\pm x\right\}$ ma anche
+$g\in G_y\setminus\left\{1\right\}$ da cui $Fix_{S^2}g = \left\{\pm y\right\}$ e quindi la tesi
+\end{proof}
+\end{oss}
+
+\begin{fatto} \label{fatto:1}
+Sia $H$ un gruppo agente su $T$. Allora $H$ agisce per coniugio \emph{sui suoi stabilizzatori}, infatti
+\begin{equation} \label{azStab}
+H_x^g = H_{g^{-1}x}\qquad\forall g\in H,\forall x\in T.
+\end{equation}
+Pertanto, se l'azione di $H$ su $T$ \`e transitiva, lo \`e anche quella su $Z~=~\left\{H_x\mid x\in T\right\}$.
+\end{fatto}
+\begin{proof}
+Per la genericit\`a di $g\in H$ e $x\in T$ basta mostrare che $H_x^g\leq H_{g^{-1}x}$. Sia allora $h\in H_x$, quindi
+\begin{equation*}
+h^g(g^{-1}x) = g^{-1}hgg^{-1}x = g^{-1}hx = g^{-1}x
+\end{equation*}
+quindi $h^g\in H_{g^{-1}x}$
+\end{proof}
+
+Proseguiamo quindi con il prossimo
+
+\subsection{Caso $(m=2, n=3)\ k=4$}
+Innanzitutto, per la \ref{eq:5}, notiamo che $\left|G\right|=24$. Inoltre l'azione di $G$ su $X$ decompone quest'ultimo in tre orbite
+di $12$, $8$ e $6$ elementi ciascuna:
+\begin{equation*}
+X = y_1^G\overset{\cdot}\cup y_2^G\overset{\cdot}\cup y_3^G
+\end{equation*}
+con stabilizzatori (ciclici) di cardinalit\`a rispettivamente $2=m, 3=n, 4=k$.
+
+Per studiare $G$ individuiamo un pi\`u piccolo insieme su cui esso agisce. Scegliamo, come preannunziato,
+\begin{equation*}
+Z = \left\{ G_x\mid x\in y_2^G\right\}
+\end{equation*}
+
+Per il fatto \ref{fatto:1} $G$ agisce transitivamente su $Z$ per coniugio.
+
+Determiniamo $\left|Z\right|$.
+A tal fine, chiamata $i\in O_3$ l'applicazione antipodale ($i=-1$), notiamo che $G\leq O_3=C_{O_3}(i)$ ($i$ \`e scalare), pertanto
+gli insiemi $iy_1^G,iy_2^G,iy_3^G,$ sono stabili per l'azione di $G$.
+Quindi $\forall j\in\left\{1,2,3\right\}\quad iy_j^G$ \`e unione di $G$-orbite ma, guardando le cardinalit\`a di quest'ultima \`e
+necessariamente
+\begin{equation*}
+iy_j^G = y_j^G
+\end{equation*}
+Le orbite sono quindi simmetriche rispetto all'origine.
+
+L'osservazione \ref{oss:3} ci permette di concludere che $\left|Z\right| = 4$. Mostriamo quindi che tale azione di $G$ su $Z$
+\`e \emph{fedele}.
+Notiamo intanto che $G$ \`e unione dei suoi stabilizzatori rispetto alle azioni su $y_1^G,y_2^G,y_3^G$.
+
+Questi sono sottogruppi ciclici (massimali) di rispettivamente $m=2,\ n=3,\ k=4$ elementi, tutti coniugati nel rispetto delle cardinalit\`a.
+\begin{equation*}
+G\setminus\left\{1\right\} = \underset{x\in X}{\overset{\cdot}\bigcup}(G_x\setminus\left\{1\right\})=
+\overset{\cdot}{\underset{\substack{i=1,2,3\\g\in G}}\bigcup}(G_{y_i}^g\setminus\left\{1\right\})
+\end{equation*}
+Ma torniamo alla rappresentazione $G\overset\phi\longrightarrow S_Z$.
+Sia $N=Ker\phi$, mostriamo che $N=\left\{1\right\}$.
+Innanzitutto $N$ non contiene elementi di ordine $3$. Infatti sia $\rho\in G$ con
+$o(\rho)=3$. Se $H\leq G, \left|H\right|=3$ (cio\`e se $H\in Z$) tale che $\rho\notin H$, allora $\rho\in N_G(H)\geq Ker\phi=N$
+infatti, se cos\`i fosse, $\left<\rho,H\right>\leq G$ avrebbe $9$ elementi.
+
+$N$ non contiene neanche $4$-stabilizzatori, altrimenti li conterrebbe tutti, ma questi sono $\frac{\left|y_3^G\right|}{2}=\frac{6}{2}=3$
+(ricordando che $G_x=G_y \Leftrightarrow x = \pm y$ e $y_3^G=-y_3^G$) pertanto avrebbe almeno le tre coppie di generatori e l'identit\`a,
+quindi almeno $7$ elementi, perci\`o $\left|N\right|\geq 8$ e $\left|G/N\right|\leq 3$ perci\`o $G/N$ non potrebbe agire transitivamente
+su $Z$.
+
+Un argomento analogo si pu\`o fare per vedere che $N$ non contiene nessuno dei $6$ $2$-stabilizzatori.
+Ci resta da vedere che $N$ non contiene nessuna delle incoluzioni dei $4$-stabilizzatori. Se ne contenesse una,
+infatti, le conterrebbe tutte (i $4$-stabilizzatori sono tutti coniugati e ognuno contiene un'unica involuzione).
+
+Notiamo che - come vedremo - esiste in effetti in $G$ un sottogruppo normale (isomorfo a $K_4$, il \emph{gruppo di Klein}) costituito
+da tali involuzioni a l'identit\`a.
+
+Tuttavia se $N$ fosse costituito da queste $3$ involuzioni e l'identit\`a, $G/N$ sarebbe un gruppo di $6$ elementi agente
+transitivamente su $Z$, di $4$ elementi, pertanto avremmo:
+\begin{equation*}
+4=\left|Z\right|\big|\left|G\right|=6,\qquad\text{assurdo.}
+\end{equation*}
+
+Pertanto $G\hookrightarrow S_Z\cong S_4$ ed, essendo $\left|G\right|=\left|S_4\right|$ si conclude che
+\begin{equation*}
+G\cong S_4
+\end{equation*}
+
+Studiamo quindi l'ultimo
+\subsection{Caso ($m=2,\ n=3)\ k=5$}
+Innanzitutto, per la \ref{eq:5}, abbiamo che $\left|G\right|=60$ e le orbite dell'azione di $G$ su $X$ hanno cardinalit\`a
+\begin{equation*}
+\left|y_1^G\right|=30\qquad\left|y_2^G\right|=30\quad\text{e}\quad\left|y_3^G\right|=12
+\end{equation*}
+Come nel caso $k=4$, tali orbite sono simmetriche rispetto all'origine.
+
+Notiamo che tutti i sottogruppi di ordine $3$ sono coniugati e cos\`i quelle di ordine $5$ e, per quanto osservato, questi sono
+rispettivamente
+\begin{equation*}
+\frac{\left|y_2^G\right|}{2}=10\quad\text{e}\quad\frac{\left|y_3^G\right|}{2}=6
+\end{equation*}
+in numero.
+
+Inoltre vi saranno (almeno) altri $\frac{\left|y_1^G\right|}{2}=15$ $2$-stabilizzatori (involuzioni). Questi ci daranno quindi
+$10\cdot 2=20$ elementi di ordine $3$ e $6\cdot 4=24$ elementi di ordine $5$. Osserviamo che $1+20+24+15=60$, pertanto le involuzioni
+saranno precisamente le $15$ che generano gli altrettanti stabilizzatori relativi a $y_1^G$.
+
+Gli unici ordini di elementi non identici in $G$ sono quindi $2$,$3$ e $5$ e i sottogruppi ciclici sono tutti coniugati nel rispetto
+delle cardinalit\`a. Continuiamo lo studio di $G$ mostrando - grazie alla simmetria fra i suoi sottogruppi - che esso \`e semplice.
+
+Sia $N\trianglelefteq G$, se $N$ contiene un elemento non identico allora, essendo questi coniugati a meno dell'ordine,
+\begin{gather*}
+\left|N\right|\geq\min{\left\{15,20,24\right\}}+1=16\\
+\left|N\right|\in\left\{20,30,60\right\}
+\end{gather*}
+pertanto $10\mid\left|N\right|$ e $N$ ha un'involuzione e un elemento di ordine $5$, quindi
+\begin{equation*}
+\left|N\right|\geq 15+24+1=40\Rightarrow N=G.
+\end{equation*}
+
+Studiamo adesso i $2$-Sylow di $G$.
+
+Questi sono isomorfi a $K_4$ (in quanto $G$ non possiede elementi di ordine $4$). Notiamo poi che ogni involuzione di $G$ \`e contenuta
+in un tale $2$-Sylow, infatti $\forall\sigma\in G$ involuzione, scelti qualunque $1\neq\sigma_1\in Q\in Syl_2G$ esiste un $g\in G$
+tale che $\sigma_1^g=\sigma$, allora $\sigma\in Q^g\in Syl_2G$.
+Inoltre tale $2$-Sylow risulta essere il centralizzante dell'involuzione (pertanto esso \`e unico). Cio\`e abbiamo che
+\begin{equation*}
+Syl_2G = \left\{G_G(\sigma)\mid\sigma\in G\text{ involuzione}\right\}.
+\end{equation*}
+Quanti sono tali $2$-Sylow?
+
+Notiamo che se $Q,Q'\in Syl_2G$ hanno intersezione non banale, diciamo
+\begin{equation*}
+1\neq\sigma\in Q\cap Q'
+\end{equation*}
+allora
+\begin{equation*}
+\left<Q,Q'\right>\leq C_G(\sigma)
+\end{equation*}
+quindi $Q=Q'$. I $2$-Sylow di $G$ sono pertanto a due a due digiunti.
+
+Da questo concludiamo che le $15$ involuzioni di $G$ si partizionano in
+\begin{equation*}
+\left\{\sigma\in G\mid\sigma involuzione\right\}=\underset{Q\in Syl_2G}{\overset{\cdot}\bigcup}(Q\setminus\left\{1\right\})
+\end{equation*}
+Pertanto 
+\begin{equation*}
+\left|Syl_2G\right|=5.
+\end{equation*}
+Questo ci permette praticamente di determinare il gruppo $G$. Infatti $G$ agisce transitivamente sui suoi $2$-Sylow e abbiamo, quindi,
+\begin{equation*}
+G\overset\phi\longrightarrow S_{Syl_2G}\cong S_5
+\end{equation*}
+Per la transitivit\`a dell'azione abbiamo che $Ker\neq G$ quindi, per la semplicit\`a di $G$, $Ker\phi=\left\{1\right\}$ e $\phi$ risulta
+un'immersione.
+
+A questo punto concludiamo che
+\begin{equation*}
+G\cong A_5
+\end{equation*}
+Infatti indicando con $\Tilde{G}$ l'immagine di $G$ in $S_5$, abbiamo che
+\begin{equation*}
+[\Tilde{G}:\Tilde{G}\cap A_5]\leq 2\ \Rightarrow\ \Tilde{G}\cap A_5\trianglelefteq\Tilde{G}\ \Rightarrow\ \Tilde{G}\cap A_5=\Tilde{G}
+\end{equation*}
+(essendo $\Tilde{G}$ semplice e $|\Tilde{G}\cap A_5|\geq 30>1$).
+
+

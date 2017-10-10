@@ -1,0 +1,440 @@
+\documentclass[a4paper,12pt,italian]{article}
+%%\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\Pol}{\textsl{P}}
+\newcommand{\Fac}{\mathcal{P}}
+\newcommand{\Band}{\mathcal{F}}
+\newcommand{\IsoP}{Aut(\Pol)}
+\newcommand{\RotP}{Aut^+(\Pol)}
+\newcommand{\Cam}{\mathcal{C}(\Pol)}
+
+
+\newtheorem{defin}{Definizione}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollario}
+\newtheorem{prop}{Proposizione}
+\newtheorem{oss}{Osservazione}
+\newtheorem{ex}{Esempio}
+\newtheorem{fatto}{Fatto}
+
+%   ’  alt shift b
+
+\author{Nunzio Turtulici}
+\title{Politopi regolari e sottogruppi di $SO_n(\mathbb{R})$}
+
+\begin{document}
+\section{Convessit\`a}
+
+\begin{defin}[Convessit\`a]
+Un sottoinsieme $K\subseteq \Rd$ si dice \emph{convesso} se \`e ``chiuso per segmenti'', ossia se
+$\forall x,y\in K \left[x,y\right]\subseteq K$. Dove
+\begin{equation}
+\left[x,y\right]=\left\{(1-\lambda)x + \lambda y\mid\lambda\in\left[0,1\right]\right\}
+\end{equation}
+Notiamo la differenza con la rappresentazione della retta affine generata da $x$ e $y$ nella quale si fa variare $\lambda$
+in tutto $\mathbb{R}$.
+\end{defin}
+\begin{oss}	% Intersezioni e immagini
+Notiamo che la convessit\`a \`e ovviamente stabile per intersezioni arbitrarie e immagini tramite affinit\`a.
+\end{oss}
+Definiamo quindi la
+\begin{defin}[Chiusura convessa]
+Sia $X\subseteq\Rd$, definiamo
+\begin{equation}
+convX=\bigcap\left\{X\subseteq K\subseteq\Rd\mid K\text{convesso}\right\}
+\end{equation}
+Diremo che $\left[X\right]$ \`e la chiusura convessa di $X$.
+\end{defin}
+
+Nel seguito avremo a che fare quasi sempre con insiemi chiusi e convessi, quindi definiamo
+\begin{defin}[Inviluppo chiuso convesso]
+Sia $X\subseteq\Rd$, definiamo
+\begin{equation}
+\left[X\right]=\bigcap\left\{X\subseteq K\subseteq\Rd\mid K\text{chiuso e convesso}\right\}
+\end{equation}
+Diremo che $\left[X\right]$ \`e l'inviluppo chiuso convesso di $X$, o pi\`u semplicemente, ove non vi sia possibilit\`a 
+di confusione, chiameremo quest'ultima semplicemente \emph{chiusura convessa} di $X$.\\
+\end{defin}
+Notiamo che per la stabilit\`a delle propriet\`a di chiusura e di convessit\`a per intersezioni arbitrarie l'inviluppo (chiuso) convesso
+di un insieme risulta essere il minimo (chiuso) convesso che contenga l'insieme stesso.\\
+Inoltre \`e bene notare che per insiemi di finiti di generatori (che saranno il fulcro di questo lavoro) tali due nozioni coincidono.
+\begin{oss}
+\label{ChiusureOss}
+Se $F\subset\Rd$ \`e un insieme finito, allora
+\begin{equation*}
+convF=\left[F\right]
+\end{equation*}
+\end{oss}
+\begin{proof}
+SCRIVERE    %% EDIT
+\end{proof}
+Un iperpiano in $\Rd$ ``divide'' lo spazio in due semispazi. L'insieme dei semispazi dello spazio euclideo costituisce una
+sorta di \emph{base} per gli insiemi (chiusi) convessi.
+\begin{defin}
+Dati $y\in\Rd\setminus\left\{0\right\}$ e $b\in\mathbb{R}$ definiamo l'iperpiano ortogonale a $y$ di livello $b$ come
+\begin{equation}
+H_b(y)=H(y,b)=\left\{x\in\Rd\mid\left<x|y\right>=b\right\}
+\end{equation}
+E il semispazio positivo determinato da $y$ e $b$ come
+\begin{equation}
+K^+_b(y)=K^+(y,b)=\left\{x\in\Rd\mid\left<x|y\right>\geq b\right\}
+\end{equation}
+Analogamente si definisce il semispazio negativo $K^-_b(y)$ dato da $y$ e $b$.
+Ove non indicato il segno lo assumeremo implicitamente \emph{negativo}.
+\end{defin}
+Notiamo che ammettendo la scelta $y=0$ possiamo ottenere $\Rd=H_0(0)$ e $\emptyset=H_1(0)$ che chiameremo \emph{iperpiani impropri}.\\
+\begin{defin}
+Siano $X,Y\subseteq\Rd$, allora diremo che un iperpiano $H_b(z)\leq~\Rd$ ``separa'' $X$ da $Y$ se
+$X\subseteq K_b(z)^+$ e $Y\subseteq K_b(z)^-$ o viceversa. Nel caso in cui $Y=\left\{y\right\}$ diremo per brevit\`a che
+$H_b(z)\leq\Rd$ separa $X$ da $y$.
+\end{defin}
+
+Notiamo che tali iperpiani e semispazi risultano sia chiusi che convessi. In effetti in questo lavoro ci occuperemo quasi sempre di
+insiemi chiusi e convessi, a tal fine cominciamo con una prima basilare considerazione che ci permette di \emph{proiettare} su un chiuso
+convesso dello spazio euclideo. Definiamo prima la \emph{distanza da un chiuso convesso}.
+
+\begin{defin}
+Sia $\emptyset\neq C\subseteq\Rd$ un chiuso convesso, allora per ogni $x\in\Rd$ definiamo la distanza da $x$ a $C$ come
+\begin{equation}
+d(x,C):=d_C(x):=\min_{z\in C}d(x,z)
+\end{equation}
+Che si tratti di una buona definizione, ossia che esista un punto di minima distanza da $x$ in $C$, discende dalla seguente
+\end{defin}
+
+%%------------------------------Proiezione su convesso
+\begin{prop}	
+Sia $\emptyset\neq C\subseteq\Rd$ un insieme chiuso convesso. Allora per ogni punto $x\in\Rd$ esiste un unico $\bar{x}\in C$ tale che
+\begin{equation}
+d(x,\bar{x})=d(x,C)
+\end{equation}
+Abbiamo quindi una funzione di proiezione $\pi_C:\Rd\mapsto C$ definita da
+\begin{equation}
+\pi_C(x):=\bar{x}
+\end{equation}
+\end{prop}
+\begin{proof}
+Siano $x_0\in\Rd$ e $z_0\in C$, allora sia $C'=C\cap B[x_0,d(x_0,z_0)]$ la parte di $C$ che non disti da $x_0$ pi\`u di $z_0$. Allora notiamo
+che la funzione $f:C'\mapsto\mathbb{R}^+_0$ definita da
+\begin{equation}
+f(z)=d(x,z)
+\end{equation}
+sul compatto $C'$ e a valori non negativi, \`e continua. Pertanto essa assume, in un punto $\bar{z}\in C'\subseteq C$, un valore minimo
+$\delta\in\mathbb{R}^+_0$.
+Il punto $\bar{z}$ \`e il punto di minima distanza cercato, basta infatti notare che, se $z\in C\setminus B[x_0,d(x_0,z_0)]$ allora
+$d(x_0,\bar{z})<d(x_0,z_0)<d(x_0,z)$.
+Mostriamo ora che tale punto \`e unico. Per comodit\`a assumiamo che sia $x_0=0$ (assunzione non restrittiva a meno di traslazioni).
+Resta da mostrare che il punto di norma minima (ossia il punto di $C$ di distanza minima da $0$) 
+che sappiamo esistere per il punto precedente \`e in effetti unico.
+Siano $z,z'\in C$ punti di minima norma $\delta\in\mathbb{R}^+_0$ (non escludiamo il caso $0\in C$), allora posto
+$\tilde{z}=\frac{z+z'}{2}\in C$ si ha
+\begin{gather}				%% SISTEMARE LE PARENTESI
+\|\tilde{z}\|^2=\left<\frac{z+z'}{2}\Big{|}\frac{z+z'}{2}\right>=\frac{1}{4}\left(\left<z\mid z\right>+2\left<z\mid z'\right>+
+\left<z'\mid z'\right>\right)=\\
+=\frac{1}{4}\left(\delta^2+2\left<z\mid z'\right>+\delta^2\right)=\frac{\delta^2+\left<z\mid z'\right>}{2}\leq\frac{\delta^2+\delta^2}{2}=\delta^2
+\end{gather}
+Pertanto, per la minimalit\`a di $\delta$ tra le norme di punti di $C$ abbiamo che la disuguaglianza deve essere in realt\`a un'uguaglianza.
+Quindi, notiamo che abbiamo mostrato valere l'uguaglianza nella disuguaglianza di Cauchy-Schwarz:
+\begin{equation}
+\delta^2=\left<z\mid z'\right>\leq\|z\|\|z'\|=\delta^2
+\end{equation}
+Pertanto $z'=\lambda z$ per un $\lambda\in\mathbb{R}$, ma si ha a questo punto che
+\begin{equation}
+\delta^2=\left<z\mid\lambda z\right>=\lambda\|z\|^2=\lambda\delta^2
+\end{equation}
+Da cui $z=z'$ (se abbiamo $\delta=0$ allora $z=0=z'$)
+\end{proof}
+
+Notiamo che, come nella dimostrazione precedente, nel caso in cui il punto in questione sia l'origine,
+la sua proiezione sull'insieme $C$ \`e il punto di \emph{minima norma} di $C$. In questo caso 
+(non restrittivo in realt\`a) ci sar\`a utile il seguente
+%%----------------------------punto di minima norma
+\begin{lem}
+\label{DisugMinimaNorma}
+Sia $\emptyset\neq C\subseteq\Rd$ un chiuso convesso e $\bar{z}\in C$ il suo punto di minima norma. Allora per ogni $z\in C$ avremo
+\begin{equation}
+\left<z\mid\bar{z}\right>\geq\left<\bar{z}\mid\bar{z}\right>
+\end{equation}
+\end{lem}
+\begin{proof}
+Sia $\bar{z}\in C$ di norma minima $\delta\in\mathbb{R}^+_0$ e $z$ un qualunque punto di $C$. Supponiamo per assurdo che valga
+$\left<z\mid\bar{z}\right><\left<\bar{z}\mid\bar{z}\right>=\|\bar{z}\|$, da cui $\left<z\mid\bar{z}\right>~<~\|\bar{z}\|^2$. Allora, parametrizzando
+il segmento tra $\bar{z}$ e $z$ (contenuto in $C$), posto cio\`e $z_\lambda:=\lambda z+(1-\lambda\bar{z})$, avremmo
+\begin{gather*}				%% riscrivere...
+\|z_\lambda\|^2=\|\lambda z + (1-\lambda)\bar{z}\|^2=\left<\lambda z + (1-\lambda)\bar{z}\mid\lambda z + (1-\lambda)\bar{z}\right>=\\
+=\lambda^2\|z\|^2+2\lambda(1-\lambda)\left<z\mid\bar{z}\right>+(1-\lambda)^2\delta^2
+\end{gather*}
+E, per la minimalit\`a di $\delta$, si avrebbe
+\begin{equation*}
+0<\|z_\lambda\|^2-\delta^2=\lambda^2\|z\|^2+2\lambda(1-\lambda)\left<z\mid\bar{z}\right>+(\lambda^2-2\lambda)\delta^2
+\end{equation*}
+Mostreremo invece che per un'opportuna scelta di $\delta$ tale quantit\`a pu\`o essere resa negativa.
+Posto quindi $\varepsilon=\|\bar{z}\|^2-\left<z\mid\bar{z}\right>$, che stiamo assumendo essere per ipotesi positivo, possiamo scrivere
+\begin{gather*}
+\|z_\lambda\|^2-\delta^2=\lambda^2\|z\|^2+2\lambda(1-\lambda)(\delta^2-\varepsilon)+(\lambda^2-2\lambda)\delta^2=\\
+=\lambda^2\|z\|^2+2\lambda(1-\lambda)\delta^2-2\lambda(1-\lambda)\varepsilon+(\lambda^2-2\lambda)\delta^2=\\
+=\lambda^2\|z\|^2+(2\lambda-2\lambda^2+\lambda^2-2\lambda)\delta^2-2\lambda(1-\lambda)\varepsilon=\\
+=\lambda^2\|z\|^2-\lambda^2\delta^2-2\lambda(1-\lambda)\varepsilon=\\
+=\lambda\left[\lambda(\|z\|^2-\delta^2)-2(1-\lambda)\varepsilon\right]
+\end{gather*}
+Perch\'e questa quantit\`a sia negativa (per arrivare cos\`i ad un assurdo) cerchiamo un $\lambda\neq0$:
+\begin{gather*}
+\lambda(\|z\|^2-\delta^2)-2(1-\lambda)\varepsilon<0\\
+\lambda(\|z\|^2-\delta^2+2\varepsilon)<2\varepsilon
+\end{gather*}
+Basta quindi prendere $\lambda<\frac{2\varepsilon}{\|z\|^2-\delta^2+2\varepsilon}$. Notiamo che le quantit\`a
+$\|z\|^2-\delta^2$ e $2\varepsilon$ sono positive, pertanto si ha che
+$\frac{2\varepsilon}{\|z\|^2-\delta^2+2\varepsilon}\in\left]0,1\right[$.
+Basta quindi scegliere $\tilde{\lambda}=\frac{\varepsilon}{\|z\|^2-\delta^2+2\varepsilon}$.\\
+Da questo assurdo concludiamo che vale $\left<z\mid\bar{z}\right>\geq\left<\bar{z}\mid\bar{z}\right>$
+\end{proof}
+Notiamo che quest'ultimo lemma pu\`o essere sostanzialmente riformulato nel seguente
+\begin{lem}
+\label{SeparazZero}
+Siano $C\subset\Rd$ un chiuso convesso tale che $0\notin C$ e $\bar{z}\in C$ il suo punto di minima norma. Allora,
+se $0\leq\varepsilon\leq\|\bar{z}\|^2$
+\begin{equation*}
+C\subseteq K^+_\varepsilon(\bar{z})
+\end{equation*}
+In particolare l'iperpiano $H_\varepsilon(\bar{z})$ separa $C$ dall'origine. Tale separazione \`e inoltre stretta per
+$0<\varepsilon<\|\bar{z}\|^2$.
+\end{lem}
+\begin{proof}
+\`E sufficiente notare che, essendo in questo caso $0\notin C$, avremo che $\|\bar{z}\|>0$ per applicare il lemma \ref{DisugMinimaNorma}
+ed ottenere la tesi
+\end{proof}
+%% Caratterizzazione esterna chiusura convessa
+\begin{fatto}
+Sia $X\subseteq\Rd$ allora
+\begin{equation*}
+\left[X\right] = \bigcap_{K_b(y)\supseteq X}K_b(y)
+\end{equation*}
+\end{fatto}
+\begin{proof}
+Ovviamente il verso ``$\subseteq$'' deriva dall'osservare che l'intersezione viene fatta su una sottofamiglia dei convessi contenenti $X$.
+Mostriamo che vale ``$\supseteq$''. Sia $x_0\notin\left[X\right]$ e supponiamo per semplicit\`a (a meno di traslazioni) che sia $x_0 = 0$.\\
+Sia $\bar{z}\in\left[X\right]$ un punto di norma minima $\delta>0$ (che risulta positiva per l'ipotesi $0\notin\left[X\right]$)\\
+Allora, per il lemma \ref{SeparazZero}, l'iperpiano $H_{\delta^2}(\bar{z})$ separa $\left[X\right]$ dall'origine.
+Infatti $\left[X\right]\subseteq K^+_{\delta^2}(\bar{z})$ e, ovviamente, $0\in~K^-_{\delta^2}(\bar{z})$,
+\end{proof}
+Saranno utili per il seguito utile i seguenti due teoremi
+\begin{teo} %%CP-11
+\label{SeparazTeo1}
+Se $A,B\subset\Rd$ sono convessi, uno dei due \`e limitato e $\bar{A}\cap\bar{B}=\emptyset$ allora $A$ e $B$ possono essere separati
+(strettamente) da un iperpiano.
+\end{teo}
+\begin{proof} %% EDIT definire la distanza tra due insiemi
+Supponiamo $B$ limitato. Essendo $d(A,B)=d(\bar{A},\bar{B})=:\delta$ possiamo restringerci al caso in cui $A$ e $B$ siano
+insiemi chiusi. Avremo quindi per ipotesi $\delta>0$. Mostriamo che tale distanza \`e effettivamente raggiunta da due punti di $A$ e di $B$.
+Se $\pi_A$ \`e la proiezione sul chiuso convesso $A$ allora la funzione $x\mapsto d(x,A)=d(x,\pi_A(x))$ \`e una funzione continua a valori
+positivi definita sul compatto $B$.\\
+Avremo quindi un $\bar{a}\in A$ e un $\bar{b}:=\pi(\bar{a})\in B$ tali che $d(\bar{a},B)=d(\bar{a},\bar{b})=\delta$. Al fine di trovare
+un iperpiano che separi $A$ da $B$ supponiamo, senza perdita di generalit\`a, che il punto medio di $\bar{a}$ e $\bar{b}$, 
+$\frac{\bar{a}+\bar{b}}{2}$ sia l'origine, ossia che $\bar{b}=-\bar{a}$.
+Notiamo che, in questo caso, tali punti risultano i punti di minima norma degli insiemi $A$ e $B$.\\
+Infatti se $\tilde{a}\in A$ allora avremo, per la minimalit\`a della distanza tra $\bar{a}$ e $\bar{b}$, che
+\begin{equation*}
+2\|\bar{a}\|=\|\bar{a}-\bar{b}\|\leq\|\tilde{a}-\bar{b}\|\leq\|\tilde{a}\|+\|\bar{b}\|=\|\tilde{a}\|+\|\bar{a}\|
+\end{equation*}
+da cui
+\begin{equation*}
+\|\bar{a}\|\leq\|\tilde{a}\|
+\end{equation*}
+Analogamente si mostra che $\bar{b}$ \`e il punto di minima norma di $B$.\\
+A questo punto, per il lemma \ref{SeparazZero}, avremo che $A\subseteq K^+_0(\bar{a})$ e $B\subseteq K^+_0(\bar{b})=K^-_0(\bar{a})$ da cui
+la tesi
+\end{proof}
+Enunciamo e dimostriamo un secondo utile teorema di separazione
+\begin{teo}
+\label{SeparazTeo2}
+Siano $A,A'\subset\Rd$ convessi tali che $\left<A,A'\right>_a=\Rd$, allora $A$ e $A'$ possono essere separati da un iperpiano se e solo se
+\begin{equation}
+relintA\cap relintA'=\emptyset
+\end{equation}
+\end{teo}
+\begin{proof}
+Essendo ovvia la necessit\`a della condizione $relintA\cap relintA'=\emptyset$ mostriamone la sufficienza affinch\'e $A$ e $A'$
+siano separabili.
+A tal fine a meno di passare alle chiusure supponiamo tali insiemi chiusi.\\ Il nostro obbiettivo \`e l'utilizzo del teorema
+\ref{SeparazTeo1} per ottenerne un raffinamento. A tal fine cercheremo di ottenere delle ``approssimazioni'' degli insiemi $A$ e $A'$
+alle quali applicare \ref{SeparazTeo1} per ottenere degli iperpiani di separazione che ``tenderanno'' all'iperpiano separante desiderato.\\
+Siano $x_0\in relintA$, $y_0\in relintA'$ e sia $0<\varepsilon<1$. Posto per brevit\`a $B=B_1[0]$ siano
+\begin{equation*}
+A_\varepsilon=x_0+\frac{1}{\varepsilon}B\cap\left[(1-\varepsilon)(A-x_0)\right]
+\end{equation*}
+un'approssimazione omotetica di un compatto in $A$ e 
+\begin{equation*}
+A'_\varepsilon=y_0+(1-\varepsilon)(A'-y_0)
+\end{equation*}
+un'approssimazione omotetica di $A'$. Notiamo che se $0<\varepsilon<\delta$ allora $A_\varepsilon\supset A_\delta$ e
+$A'_\varepsilon\supset A'_\delta$, inoltre 
+\begin{equation*}
+relintA=\bigcup_{0<\varepsilon<1}A_\varepsilon
+\end{equation*}
+e
+\begin{equation*}
+relintA'=\bigcup_{0<\varepsilon<1}A'_\varepsilon
+\end{equation*}
+Essendo $A_\varepsilon\subset relintA$ e $A'_\varepsilon\subset relintA'$ tali insiemi saranno disgiunti per ogni $\varepsilon>0$. A questi
+quindi potremo applicare il teorema \ref{SeparazTeo1} per ottenere un iperpiano $H^\varepsilon:=H_{\alpha_\epsilon}(\nu_\varepsilon)$
+con $\nu_\varepsilon\in S^{d-1}$ unitario che separi strettamente $A$ da $A'$.\\
+Notiamo che ognuno dei $H_\varepsilon$ interseca il segmento $\left[x_0,y_0\right]$ pertanto l'insieme
+$\left\{\alpha_\varepsilon\mid\varepsilon>0\right\}$ \`e limitato, cos\`i come lo \`e l'insieme
+$\left\{\nu_\varepsilon\mid\varepsilon>0\right\}\subset S^{d-1}$ possiamo quindi estrarre una successione $(\varepsilon_n)_n$ positiva
+tendente a zero tale che
+\begin{equation*}
+\lim_{n\to\infty}\nu_{\varepsilon_n}=\nu\in S^{d-1}
+\end{equation*}
+e
+\begin{equation*}
+\lim_{n\to\infty}\alpha_{\varepsilon_n}=\alpha
+\end{equation*}
+Questo ci permette di trovare l'iperpiano voluto $H:=H_\alpha(\nu)$ che separa gli insiemi $A$ e $A'$ e di concludere quindi la dimostrazione
+\end{proof}
+
+
+Proseguiamo con lo studio della convessit\`a, introducendo un paio di definizioni, l'iperpiano ``tangente'' ad un insieme e la nozione di
+punto esterno.
+\begin{defin}[Iperpiano di supporto]
+Sia $A\subset\Rd$, diremo che l'iperpiano affine $H_b(y)<\Rd$ \emph{supporta} l'insieme $A$ se non lo separa ma gli \`e aderente, ossia se
+\begin{equation*}
+\sup_{a\in A}\left<y\mid a\right>=b
+\end{equation*}
+\end{defin}
+Notiamo che possiamo interpretare l'iperpiano $H_b(y)<\Rd$ come l'ipersuperficie di livello $b$ della funzione $x\mapsto\left<y\mid a\right>$
+che cresce lungo il verso di $y$ perpendicolarmente a $H_b(y)$. In questa interpretazione risulta ovvio il significato di supporto
+come tangenza all'insieme $A$.
+Il nostro argomento d'interesse saranno i politopi quindi per definire il concetto di estremi nel seguito considereremo un insieme 
+che sia chiuso e convesso.
+\begin{defin}[Punto esterno]
+Sia $x\in K$ con $K\subseteq\Rd$ chiuso convesso, diremo che $x$ \`e un punto \emph{esterno} o \emph{vertice} di $K$ se \`e convessamente
+indipendente dagli altri punti di $K$
+ossia se $x\notin conv(K\setminus\left\{x\right\})$ o, equivalentemente, se $conv(K\setminus\left\{x\right\})\subsetneq K$.
+\end{defin}
+Denoteremo l'insieme dei punti esterni di del chiuso convesso $K$ con $K_0$.\\
+Dimostriamo ora un teorema che ci sar\`a utile per determinare l'esistenza di facce in un politopo.
+\begin{cor}
+\label{IperSuppCor1}
+Sia $K\subset\Rd$ un convesso e $C\subseteq bdK$ un convesso contenuto nel suo bordo (per esempio un singolo punto). Allora esiste un
+iperpiano che separa $C$ da $K$.
+Ossia tale $C$ \`e contenuto in un iperpiano di supporto per $K$.
+\end{cor}
+\begin{proof}
+Notiamo che si ha $relintC\subseteq bdK$ e pertanto $relintC\cap relintK=\emptyset$, possiamo quindi concludere applicando il teorema
+\ref{SeparazTeo2}
+\end{proof}
+
+
+%% CARATTERIZZAZIONE DEL GENERATO CONVESSO TRAMITE LE COMBINAZIONI CONVESSE
+
+\section{Politopi}
+\subsection{Prime definizioni}
+Cominciamo col definire cosa siano i politopi e dimostrarne alcune propriet\`a fondamentali.
+\begin{defin}
+Un ``politopo'' \`e un sottoinsieme convesso generato da un numero finito di punti. Cio\`e se $F\subset\Rd$ \`e un insieme finito
+diremo che l'insieme chiuso e convesso $\left[F\right]$ \`e il politopo generato da $F$. Inoltre, se $P=\left[F\right]$ chiameremo
+$dimP:=dim\left<P\right>_a=dim\left<F\right>_a$ la dimensione di $P$.\\
+Se $d$ \`e la dimensione del politopo $P$ diremo che quest'ultimo \`e un $d$-politopo.
+\end{defin}
+
+%% I POLITOPI SONO COMPATTI 
+%% CARATTERIZZAZIONE DELLA CHIUSURA CONVESSA
+%% EQUIVALENZA DELLA DEFINIZIONE COME CONVESSO FIN.GEN. E INTERSEZIONE LIMITATA DI SEMISPAZI
+
+Notiamo che l'insieme $F$ di generatori per un politopo $P$ non \`e, ovviamente, unico. Tuttavia esiste una scelta preferenziale
+costituita dai \emph{vertici} di $P$. Vedremo in seguito che tale scelta costituisce l'insieme minimo di generatori per un politopo.\\
+Definiamo gli oggetti pi\`u importanti in un politopo, quelle che risultano in sostanza essere le sue sottostrutture: le \emph{facce}.
+\begin{defin}[Facce]
+Sia $P\subset\Rd$ un politopo. Se $H_b(y)$ \`e un suo iperpiano di supporto diremo che $F=P\cap H_b(y)\subseteq bdP$ \`e una 
+faccia di $P$. Chiameremo $dimF:=dim\left<F\right>_a$ la dimensione di $F$ o pi\`u concisamente, se $n=dimF$, diremo che $F$ \`e una $n$-faccia
+di $P$.
+\end{defin}
+Pi\`u concisamente, per indicare che $F$ \`e una faccia del politopo $P$ scriveremo $F\leq P$. L'appropriatezza di tale scrittura
+emerger\`a nel seguito.
+Notiamo intanto un primo risultato riguardo le facce di un politopo: esse ricoprono il suo bordo.
+\begin{lem}
+\label{BordoFacciaLem1}
+Sia $P<\Rd$ un politopo, allora
+\begin{equation*}
+bdP=\bigcup_{F\leq P}F
+\end{equation*}
+\end{lem}
+\begin{proof}
+L'inclusione ``$\supseteq$'' \`e ovvia perch\'e dalla definizione di faccia abbiamo che questa non pu\`o contenere punti di $intP$.
+Per quanto riguarda ``$\subseteq$'' basta notare che per ogni $x\in bdP$ abbiamo che $\left\{x\right\}$ \`e convesso per
+applicare \ref{IperSuppCor1}.
+\end{proof}
+
+
+\begin{oss}
+Sia $P=\left[F\right]\subset\Rd$ un politopo e $P_0$ l'insieme dei suoi vertici. Allora $P_0\subseteq F$ e $\left[P_0\right]=P$,
+in particolare $P_0$ \`e un insieme finito e costituisce il minimo sistema di generatori per $P$.
+\end{oss}
+\begin{proof}
+Sia $x\in P_0$ un vertice di $P$. Allora 
+\begin{equation*}
+\left[F\setminus\left\{x\right\}\right]\subseteq\left[P\setminus\left\{x\right\}\right]\subsetneq P=\left[F\right]
+\end{equation*}
+Pertanto $F\setminus\left\{x\right\}\neq F$ e $x\in F$.\\
+Per mostrare che l'insieme $P_0$ dei vertici di $P$ genera convessamente $P$
+procederemo per induzione sulla dimensione del politopo. Supponiamo senza perdita di generalit\`a che sia $d=dimP$ (quando cos\`i non fosse
+basterebbe restringersi al sottospazio affine $\left<P\right>_a$)\\
+Per $d\leq 1$ non v'\`e nulla da dimostrare. Sia $d>1$ e consideriamo $x\in P\setminus P_0$ un punto di $P$ non vertice. Avremo che
+$x\in\left[P\setminus\left\{x\right\}\right]$ e quindi
+\begin{equation*}
+x=\sum_{i=0}^n \lambda_i y_i\quad\text{con}\quad\lambda_i\geq 0,\ \sum_{i=0}^n\lambda_i=1
+\end{equation*}
+per opportuni $y_i\in P\setminus\left\{x\right\}$. Posti $y=y_0$, $\mu=\lambda_0$, $\mu_i=\frac{\lambda_i}{1-\lambda_0}$ e
+$y'=\sum_{i=1}^n\mu_i y_i$ notiamo che $\mu_i\geq 0$ e $\sum_{i=1}^n\mu_i=1$, pertanto $y'$ \`e una combinazione convessa
+degli $y_i$ per $1\leq i\leq n$. Inoltre avremo che $x\in relint\left[y,y'\right]$ in quanto $x=\lambda y+(1-\lambda)y'$
+(e distinto da entrambi).\\
+Presa la retta $r=\left<y,y'\right>$, avremo che $x\in relint(r\cap P)=\left[z,z'\right]$ (essendo $r\cap P$ un compatto
+convesso di $r\cong\mathbb{R}$) con $z,z'\in bd P$.\\
+Applicando quindi il corollario \ref{IperSuppCor1} abbiamo che $z\in F<P$ e $z'\in F'<P$ per opportune facce $F$ e $F'$ alle quali possiamo
+applicare l'ipotesi induttiva per [NOTARE CHE ESSERE VERTICE DIPENDE SOLO DAL PUNTO E NON DALLA FACCIA CHE STIAMO CONSIDERANDO] concludere
+che $F=\left[F_0\right]$ e $F'=\left[F'_0\right]$ da cui
+\begin{equation*}
+x\in\left[z,z'\right]\subseteq\left[F\cup F'\right]=\left[F_0\cup F'_0\right]\subseteq\left[P_0\right]
+\end{equation*}
+\end{proof}
+Per semplificare lo studio dei politopi \`e utile considerarne la struttura combinatoria determinata dalle facce e dall'incidenza. Vedremo
+come l'insieme delle facce di un politopo risulti essere un particolare tipo di reticolo (con la relazione di inclusione).\\
+Cominciamo col notare alcune propriet\`a delle facce di un politopo.
+\begin{lem}[Stabilit\`a dell'intersezione]
+Sia $P$ un politopo. Se $F_1,\dots,F_r\leq P$ allora
+\begin{equation*}
+\bigcap_{i=1}^r F_i\leq P
+\end{equation*}
+\end{lem}
+\begin{proof}
+Poniamo $F=\bigcap_{i=1}^r F_i$. Se $F=\emptyset$ non v'\`e nulla da dimostrare perch\'e $\emptyset$ risulta una faccia di $P$ per
+definizione. Supponiamo senza perdita di generalit\`a inoltre che ogni $F_i$ sia propria e, a meno di traslazioni, che $0\in F$.\\
+Sia per ogni $i=1,\dots,r$ quindi $v_i\in\Rd$ tale che
+\begin{equation*}
+F_i=P\cap H_0(v_i)=P\cap v_i^\bot
+\end{equation*}
+e
+\begin{equation*}
+P\subset K^+_0(v_i)
+\end{equation*}
+Posto allora $v=\sum_{i=1}^r$ mostriamo che $F=H_0(v)\cap P$. Sia $x\in P$ allora, da
+\begin{equation*}
+\left<v\mid x\right>=\left<\sum_{i=1}^r v_i\middle| x\right>=\sum_{i=1}^r\left<v_i\mid x\right>
+\end{equation*}
+Ed essendo $\left<v_i\mid x\right>\geq 0$ per ogni $i=1,\dots,r$, discende banalmente l'equivalenza
+\begin{equation*}
+x\in v^\bot\quad\Longleftrightarrow\quad x\in\bigcap_{i=1}^r v_i^\bot
+\end{equation*}
+e quindi basta notare che $P\subset K^+_0(v)$ per concludere che $H_0(v)$ \`e un iperpiano di supporto per $P$ e che
+$F=P\cap v^\bot=P\cap H_0(v)$ \`e una faccia di $P$
+\end{proof}
+
+
+
+
+
+
+\end{document}
