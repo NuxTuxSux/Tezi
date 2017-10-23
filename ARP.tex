@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{report}
 \usepackage{amsmath}
 \usepackage{yfonts}
+\usepackage{tikz,amssymb}
 %[
 	% Mi fa schifo \emptyset di \amssymb, evito che lo sovrascriva
 	\let\oldemptyset\emptyset
@@ -49,12 +50,12 @@
 
 
 
-\section{Politopi astratti}
+\section{Definizione e prime propriet\`a}
 In questo capitolo parleremo dei politopi astratti, un'astrazione assiomatica della struttura combinatoria dei politopi (concreti) di $\Rn$.
 Essi incapsulano la
 semplice struttura combinatoria delle facce di un politopo, essendo questa gi\`a molto ricca di informazioni circa il politopo stesso. Cominciamo con alcune 
 definizioni.
-\subsection{Definizioni}
+\subsection{Assiomatizzazione}
 Un insieme parzialmente ordinato $(\p,\leq)$ si dice \emph{politopo astratto di rango} $n$ (dove $rk\p:=n\in\mathbb{N})$ se soddisfa le
 propriet\`a $(P1)-(P4)$ scritte 
 di seguito. Per una migliore comprensione delle propriet\`a in questione introduciamo la terminologia di base. Gli elementi di $\p$ verranno
@@ -497,7 +498,7 @@ in entrambi i casi tale biiezione preserva l'adiacenza
 
 
 
-\subsection{Azione di $\Gamma(\p)$}
+\section{Gruppo di simmetrie e regolarit\`a}
 Cominciamo adesso lo studio delle simmetrie di un politopo. Molto utile per tale studio \`e l'azione del gruppo di simmetria di un politopo su
 suoi sottoinsiemi o su insiemi di suoi sottoinsiemi.\\
 Per esempio per quanto osservato in \ref{morphRank}, avremo che se $\Gamma(\p)$ \`e il gruppo di simmetria di un politopo $\p$, allora questo
@@ -706,7 +707,7 @@ Allora essendo $k_{ij}$ e $N_{ij}$ come sopra, per il numero delle bandiere di $
 \end{equation}
 \end{oss}
 
-\section{Politopi Regolari}
+\subsection{Politopi Regolari}
 Dopo aver introdotto alcune nozioni fondamentali per lo studio dei politopi astratti possiamo intrudurre il concetto di \emph{politopo regolare} e
 cominciare a studiare tali oggetti. Innanzitutto \`e bene notare che volendo generalizzare il concetto di regolarit\`a presente nei politopi concreti
 potremmo tentare pi\`u strade. Per esempio, definendo ricorsivamente il concetto di regolarit\`a, dicendo ossia che un politopo \`e regolare se sono
@@ -846,7 +847,7 @@ Allora, ricordando che per \ref{freeAction} l'azione di $\Gamma(F/G)$ su $\flag{
  $\tau\restrict{F/G}=\sigma\restrict{F/G}$\\
  \point{7}Discende da \localref{6}
 \end{proof}
-\subsection{Generatori scelti per $\Gamma$}
+\subsubsection{Generatori scelti per $\Gamma$}
 Vediamo adesso un utile criterio per stabilire se un politopo \`e regolare esibendo particolari esempi di generatori che ci permetteranno quindi
 di meglio studiare i gruppi di simmetrie dei politopi regolari. Cominciamo col definire i generatori scelti per una bandiera.
 \begin{defin}
@@ -1288,7 +1289,7 @@ abbiamo mostrato che due facce $F_i^\phi$ e $F_j^\psi$ sono incidenti precisamen
 $\Gamma_i\phi$ e $\Gamma_j\psi$.\\
 Dopo aver introdotto e compreso un po' dei generatori scelti del politopo regolare $\p$ vediamo quali relazioni fra loro intercorrono, per arrivare
 quindi ad una presentazione del gruppo $\Gamma$.
-\subsection{Relazioni}
+\subsubsection{Relazioni}
 Abbiamo visto che un politopo regolare \`e in particolare univelare, possiede cio\`e un \emph{tipo} (o simbolo di Shl\"afli). Tale simbolo,
 che descrive la ``forma'' locale del politopo ad ogni livello (dicendoci a che poligono corrispondono le sezioni di rango $2$), unitamente
 alla regolarit\`a di $\p$ ci d\`a importantissime informazioni sulla struttura del gruppo di simmetria di $\p$, $\Gamma$. Inoltre tale
@@ -1476,7 +1477,7 @@ Siano $\p$ politopo, $\mathcal{Q}$ un prepolitopo e $\phi:\p\longrightarrow\math
 se e solo se per ogni $G\leq F\in\p$ e per ogni $\phi(G)\leq\tilde{H}\leq\phi(F)$ esiste una $G\leq H\leq F$ tale che ${H}=\phi(H)$
 \end{corol}
 
-\subsection{Definizioni e prime considerazioni}
+\subsection{Definizioni e criteri}
 Adesso siamo nelle condizioni di poter definire il quoziente di un politopo e di mostrare quali propriet\`a si perdono e sotto quali condizioni
 tale quoziente (a priori un semplice poset) risulti ancora un politopo, caso che maggiormente ci interessa. I quozienti di strutture sono normalmente
 dati da \emph{opportune} relazioni d'equivalenza e dal conseguente morfismo di proiezione. In questo caso, perché la relazione sia in qualche
@@ -1556,6 +1557,7 @@ connesse per bandiere.
 \begin{proof}
 Ovvio da \ref{oss:ConnectionFixingFace}
 \end{proof}
+\subsection{Criteri di politopicit\`a}
 Essendo noi interessati chiaramente al caso in cui il quoziente di un politopo continui ad essere politopo, abbiamo bisogno di un criterio per
 garantire che si sia in questo caso. Notiamo a tal fine che ci\`o che ci manca, avendo mostrato che il quoziente di un politopo \`e un poset
 connesso per bandiere che soddisfa $(P1)-(P2)$, \`e il fatto che tale quoziente soddisfi anche $(P3)$ e $(P4)$, ossia la forte connessione e la
@@ -1900,6 +1902,7 @@ della sezione $F_{k+1}^{\phi^{-1}}/F_{k-1}^{\phi^{-1}}$ vengono identificate tra
 non possono essere (entrambe) iniettive. Questo mostra che il presente criterio \`e in effetti equivalente al precedente
 \ref{prop:QuotientIsPolitope}.
 \end{proof}
+\include{esempi} 
 
 
 \end{document}
